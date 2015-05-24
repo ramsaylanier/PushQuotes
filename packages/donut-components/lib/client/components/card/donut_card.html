@@ -1,0 +1,13 @@
+<template name="donutCard">
+	<div class="card {{classess}}">
+		{{#if title}}
+			<div class="card-header">
+				<a class="card-title transition-link" href="{{url}}">{{title}}</a>
+				<span class="small">{{description}}</span>
+			</div>
+		{{/if}}
+		<div class="card-content">
+			{{> Template.contentBlock}}
+		</div>
+	</div>
+</template>

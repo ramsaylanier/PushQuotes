@@ -1,0 +1,14 @@
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<meta name="fragment" content="!">
+</head>
+
+<template name="layout">
+	{{> header}}
+
+	<div id="main" class="main">
+		{{> yield}}
+	</div>
+
+	<div id="alerts"></div>
+</template>

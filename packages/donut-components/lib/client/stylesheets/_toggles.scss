@@ -1,0 +1,15 @@
+.donut-toggle{
+	position: absolute;
+
+	&.top{
+		top: 20px;
+	}
+
+	&.right-toggle{
+		right: 20px;
+	}
+
+	&.left-toggle{
+		left: 20px;
+	}
+}

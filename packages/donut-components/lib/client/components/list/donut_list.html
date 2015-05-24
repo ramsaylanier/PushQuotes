@@ -1,0 +1,7 @@
+<template name="donutList">
+	<div class="list {{classes}} {{#if animateItems}}transition-wrapper{{/if}}">
+		{{#each this.context}}
+			{{> Template.contentBlock .}}
+		{{/each}}
+	</div>
+</template>

@@ -1,0 +1,112 @@
+.primary-nav{
+	height: 100%;
+	float: right;
+
+	@media #{$mobile}{
+		display: none;
+	}
+}
+
+.mobile-nav{
+	position: fixed;
+	width: 100%;
+	height: 35px;
+	top: 0;
+	left: 0;
+	display: none;
+
+	@media #{$mobile}{
+		display: block;
+	}
+
+	.sub-nav{
+		top: 35px;
+		width: 30%;
+	}
+}
+
+.nav-list{
+	height: 100%;
+	background-color: black;
+
+	&.active{
+		.sub-nav-list{
+			transform: rotateX(0deg);
+			transition: transform 0ms ease-out 0ms;
+			.nav-item{
+				transform: rotateX(0deg);
+				opacity: 1;
+
+				@for $i from 1 through 3 {
+			      &:nth-child(#{$i}) { 
+			       transition-delay: 100ms * $i;
+			      }
+			    }
+			}
+		}
+	}
+}
+
+.nav-item{
+	position: relative;
+	display: inline-block;
+	background-color: black;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	padding: 0rem;
+
+	a{
+		color: $yellow;
+		display: block;
+		height: 100%;
+		width: 100%;
+		padding: .5rem;
+
+	}
+}
+
+.back-toggle-nav-item{
+	float: left;
+}
+
+.nav-toggle-nav-item{
+	float: right;
+}
+
+.sub-nav-list{
+	position: absolute;
+	transform: rotateX(90deg);
+	transform-origin: top center;
+	top: 36px;
+	right: 0;
+	transition: transform 0ms ease-out 300ms;
+	perspective: 100;
+
+	.nav-item{
+		background-color: $yellow;
+		display: block;
+		transform: rotateX(-180deg);
+		transition: transform 300ms ease-out;
+		transform-origin: top center;
+		backface-visibility: hidden;
+
+		@for $i from 1 through 3 {
+	      &:nth-child(#{$i}) { 
+	       transition-delay: (3 * 100ms) - (100ms * $i);
+	      }
+	    }
+
+	    a{
+	    	color: white;
+	    	padding: .5rem;
+	    	transition: background-color 200ms ease-out;
+	    	
+
+	    	&:hover{
+	    		background-color: darken($yellow, 10%);
+	    	}
+
+	    }
+	}
+}

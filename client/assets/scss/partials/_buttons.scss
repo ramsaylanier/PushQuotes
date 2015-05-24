@@ -1,0 +1,55 @@
+.btn{
+	border: 0;
+	cursor: pointer;
+
+	.bar{
+		background-color: black;
+		height: 2px;
+		width: 15px;
+		margin-bottom: 3px;
+	}
+}
+
+.close-modal-btn{
+	position: absolute;
+	background-color: transparent;
+	top: 10px;
+	right: 10px;
+	padding: 0;
+
+	.bar{
+		position: relative;
+	}
+
+	.bar-1{
+		transform: rotate(45deg);
+		top: 5px;
+	}
+
+	.bar-2{
+		transform: rotate(-45deg);
+	}
+
+	.bar-3{
+		display: none;
+	}
+}
+
+.live-controls{
+	.btn{
+		font-family: $sansSerif;
+		font-size: 1rem;
+		padding: .5rem 1rem;
+		border-radius: 2px;
+	}
+
+	.next-quote-btn{
+		background-color: $green;
+		color: white;
+	}
+
+	.prev-quote-btn{
+		background-color: $yellow;
+		color: white;
+	}
+}

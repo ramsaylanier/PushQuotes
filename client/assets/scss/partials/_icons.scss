@@ -1,0 +1,66 @@
+.deck-icon{
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+
+	path{
+		transition: all 300ms ease-out;
+	}
+
+	&:hover{
+		path{
+			fill: $yellow;
+		}
+	}
+}
+
+.quote-list{
+	.action-list{
+		padding: .5rem 0rem;
+	}
+	.icon{
+		width: 15px;
+		height: 15px;
+	}
+}
+
+.back-icon{
+	float: left;
+
+	path{
+		fill: $yellow;
+	}
+}
+
+.nav-toggle{
+	margin-top: 3px;
+	.bar{
+		position: relative;
+		transform-origin: center center;
+		width: 25px;
+		height: 2px;
+		margin-bottom: 4px;
+		background-color: $yellow;
+		transition: all 300ms ease-out;
+		border-radius: 2px;
+	}
+
+	&.active{
+		.bar{
+			background-color: white;
+		}
+		.bar-1{
+			transform: rotate(45deg);
+			top: 5px;
+		}
+
+		.bar-2{
+			transform: rotate(-45deg);
+			top: -1px;
+		}
+
+		.bar-3{
+			opacity: 0;
+		}
+	}
+}
