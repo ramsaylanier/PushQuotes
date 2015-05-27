@@ -12,6 +12,15 @@ Template.layout.events({
 		var url = $(e.currentTarget).attr('href');
 
 		if (url !== window.location.pathname){
+			var page = $('.page');
+			var pageTitle = Session.get('currentPageTitle');
+			var animationSequence = PageAnimationSequences[pageTitle];
+
+			_.each(animationSequence, function(element, index){
+				AnimateItem($(element.item), element.animation);
+			});
+			// AnimateItem(page, Session.get('animateOut') || DefaultPageAnimateOut);
+
 			var items = $('.item');
 
 			_.each(items, function(item, index){

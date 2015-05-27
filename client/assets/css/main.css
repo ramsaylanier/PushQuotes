@@ -74,7 +74,7 @@ body {
   color: #444; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lora', serif; }
+  font-family: 'Lora', Helvetica, serif; }
 
 .typl8-tera {
   font-size: 117px;
@@ -305,7 +305,8 @@ a {
   text-decoration: none; }
 
 body {
-  font-family: 'Source Sans Pro', sans-serif; }
+  font-family: 'Source Sans Pro', Helvetica, sans-serif;
+  background-color: black; }
 
 .wrapper {
   width: 100%;
@@ -349,6 +350,7 @@ body {
 .deck-title {
   font-size: 1.3rem;
   font-weight: 900;
+  line-height: 1.7rem;
   margin-bottom: .5rem;
   cursor: pointer; }
   .deck-title a {
@@ -362,19 +364,17 @@ body {
   margin-bottom: 0; }
 
 .is-private {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  -webkit-align-self: baseline;
-      -ms-flex-item-align: baseline;
-          align-self: baseline;
+  position: relative;
+  top: -3px;
   font-size: .7rem;
   padding: .25rem;
   background-color: red;
   color: white;
   border-radius: 2px;
-  text-align: center; }
+  text-align: center;
+  margin-left: .5rem;
+  white-space: nowrap;
+  font-family: 'Source Sans Pro', Helvetica, sans-serif; }
 
 .deck-status {
   -webkit-box-flex: 1;
@@ -554,7 +554,7 @@ body {
           justify-content: flex-start; }
 
 #header {
-  background-color: black;
+  background-color: white;
   height: 36px;
   position: fixed;
   width: 100%;
@@ -607,7 +607,7 @@ body {
 .nav-item {
   position: relative;
   display: inline-block;
-  background-color: black;
+  background-color: white;
   height: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -744,8 +744,7 @@ textarea {
   left: 0;
   border-radius: 2px;
   -webkit-transition: height 300ms ease-out;
-          transition: height 300ms ease-out;
-  z-index: -1; }
+          transition: height 300ms ease-out; }
 
 textarea {
   background-color: #cccccc;
@@ -825,7 +824,7 @@ label {
     display: none; }
 
 .live-controls .btn {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Source Sans Pro', Helvetica, sans-serif;
   font-size: 1rem;
   padding: .5rem 1rem;
   border-radius: 2px; }

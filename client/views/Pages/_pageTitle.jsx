@@ -1,4 +1,4 @@
-PageTitle = ReactMeteor.createClass({
+AuthorName = ReactMeteor.createClass({
 	getMeteorState: function(){
 		return {authorName: Router.current().params.username};
 	},

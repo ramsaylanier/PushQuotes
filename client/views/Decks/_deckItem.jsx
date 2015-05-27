@@ -1,12 +1,14 @@
-DeckItem = React.createClass({
+DeckItem = React.createClass(Radium.wrap({
 	componentDidMount: function(){
 		var itemCount = Session.get('itemCount');
 		var item = this.getDOMNode();
 
-		$(item).velocity({
-			opacity: 1,
-			translateY: [0, 20]
-		}, {duration: 1000, easing: [300, 15], delay: (itemCount * 50)});
+		Meteor.setTimeout(function(){
+			$(item).velocity({
+				opacity: 1,
+				translateY: [0, 20]
+			}, {duration: 1000, easing: [300, 25], delay: (itemCount * 50)});
+		}, 0)
 
 		Session.set('itemCount', itemCount + 1);
 	},
@@ -88,38 +90,73 @@ DeckItem = React.createClass({
 		var isAuthor = (Meteor.userId() == this.props.author ? true : false);
 		var isPrivate = this.props.isPrivate || false;
 		var hashtags = this.props.hashtags;
+		
+		var styles = {
+			base: {
+				opacity: "0",
+				backgroundColor: "white"
+			},
+			live: {
+
+				backgroundColor: Color(Colors.green).lighten(.9).hexString()
+			},
+
+			title: {
+				base: {
+					transition: "all 300ms ease-out"
+				},
+				live:{
+					color: Color(Colors.green).darken(.2).hexString()
+				}
+			}
+		}
 
 		return (
-			<li className={(this.props.live ? 'is-live ' : '') + "deck-item item"} >
+			<li 
+				style={[
+					styles.base,
+					this.props.live && styles.live
+				]}
+
+				className={(this.props.live ? 'is-live ' : '') + "deck-item item"} >
+
 				<Section className="deck-header deck-section">
 					<h1 className="deck-title">
-						<a href={"/" + this.props.authorName + '/' + this.props.slug} className="transition-link">{this.props.title}</a>						
+						<a 
+							style={[
+								styles.title.base,
+								Grid.two,
+								this.props.live && styles.title.live
+							]}
+							href={"/" + this.props.authorName + '/' + this.props.slug} 
+							className="transition-link">
+
+							{this.props.title}	
+
+						</a>
+						{isPrivate ? <span className="is-private">private</span> : null}
+
 					</h1>
 					<p className="deck-description">{this.props.description}</p>
 				</Section>
 
 				{this.props.live ?
 					<Section className="deck-section">
-						<Link color="white" bg="greenBg" size="large" type="button" block={true} href={'/' + this.props.authorName + '/' + this.props.slug + '/live'} className="live-link transition-link">View Live</Link>
+						<Link color="white" bg="greenBg" size="large" type="button" block={true} href={'/' + this.props.authorName + '/' + this.props.slug + '/live'} className="live-link transition-link">View Presentation</Link>
 					</Section> :
 					null 
 				}
 
 				<Section className="deck-details deck-section">
-
-					{this.props.hashtags ? 
-						<div className="deck-hashtags section-item">
-							<DeckHashtags>{this.props.hashtags}</DeckHashtags> 
-						</div>: 
-						null
-					}
+					<div className="deck-hashtags section-item">
+						<Hashtags hashtags={this.props.hashtags}/>
+					</div>
 				</Section>
 
 
 				<Section className="deck-footer deck-section">
 					<div className="deck-meta">
 						<Count count={this.props.quotes.length} name="Quotes" icon={QuoteIcon} />
-						{isPrivate ? <span className="is-private meta-item">private</span> : null}
 					</div>
 
 					<div className="action-list">
@@ -129,9 +166,9 @@ DeckItem = React.createClass({
 			</li>
 		)
 	}
-});
+}));
 
-Section = React.createClass({
+Section = React.createClass(Radium.wrap({
 	render: function(){
 		return (
 			<section className={this.props.className}>
@@ -139,9 +176,9 @@ Section = React.createClass({
 			</section>
 		)
 	}
-})
+}));
 
-DeckActions = React.createClass({
+DeckActions = React.createClass(Radium.wrap({
 	render: function(){
 		var actions = this.props.actions;
 		return (
@@ -159,29 +196,20 @@ DeckActions = React.createClass({
 			</ul>
 		)
 	}
-});
+}));
 
 
 
-DeckHashtags = React.createClass({
-	parseHashtags: function(){
-		var arr = '';
-
-		_.each(this.props.children, function(hashtag){
-			arr = arr + ' #' + hashtag;
-		});
-
-		return arr;
-	},
+Hashtags = React.createClass(Radium.wrap({
 	render: function(){
 		return (
-			<span>
-				{this.props.children.map(function(hashtag){
-					return (
+			<div>
+				{this.props.hashtags.map(function(hashtag){
+					return(
 						<span className="hashtag">#{hashtag}</span>
 					)
 				})}
-			</span>
+			</div>
 		)
 	}
-})
+}));

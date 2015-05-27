@@ -81,7 +81,7 @@ MobileNavItems = function(){
 		]
 	} else {
 		navItems = [
-			{url: '/login', name: 'login'}
+			{url: '/login', name: 'login', className: 'transition-link'}
 		]
 	}
 
@@ -142,7 +142,7 @@ PrimaryNavItems = function(){
 		]
 	} else {
 		navItems = [
-			{url: '/login', name: 'login'}
+			{url: '/login', name: 'login', className: 'transition-link'}
 		]
 	}
 

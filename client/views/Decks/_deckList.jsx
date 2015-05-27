@@ -9,7 +9,7 @@ DeckList = ReactMeteor.createClass({
 	render: function(){
 		return (
 			<ul className="deck-list">
-				<PageTitle key={this.state.decks}/>
+				<AuthorName key={this.state.decks}/>
 				{this.state.decks.map(function(deck){
 					return (
 						<DeckItem key={deck._id} {...deck}/>

@@ -1,21 +1,21 @@
-LoginPage = React.createClass({
-	randomFunction: function(){
+Template.loginPage.onRendered(function(){
 
-	},
-	render: function(){
-		return (
-			<div className="wrapper form-wrapper tight-form-wrapper">
+	var animateOut = _.extend(DefaultPageAnimateOut,{options: {duration: 1000, easing:[300, 15],delay: 0}});
+
+	Session.set('animateOut', animateOut);
+	Session.set('currentPageTitle', 'loginPage');
+
+	React.render(
+		<Page animateIn={DefaultPageAnimateIn} backgroundImage={'/img/login-bg.jpg'}>
+			<Wrapper type="form-wrapper" centered={true}>
 				<Form attributes={loginFormAttributes} />
 				<p>No account? <a href='/register'>Register</a></p>
-			</div>
-		)
-	}
-})
+			</Wrapper>
+		</Page>,
+		document.getElementById('main')
+	);
+});
 
-
-Template.loginPage.onRendered(function(){
-	React.render(
-		<LoginPage />,
-		document.getElementById('login-page')
-	)
-})
+Template.loginPage.onDestroyed(function(){
+	React.unmountComponentAtNode(document.getElementById('main'));
+});

@@ -181,6 +181,8 @@ loginFormAttributes = {
 		{type: 'password', label:"password",  className:'full-width input-field', name: 'password'},
 		{type: 'submit', value: 'Login', className: 'full-width'}
 	],
+	type: 'login',
+	animateIn: false,
 	className: 'login-form center-form tight-form',
 	onSubmit: function(e){
 		e.preventDefault();
@@ -203,7 +205,11 @@ loginFormAttributes = {
 				Errors.throw(error.reason, 'error')
 			else{
 				Session.set('loggedIn', true);
-				Router.go('/' + userName);
+				AnimatePageOut('loginPage');
+
+				Meteor.setTimeout(function(){
+					Router.go('/' + userName);
+				}, 500);
 			}
 		})
 	}
