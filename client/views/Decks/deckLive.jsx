@@ -5,8 +5,6 @@ Template.deckLive.onCreated(function(){
 Template.deckLive.onRendered(function(){
 	var instance = this;
 	
-	instance.activeQuote = new ReactiveVar(1);
-
 	instance.component = React.render(
 		<div className="wrapper">
 			<QuoteList isLive={true} />
@@ -15,14 +13,13 @@ Template.deckLive.onRendered(function(){
 	);
 
 	instance.autorun(function(){
-		console.log('autorun')
-		Session.set('itemcount', 1);
-		instance.activeQuote.set(Decks.findOne().activeQuote);
+		Session.set('quoteCount', 1);
 		instance.username = Router.current().params.username;
 		instance.slug = Router.current().params.slug;
 		instance.query = {authorName: instance.username, slug: instance.slug};
 		instance.deckSub = Meteor.subscribe('deckList', instance.query, instance.username);
-		instance.quoteSub = Meteor.subscribe('quoteList', instance.query, instance.activeQuote.get());
+		instance.quoteSub = Meteor.subscribe('quoteList', instance.query, true);
+
 		instance.deckQuery = {authorName: instance.username};
 
 		if (instance.deckSub.ready() && instance.quoteSub.ready()){

@@ -192,12 +192,19 @@ body{
 	margin-bottom: 1rem;
 	opacity: 0;
 	display: flex;
+	flex-wrap: wrap;
 	border-radius: 3px;
 	box-shadow: 0px 5px 5px -5px black;
 }
 
 .quote-header{
-	flex: 1;
+	flex-basis: 100%;
+	display: flex;
+	padding: .5rem 0rem;
+}
+
+.quote-footer{
+	flex-basis: 100%;
 }
 
 .quote-text{
@@ -205,6 +212,17 @@ body{
 	font-size: 1.2rem;
 	line-height: 1.7rem;
 	margin: 0;
+}
+
+.quote-slide{
+	font-size: .7rem;
+	background-color: black;
+	color: white;
+	padding: .25rem;
+	border-radius: 2px;
+	float: left;
+	margin-bottom: 0;
+	margin-right: 5px;
 }
 
 .live-controls{

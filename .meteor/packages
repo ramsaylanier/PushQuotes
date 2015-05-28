@@ -19,3 +19,5 @@ cosmos:browserify
 
 
 npm-container
+simple:rest
+miktam:api-password

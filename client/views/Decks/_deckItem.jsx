@@ -21,7 +21,8 @@ DeckItem = React.createClass(Radium.wrap({
 		editDeckForm.fields[1].value = this.props.slug;
 		editDeckForm.fields[2].value = this.props.description;
 		editDeckForm.fields[3].value = this.props.hashtags;
-		editDeckForm.fields[4].checked = this.props.isPrivate;
+		editDeckForm.fields[4].checked = this.props.withSlides;
+		editDeckForm.fields[5].checked = this.props.isPrivate;
 		editDeckForm.data = this.props;
 
 		React.render(
@@ -53,6 +54,12 @@ DeckItem = React.createClass(Radium.wrap({
 		document.body.appendChild(modal);
 
 		newQuoteForm.data = this.props;
+
+		if (this.props.withSlides){
+			newQuoteForm.fields[1].visibility = 'visible'
+		} else {
+			newQuoteForm.fields[1].visibility = 'hidden'
+		}
 
 		React.render(
 			<Modal>

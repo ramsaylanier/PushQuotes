@@ -59,7 +59,7 @@ InputType = React.createClass({
 		var hasLabel = this.props.label;
 		var isTextArea = this.props.type == 'textArea';
 		return (
-			<div className={"form-control " + this.props.type + "-control"}>
+			<div className={"form-control " + this.props.visibility + " " + this.props.type + "-control"}>
 				<div className="inner">
 					{ hasLabel ? <Label {...this.props} /> : null }
 					{ isTextArea ?

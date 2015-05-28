@@ -22,6 +22,14 @@ QuoteItem = React.createClass({
 
 		editQuoteForm.data = this.props;
 		editQuoteForm.fields[0].value = this.props.text;
+		editQuoteForm.fields[1].value = this.props.slide;
+		editQuoteForm.fields[2].value = this.props.order;
+
+		if (this.props.withSlides){
+			editQuoteForm.fields[1].visibility = 'visible'
+		} else {
+			editQuoteForm.fields[1].visibility = 'hidden'
+		}
 
 		React.render(
 			<Modal>
@@ -29,6 +37,8 @@ QuoteItem = React.createClass({
 			</Modal>,
 			modal
 		)
+
+		console.log(this.props);
 	},
 	deleteForm: function(){
 		var confirmDelete = confirm('Do you want to delete this quote?');
@@ -60,11 +70,17 @@ QuoteItem = React.createClass({
 		var isPrivate = this.props.isPrivate;
 		return (
 			<li ref="quoteListItem" className="quote-item item">
-				<p className="quote-text">"{this.props.text}"</p>
-				<div className="action-list">
-					{isPrivate && !isLive ? <span className="is-private">private</span> : null}
-					{isAuthor && !isLive ? <DeckActions actions={this.actions()}/> : null }
-					{isLive ? <QuoteActions quote={this.props.text} hashtags={this.props.hashtags} />: null}
+				<div className="quote-header">
+					<p className="quote-text">{'"' + this.props.text + '"'}</p>
+					<div className="action-list">
+						{isPrivate && !isLive ? <span className="is-private">private</span> : null}
+						{isAuthor && !isLive ? <DeckActions actions={this.actions()}/> : null }
+						{isLive ? <QuoteActions quote={this.props.text} hashtags={this.props.hashtags} />: null}
+					</div>
+				</div>
+				<div className="quote-footer">
+					{this.props.slide ? <p className="quote-slide small">Slide: {this.props.slide}</p> : null}
+					{this.props.order ? <p className="quote-slide small">Order: {this.props.order}</p> : null}
 				</div>
 			</li>
 		)

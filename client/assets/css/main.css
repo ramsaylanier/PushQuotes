@@ -477,14 +477,26 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
   border-radius: 3px;
   box-shadow: 0px 5px 5px -5px black; }
 
 .quote-header {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1; }
+  -webkit-flex-basis: 100%;
+      -ms-flex-preferred-size: 100%;
+          flex-basis: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: .5rem 0rem; }
+
+.quote-footer {
+  -webkit-flex-basis: 100%;
+      -ms-flex-preferred-size: 100%;
+          flex-basis: 100%; }
 
 .quote-text {
   -webkit-box-flex: 3;
@@ -494,6 +506,16 @@ body {
   font-size: 1.2rem;
   line-height: 1.7rem;
   margin: 0; }
+
+.quote-slide {
+  font-size: .7rem;
+  background-color: black;
+  color: white;
+  padding: .25rem;
+  border-radius: 2px;
+  float: left;
+  margin-bottom: 0;
+  margin-right: 5px; }
 
 .live-controls {
   position: fixed;
@@ -695,6 +717,8 @@ body {
   .form-control.is-focused .input-field {
     background-color: transparent;
     color: white; }
+  .form-control.hidden {
+    display: none; }
 
 .submit-control .input-overlay, .checkbox-control .input-overlay, .textArea-control .input-overlay {
   display: none; }
@@ -734,6 +758,9 @@ textarea {
     outline: none;
     background-color: transparent;
     color: white; }
+
+.hidden-field {
+  display: none; }
 
 .input-overlay {
   position: absolute;

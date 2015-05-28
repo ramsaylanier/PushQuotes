@@ -27,7 +27,10 @@ newDeckForm = {
 			className:'deck-hashtags-field full-width input-field',
 			label: 'Hashtags'
 		},
-		{id: 4, type: 'submit', value: 'Create Deck'}
+		{
+			id: 4, type: 'checkbox', label: 'Sync With Slides.com', name: 'use-slides-field'
+		},
+		{id: 5, type: 'submit', value: 'Create Deck'}
 	],
 	className: 'create-deck-form',
 	onSubmit: function(e){
@@ -36,6 +39,7 @@ newDeckForm = {
 			title: $(e.currentTarget).find('[name=deck-title-field]').val(),
 			slug: $(e.currentTarget).find('[name=deck-slug-field]').val(),
 			hashtags: $(e.currentTarget).find('[name=deck-hashtags-field]').val().split(','),
+			withSlides: $(e.currentTarget).find('[name=use-slides-field]').get(0).checked,
 			author: Meteor.userId()
 		};
 
@@ -92,8 +96,9 @@ editDeckForm = {
 			className:'deck-hashtags-field full-width input-field',
 			label: 'Hashtags'
 		},
-		{id: 5, type: 'checkbox', label: 'Make Private', name: 'is-private-field'},
-		{id: 6, type: 'submit', value: 'Save Deck'}
+		{id: 5, type: 'checkbox', label: 'Sync With Slides.com', name: 'use-slides-field'},
+		{id: 6, type: 'checkbox', label: 'Make Private', name: 'is-private-field'},
+		{id: 7, type: 'submit', value: 'Save Deck'}
 	],
 	onSubmit: function(e){
 		e.preventDefault();
@@ -105,6 +110,7 @@ editDeckForm = {
 			slug: $(e.currentTarget).find('[name=deck-slug-field]').val(),
 			description: $(e.currentTarget).find('[name=deck-description-field]').val(),
 			isPrivate: $(e.currentTarget).find('[name=is-private-field]').get(0).checked,
+			withSlides: $(e.currentTarget).find('[name=use-slides-field]').get(0).checked,
 			hashtags: $(e.currentTarget).find('[name=deck-hashtags-field]').val().split(','),
 			author: Meteor.userId()
 		}
@@ -127,7 +133,9 @@ newQuoteForm = {
 	className: 'add-quote-form',
 	fields: [
 		{id: 1, type: 'textArea', name: 'quote-text-field', className:'full-width', placeholder: 'Enter Quote Here', rows: 8},
-		{id: 2, type: 'submit', value: 'Add Quote'}
+		{id: 2, type: 'text', visibility: 'hidden', name: 'quote-slide-field', className:'full-width input-field', label: 'Slides.com Slide'},
+		{id: 3, type: 'text', name: 'quote-order-field', className:'full-width input-field', label: 'Order'},
+		{id: 4, type: 'submit', value: 'Add Quote'}
 	],	
 	onSubmit: function(e){
 		e.preventDefault();
@@ -135,7 +143,9 @@ newQuoteForm = {
 		var deckId = newQuoteForm.data._id;
 
 		var quoteAttributes = {
-			text: $(e.currentTarget).find('[name=quote-text-field]').val()
+			text: $(e.currentTarget).find('[name=quote-text-field]').val(),
+			slide: $(e.currentTarget).find('[name=quote-slide-field]').val(),
+			order: $(e.currentTarget).find('[name=quote-order-field]').val()
 		}
 
 		var eventId = Router.current().params._id;
@@ -154,7 +164,9 @@ editQuoteForm = {
 	className: 'edit-quote-form',
 	fields: [
 		{id: 1, type: 'textArea', name: 'quote-text-field', className:'full-width', placeholder: 'Enter Quote Here', rows: 8},
-		{id: 2, type: 'submit', value: 'Save Quote'}
+		{id: 2, type: 'text', visibility: 'hidden', name: 'quote-slide-field', className:'full-width input-field', label: 'Slides.com Slide'},
+		{id: 3, type: 'text', name: 'quote-order-field', className:'full-width input-field', label: 'Order'},
+		{id: 4, type: 'submit', value: 'Save Quote'}
 	],	
 	onSubmit: function(e){
 		e.preventDefault();
@@ -163,6 +175,8 @@ editQuoteForm = {
 		var deckID = editQuoteForm.data.deckId;
 		var quoteAttributes = {
 			text: $(e.currentTarget).find('[name=quote-text-field]').val(),
+			slide: $(e.currentTarget).find('[name=quote-slide-field]').val(),
+			order: $(e.currentTarget).find('[name=quote-order-field]').val()
 		}
 
 		Meteor.call('editQuote', quoteID, deckID, quoteAttributes, function(error){

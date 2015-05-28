@@ -1,7 +1,7 @@
 QuoteList = ReactMeteor.createClass({
 	getMeteorState: function(){
 		return {
-			quotes: Quotes.find().fetch(),
+			quotes: Quotes.find({}, {sort: {order: 1}}).fetch(),
 			deck: Decks.findOne()
 		}
 	},
@@ -20,6 +20,7 @@ QuoteList = ReactMeteor.createClass({
 		var deck = this.state.deck;
 		var isAuthor;
 		var isLive = this.props.isLive;
+		var withSlides = this.state.deck.withSlides || false;
 		
 		if (Meteor.user())
 			isAuthor = Router.current().params.username === Meteor.user().username;
@@ -40,7 +41,7 @@ QuoteList = ReactMeteor.createClass({
 				<ul className="quote-list">
 					{quotes.map(function(quote){
 						return (
-							<QuoteItem key={quote._id} {...quote} isLive={isLive} hashtags={deck.hashtags} />
+							<QuoteItem key={quote._id} {...quote} withSlides={withSlides} isLive={isLive} hashtags={deck.hashtags} />
 						)
 					})}
 				</ul>
@@ -51,11 +52,11 @@ QuoteList = ReactMeteor.createClass({
 
 NextQuoteButton = React.createClass({
 	nextQuote: function(){
-		Meteor.call('renderQuote', 'next', this.props.deck, function(error, result){
+		Meteor.call('renderNextQuote', this.props.deck, function(error, result){
 			if (error){
 				alert(error)
 			} else {
-
+				Session.set('quoteCount', 1)
 			}
 		})
 	},
@@ -68,11 +69,11 @@ NextQuoteButton = React.createClass({
 
 PrevQuoteButton = React.createClass({
 	prevQuote: function(){
-		Meteor.call('renderQuote', 'previous', this.props.deck, function(error, result){
+		Meteor.call('renderPreviousQuote', this.props.deck, function(error, result){
 			if (error){
 				alert(error)
 			} else {
-				
+				Session.set('quoteCount', 1)
 			}
 		})
 	},

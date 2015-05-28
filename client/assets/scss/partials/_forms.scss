@@ -18,6 +18,10 @@
 			color: white;
 		}
 	}
+
+	&.hidden{
+		display: none;
+	}
 }
 
 .submit-control, .checkbox-control, .textArea-control{
@@ -72,6 +76,10 @@ textarea{
 		background-color: transparent;
 		color: white;
 	}
+}
+
+.hidden-field{
+	display: none;
 }
 
 .input-overlay{
