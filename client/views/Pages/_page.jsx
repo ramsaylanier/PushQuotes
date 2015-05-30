@@ -11,7 +11,7 @@ Page = React.createClass(Radium.wrap({
 		var styles = {
 			base: {
 				opacity: 0,
-				paddingTop: 35,
+				paddingTop: HeaderHeight,
 				backgroundImage: "url('" + this.props.backgroundImage + "')",
 				backgroundPosition: 'center center',
 				backgroundSize: "cover",

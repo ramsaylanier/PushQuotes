@@ -24,8 +24,6 @@ MobileNavItems = function(){
 				className: 'nav-toggle',
 				icon: MenuIcon,
 				clickFunction: function(){
-					console.log(this);
-
 					var toggle = $('.nav-toggle');
 					var list = toggle.parents('.nav-list');
 
@@ -36,6 +34,7 @@ MobileNavItems = function(){
 				subnav: {
 					navItems: [
 						{
+							id: 1,
 							url: '/' + Meteor.user().username, 
 							name: 'Dashboard',
 							className: 'transition-link',
@@ -45,6 +44,7 @@ MobileNavItems = function(){
 							}
 						},
 						{
+							id: 2,
 							url: '',
 							name: 'New Deck',
 							clickFunction: function(){
@@ -64,6 +64,7 @@ MobileNavItems = function(){
 							}
 						},
 						{
+							id: 3,
 							url: '', 
 							name: 'logout',
 							clickFunction: function(){ 
@@ -96,19 +97,29 @@ PrimaryNavItems = function(){
 				url: '',
 				name: Meteor.user().username,
 				mouseEnter: function(e){
-					$(e.target).parents('.nav-list').addClass('active');
+					React.render(
+						<Header active={true} />,
+						$('#header').get(0)
+					);
+					// $(e.target).parents('.nav-list').addClass('active');
 				},
 				mouseLeave: function(e){
-					$(e.target).parents('.nav-list').removeClass('active');
+					React.render(
+						<Header active={false} />,
+						$('#header').get(0)
+					);
+					// $(e.target).parents('.nav-list').removeClass('active');
 				},
 				subnav: {
 					navItems: [
 						{
+							id: 1,
 							url: '/' + Meteor.user().username, 
 							name: 'Dashboard',
 							className: 'transition-link'
 						},
 						{
+							id: 2,
 							url: '',
 							name: 'New Deck',
 							clickFunction: function(){
@@ -125,6 +136,7 @@ PrimaryNavItems = function(){
 							}
 						},
 						{
+							id: 3,
 							url: '', 
 							name: 'logout',
 							clickFunction: function(){ 

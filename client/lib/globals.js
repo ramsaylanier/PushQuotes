@@ -1,7 +1,7 @@
 Colors = {
 	primary: "#F2C71F",
 	blue: "#55acee",
-	green: "rgb(111, 174, 42)"
+	green: "#6fae2a"
 };
 
 Fonts = {
@@ -16,6 +16,8 @@ Breakpoints = {
 	desktop: "@media only screen and (min-width: 981px) and (max-width: 1200px)",
 	desktopXL: "@media only screen and (min-width: 1201px)",
 };
+
+HeaderHeight = 40;
 
 var WRAPPER = 1000;
 var GRID_UNIT = (WRAPPER / 12);
