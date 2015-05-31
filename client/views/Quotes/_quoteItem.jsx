@@ -71,7 +71,7 @@ QuoteItem = React.createClass({
 		return (
 			<li ref="quoteListItem" className="quote-item item">
 				<div className="quote-header">
-					<p className="quote-text">{'"' + this.props.text + '"'}</p>
+					<p className="quote-text">{'"' + this.props.text + 	'"'}</p>
 					<div className="action-list">
 						{isPrivate && !isLive ? <span className="is-private">private</span> : null}
 						{isAuthor && !isLive ? <DeckActions actions={this.actions()}/> : null }

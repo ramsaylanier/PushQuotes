@@ -17,10 +17,10 @@ Form = React.createClass(Radium.wrap({
 
 		var styles = {
 			base: {
-				padding: "2rem"
+
 			},
 			login: {
-				backgroundColor: "white"
+				
 			}
 		}
 

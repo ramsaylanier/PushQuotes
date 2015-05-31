@@ -7,9 +7,9 @@ Template.loginPage.onRendered(function(){
 
 	React.render(
 		<Page animateIn={DefaultPageAnimateIn} backgroundImage={'/img/login-bg.jpg'}>
-			<Wrapper type="form-wrapper" centered={true}>
+			<Wrapper type="form-wrapper" centered={true} backgroundColor="white">
 				<Form attributes={loginFormAttributes} />
-				<p>No account? <a href='/register'>Register</a></p>
+				<p>No account? <Link href='/register' className="transition-link">Register</Link></p>
 			</Wrapper>
 		</Page>,
 		document.getElementById('main')

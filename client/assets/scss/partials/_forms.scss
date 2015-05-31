@@ -1,24 +1,4 @@
 .form-control{
-	position: relative;
-	margin-bottom: 1.75rem;
-
-	.inner{
-		display: flex;
-		flex-direction: row-reverse;
-		align-items: center;
-	}
-
-	&.is-focused{
-		.input-overlay{
-			height: 100%;
-		}
-
-		.input-field{
-			background-color: transparent;
-			color: white;
-		}
-	}
-
 	&.hidden{
 		display: none;
 	}
@@ -43,11 +23,6 @@
 
 
 input, textarea{
-	position: relative;
-	border: 0;
-	font-size: 1rem;
-	padding: .5rem;
-	border-radius: 2px;
 
 	&.full-width{
 		width: 100%;
@@ -55,7 +30,7 @@ input, textarea{
 }
 
 textarea{
-	transition: background-color 300ms ease-out;
+	// transition: background-color 300ms ease-out;
 
 	&:focus{
 		outline: none;
@@ -65,61 +40,10 @@ textarea{
 }
 
 .input-field{
-	background-color: fade-out(darken(white, 20%), .5);
-	position: relative;
-	color: black;
-	z-index: 1;
-	transition: all 300ms ease-out;
-
-	&:focus{
-		outline: none;
-		background-color: transparent;
-		color: white;
-	}
 }
 
 .hidden-field{
 	display: none;
-}
-
-.input-overlay{
-	position: absolute;
-	width: 100%;
-	height: 2px;
-	background-color: black;
-	bottom: 0;
-	left: 0;
-	border-radius: 2px;
-	transition: height 300ms ease-out;
-}
-
-textarea{
-	background-color: darken(white, 20%);
-	color: black;
-}
-
-input[type='submit']{
-	background-color: $yellow;
-	color: black;
-	transition: all 150ms ease-out;
-	cursor: pointer;
-	border-radius: 3px;
-	-webkit-appearance: none;
-
-
-	&:hover{
-		background-color: darken($yellow, 10%);
-	}
-}
-
-label{
-	position: absolute;
-	font-size: .8rem;
-	margin-bottom: 5px;
-	bottom: 15px;
-	left: 10px;
-	z-index: 2;
-	pointer-events: none;
 }
 
 .center-form{
