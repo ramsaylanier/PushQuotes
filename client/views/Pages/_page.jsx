@@ -38,7 +38,7 @@ PageHeader = React.createClass(Radium.wrap({
 				position: "relative",
 				backgroundPosition: 'center center',
 				backgroundSize: "cover",
-				minHeight: "70vh",
+				minHeight: "50vh",
 				backgroundImage: "url('" + this.props.backgroundImage + "')",
 				textAlign: "center"
 			}
@@ -48,7 +48,8 @@ PageHeader = React.createClass(Radium.wrap({
 			<div 
 				className="page-header"
 				style={[
-					styles.base
+					styles.base,
+					styles.base.backgroundAttachment = this.props.bgAttachment
 				]}
 			>
 				{this.props.children}
@@ -84,8 +85,6 @@ PageTitle = React.createClass(Radium.wrap({
 		styles.base[Breakpoints.mobile] = {
 			fontSize: '1rem'
 		}
-
-		console.log(styles);
 
 		return (
 			<h1 className="page-title"

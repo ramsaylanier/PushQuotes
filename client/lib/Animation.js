@@ -45,6 +45,20 @@ PageAnimationSequences = {
 				options: {
 					duration: 500, 
 					easing: [.5, .1, .1, 1],
+					delay: 200
+				}
+			}
+		},
+		sectionTitle:  {
+			item: '.section-title',
+			animation: {
+				properties: {
+					opacity: 0,
+					scale: [1.1,1]
+				},
+				options: {
+					duration: 500, 
+					easing: [.5, .1, .1, 1],
 					delay: 100
 				}
 			}

@@ -9,6 +9,9 @@ Fonts = {
 	sansSerif: "'Source Sans Pro', Helvetica, sans-serif"
 };
 
+LineHeight = 1.65;
+FontBase = 16;
+
 Breakpoints = {
 	mobile: "@media only screen and (max-width: 568px)",
 	mobileLandscape: "@media only screen and (min-device-width: 320px) and (max-device-width: 640px) and (orientation: landscape)",
@@ -18,6 +21,7 @@ Breakpoints = {
 };
 
 HeaderHeight = 40;
+
 
 var WRAPPER = 1000;
 var GRID_UNIT = (WRAPPER / 12);
