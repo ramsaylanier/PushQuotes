@@ -19,8 +19,10 @@ Wrapper = React.createClass(Radium.wrap({
 			base: {
 				position: "relative",
 				maxWidth: 1000,
+				width: "100%",
 				marginLeft: "auto",
-				marginRight: "auto"
+				marginRight: "auto",
+				padding: "0rem .5rem"
 			},
 			form:{
 				maxWidth: 400,
@@ -34,6 +36,10 @@ Wrapper = React.createClass(Radium.wrap({
 			}
 		}
 
+		styles.base[Breakpoints.mobile] = {
+			padding: ".5rem"
+		}
+
 		return(
 			<div
 				className="wrapper"
@@ -41,7 +47,8 @@ Wrapper = React.createClass(Radium.wrap({
 					styles.base,
 					this.props.type == 'form-wrapper' && styles.form,
 					this.props.centered && styles.centered,
-					styles.base.backgroundColor = this.props.backgroundColor
+					styles.base.backgroundColor = this.props.backgroundColor,
+					this.props.style
 				]}>
 				{this.props.children}
 			</div>

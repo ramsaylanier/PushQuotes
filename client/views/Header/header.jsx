@@ -15,6 +15,13 @@ var styles = {
 	}
 }
 
+styles.logo[Breakpoints.mobile] = {
+	display: 'table',
+	margin: "0 auto",
+	position: "relative",
+	zIndex: "100"
+}
+
 Header = ReactMeteor.createClass(Radium.wrap({
 	getMeteorState: function(){
 		return{
@@ -24,6 +31,8 @@ Header = ReactMeteor.createClass(Radium.wrap({
 	render: function(){
 		var navs = getNavs();
 		var isActive = this.props.active || false;
+
+		console.log(isActive);
 		return (
 			<header 
 				style = {[
@@ -67,7 +76,7 @@ Template.header.events({
 		}, 1000, [300, 10]);
 
 		$('.logo-quotebox').velocity({
-			"fill": Colors.green
+			"fill": Colors.dark
 		}, 300, 'easeOut');
 	},
 	'mouseleave .home-link':function(e){

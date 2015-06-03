@@ -8,20 +8,7 @@ a{
 
 body{
 	font-family: $sansSerif;
-	background-color: black;
-}
-
-.wrapper{
-	width: 100%;
-	max-width: 1000px;
-	margin-left: auto;
-	margin-right: auto;
-	height: 100%;
-	padding: 0rem .5rem;
-
-	@media #{$mobile}{
-		padding: .5rem;
-	}
+	background-color: $dark;
 }
 
 .main{
@@ -37,7 +24,7 @@ body{
 	background-color: white;
 	margin-bottom: 1rem;
 	border-radius: 3px;
-	box-shadow: 0px 5px 5px -5px black;
+	box-shadow: 0px 5px 5px -5px $dark;
 	opacity: 0;
 	transition: background-color 300ms ease-out;
 }
@@ -67,7 +54,7 @@ body{
 	cursor: pointer;
 
 	a{
-		color: black;
+		color: $dark;
 		transition: color 300ms ease-out;
 
 		&:hover{
@@ -194,12 +181,12 @@ body{
 	display: flex;
 	flex-wrap: wrap;
 	border-radius: 3px;
-	box-shadow: 0px 5px 5px -5px black;
+	box-shadow: 0px 5px 5px -5px $dark;
 }
 
 .quote-header{
-	flex-basis: 100%;
-	display: flex;
+	// flex-basis: 100%;
+	// display: flex;
 	padding: .5rem 0rem;
 }
 
@@ -216,7 +203,7 @@ body{
 
 .quote-slide{
 	font-size: .7rem;
-	background-color: black;
+	background-color: $dark;
 	color: white;
 	padding: .25rem;
 	border-radius: 2px;
@@ -228,12 +215,13 @@ body{
 .live-controls{
 	position: fixed;
 	backface-visibility: hidden;
-	top: 35px;
+	top: 40px;
 	left: 0;
 	text-align: center;
 	width: 100%;
-	background-color: darken(white, 0%);
-	box-shadow: 0px 3px 5px -2px black;
+	background-color: $dark;
+	box-shadow: 0px 3px 5px -2px $dark;
+	padding: .5rem 0rem;
 
 	.wrapper{
 		max-width: 600px;
@@ -256,7 +244,7 @@ body{
 		max-width: 600px;
 		margin-left: auto;
 		margin-right: auto;
-		padding-top: 10vh;
+		padding-top: 12vh;
 		padding-bottom: 40vh;
 	}
 
@@ -265,14 +253,12 @@ body{
 	}
 
 	.quote-text{
-		flex: 0 1 100%;
 		font-size: 1.2rem;
 		line-height: 1.5rem;
 		margin-bottom: 1rem;
 	}
 
 	.action-list{
-		flex: 0 1 100%;
 		float: none;
 		text-align: left;
 		justify-content: flex-start;

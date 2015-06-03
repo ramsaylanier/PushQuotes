@@ -1,24 +1,8 @@
 var styles = {
 	base: {
 		color: Colors.primary,
-		transition: "all 300ms ease-out"
-	},
-	white: {
-		color: 'white'
-	},
-	blueBg: {
-		backgroundColor: Colors.blue,
-
-		':hover': {
-			backgroundColor: Color(Colors.blue).darken(.1).hexString()
-		}
-	},
-	greenBg: {
-		backgroundColor: Colors.green,
-
-		':hover': {
-			backgroundColor: Color(Colors.green).darken(.1).hexString()
-		}
+		transition: "all 300ms ease-out",
+		cursor: "pointer"
 	},
 	block:{
 		display: 'block'
@@ -31,6 +15,30 @@ var styles = {
 	large:{
 		fontSize: "1.2rem",
 		padding: '1rem 2rem'
+	},
+	tweet: {
+		padding: '.5rem 1rem',
+		borderRadius: 3,
+		backgroundColor: Colors.blue,
+		color: "white",
+		':hover':{
+			backgroundColor: Colors.green
+		}
+	},
+	primary:{
+		padding: '.5rem 1rem',
+		borderRadius: 3,
+		backgroundColor: Colors.primary,
+		color: "white",
+		':hover':{
+			backgroundColor: Colors.green
+		}
+	},
+	center:{
+		textAlign: "center",
+		display: "table",
+		marginLeft: "auto",
+		marginRight: "auto"
 	}
 }
 
@@ -44,6 +52,7 @@ Link = React.createClass(Radium.wrap({
 					styles[this.props.color],
 					styles[this.props.size],
 					styles[this.props.bg],
+					styles[this.props.align],
 					this.props.block && styles.block
 				]} 
 				{...this.props}>

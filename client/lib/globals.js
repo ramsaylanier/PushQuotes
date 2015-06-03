@@ -1,7 +1,8 @@
 Colors = {
 	primary: "#F2C71F",
 	blue: "#55acee",
-	green: "#6fae2a"
+	green: "#6fae2a",
+	dark: "#240425"
 };
 
 Fonts = {

@@ -23,9 +23,7 @@ Form = React.createClass(Radium.wrap({
 				
 			}
 		}
-
-		console.log(this);
-
+		
 		return(
 			<form {...this.props.attributes}
 				style={[

@@ -25,11 +25,18 @@ MobileNavItems = function(){
 				icon: MenuIcon,
 				clickFunction: function(){
 					var toggle = $('.nav-toggle');
-					var list = toggle.parents('.nav-list');
-
-					toggle.blur();
+					var isActive = false;
 					toggle.toggleClass('active');
-					list.toggleClass('active');
+
+					if (toggle.hasClass('active')){
+						isActive = true;
+					}
+
+					React.render(
+						<Header active={isActive} />,
+						$('#header').get(0)
+					);
+					
 				},
 				subnav: {
 					navItems: [

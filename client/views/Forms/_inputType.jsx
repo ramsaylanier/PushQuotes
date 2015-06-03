@@ -14,10 +14,6 @@ InputType = React.createClass(Radium.wrap({
 		}
 	},	
 	handleChange: function(e){
-		var control = $(this.getDOMNode());
-		var input = control.find('.input-field');
-		var label = input.prev('label');
-
 		if (this.props.type == 'checkbox'){
 			this.setState({checked: e.target.checked})
 		} else {
@@ -50,9 +46,9 @@ InputType = React.createClass(Radium.wrap({
 	},
 	render: function(){
 		var hasLabel = this.props.label;
-		var isTextArea = this.props.type == 'textArea';
-
-		var styles= {
+		var isTextArea = this.props.type == 'textarea';
+		var value = this.state.value;
+		var styles = {
 			formControl: {
 				position: "relative",
 				marginBottom: "1.75rem"
@@ -73,8 +69,11 @@ InputType = React.createClass(Radium.wrap({
 						color: "white"
 					}
 				},
-				textArea: {
-					transition: "background-color 300ms ease-out"
+				textarea: {
+					transition: "background-color 300ms ease-out",
+					":focus":{
+						backgroundColor: "black"
+					}
 				},
 				submit: {
 					backgroundColor: Colors.primary,
@@ -82,7 +81,7 @@ InputType = React.createClass(Radium.wrap({
 					transition: "all 150ms ease-out",
 					cursor: "pointer",
 					borderRadius: 3,
-					webkitAppearance: "none",
+					WebkitAppearance: "none",
 					":hover": {
 						backgroundColor: Colors.green
 					}
@@ -117,22 +116,22 @@ InputType = React.createClass(Radium.wrap({
 					styles.formControl
 				]}
 			>
-				<FlexContainer className="inner">
-					{ hasLabel ? <Label {...this.props} /> : null }
+					{ hasLabel && <Label {...this.props} /> }
 					{ isTextArea ?
-						<textArea 
+						<textarea
 							{...this.props} 
+							value={value}
 							onChange={this.handleChange}
 							style= {[
 								styles.input.base,
-								styles.input.textArea
+								styles.input.textarea
 							]}
 						>
-							{this.state.value}
-						</textArea> :
+							{value}
+						</textarea> :
 						<input 
 							{...this.props}
-							value={this.state.value}
+							value={value}
 							checked={this.state.checked}
 							onFocus={this.activateField}
 							onBlur={this.deactivateField}
@@ -143,7 +142,6 @@ InputType = React.createClass(Radium.wrap({
 								this.state.isFocused && styles.focused.input
 							]}/>
 					}
-				</FlexContainer>
 				<span 
 					className="input-overlay"
 					style={[

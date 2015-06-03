@@ -9,11 +9,15 @@ Template.landingPage.onRendered(function(){
 			<PageHeader backgroundImage={'/img/home-bg.jpg'} bgAttachment="fixed">
 				<PageTitle>Push<span style={{color:Colors.primary}}>Quotes</span></PageTitle>
 			</PageHeader>
-			<PageSection className="first-section" bgColor="black">
-				<Wrapper>
-					<Headings.h3 className="section-title" color={Colors.primary} weight={900} alpha={0} align="center">Your quotes delivered directly to your audience in real time.</Headings.h3>
-					<Headings.h5 className="section-title" color={Colors.green} weight={900} alpha={0} align="center">Your quotes delivered directly to your audience in real time.</Headings.h5>
-				</Wrapper>
+			
+			<PageSection className="first-section" alpha={0} separator={true}>
+				<Headings.h3 className="section-title" alpha={1} align="center">Your quotes delivered directly to your audience in real time.</Headings.h3>
+				<Link type="primary" align="center">Try It Out!</Link>
+			</PageSection>
+
+			<PageSection className="second-section" alpha={1} separator={true}>
+				<Headings.h4 className="section-title" color="white" alpha={1} align="center">Create a 'deck' of pre-loaded quotes</Headings.h4>
+				<Headings.p>Your audience will get your pre-loaded quotes pushed directly to their devices at your control. By providing them with pre-loaded content, you can ensure you are being quoted accurately.</Headings.p>
 			</PageSection>
 		</Page>,
 		document.getElementById('main')
@@ -37,7 +41,7 @@ Template.landingPage.onRendered(function(){
 		var sectionAnimation = {
 			properties: {
 				opacity: 1,
-				scale: [1, .9]
+				scale: [1, 1.1]
 			},
 			options: {
 				duration: 1000, 
@@ -46,7 +50,7 @@ Template.landingPage.onRendered(function(){
 			}
 		}
 
-		AnimateItem($('.first-section .section-title'), sectionAnimation);
+		AnimateItem($('.first-section'), sectionAnimation);
 	})
 });
 

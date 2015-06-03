@@ -1,6 +1,5 @@
 DeckList = ReactMeteor.createClass({
 	getMeteorState: function(){
-		console.log('getMeteorState');
 		return {decks: Decks.find().fetch()};
 	},
 	componentWillMount: function(){

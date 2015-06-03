@@ -1,7 +1,7 @@
 DefaultPageAnimateIn = {
 	properties: {
 		opacity: 1,
-		scale: [1, .95]
+		scale: [1, 1.1]
 	},
 	options: {
 		duration: 500, 
@@ -50,7 +50,7 @@ PageAnimationSequences = {
 			}
 		},
 		sectionTitle:  {
-			item: '.section-title',
+			item: '.first-section',
 			animation: {
 				properties: {
 					opacity: 0,

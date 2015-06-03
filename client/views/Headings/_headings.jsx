@@ -8,14 +8,15 @@
 // H6                 21 = 18 × 1.1667
 // p                     18 = 18 × 1
 
-const headingsArray = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+const headingsArray = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'];
 
 const headingsStyles = {
 	base: {
 		textRendering: "optimizeLegibility",
 		lineHeight: 1,
 		marginTop: 0,
-		color: "#222",
+		color: Colors.primary,
+    fontWeight: 900,
 		fontFamily: Fonts.serif,
 	},
 	h1: {
@@ -37,7 +38,12 @@ const headingsStyles = {
 	h5: {
 		fontSize: "1.333rem",
 		marginBottom: (1.333/LineHeight) + 'rem'
-	}
+	},
+  p: {
+    fontSize: "1rem",
+    marginBottom: "1.5rem",
+    fontFamily: Fonts.sansSerif
+  }
 }
 
 Headings = {}
@@ -47,7 +53,13 @@ _.each(headingsArray, function(heading, index){
 		render: function(){
 
 			var styles = {
-				base: headingsStyles.base
+				base: headingsStyles.base,
+        color: {
+          color: this.props.color
+        },
+        fontWeight: {
+          fontWeight: this.props.fontWeight
+        }
 			}
 
 			console.log(headingsStyles[heading]);
@@ -59,8 +71,8 @@ _.each(headingsArray, function(heading, index){
 					style={[
 						headingsStyles[heading],
 						styles.base,
-						styles.base.color = this.props.color,
-						styles.base.fontWeight = this.props.weight,
+						this.props.color && styles.color,
+						this.props.weight && styles.fontWeight,
 						styles.base.opacity = this.props.alpha,
 						styles.base.textAlign = this.props.align
 					]}

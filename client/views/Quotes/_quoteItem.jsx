@@ -37,8 +37,6 @@ QuoteItem = React.createClass({
 			</Modal>,
 			modal
 		)
-
-		console.log(this.props);
 	},
 	deleteForm: function(){
 		var confirmDelete = confirm('Do you want to delete this quote?');
@@ -73,14 +71,14 @@ QuoteItem = React.createClass({
 				<div className="quote-header">
 					<p className="quote-text">{'"' + this.props.text + 	'"'}</p>
 					<div className="action-list">
-						{isPrivate && !isLive ? <span className="is-private">private</span> : null}
-						{isAuthor && !isLive ? <DeckActions actions={this.actions()}/> : null }
-						{isLive ? <QuoteActions quote={this.props.text} hashtags={this.props.hashtags} />: null}
+						{isPrivate && !isLive && <span className="is-private">private</span>}
+						{isAuthor && !isLive && <DeckActions actions={this.actions()}/>}
+						{isLive && <QuoteActions quote={this.props.text} hashtags={this.props.hashtags} />}
 					</div>
 				</div>
 				<div className="quote-footer">
-					{this.props.slide ? <p className="quote-slide small">Slide: {this.props.slide}</p> : null}
-					{this.props.order ? <p className="quote-slide small">Order: {this.props.order}</p> : null}
+					{isAuthor && this.props.slide && <p className="quote-slide small">Slide: {this.props.slide}</p>}
+					{isAuthor && this.props.order && <p className="quote-slide small">Order: {this.props.order}</p>}
 				</div>
 			</li>
 		)

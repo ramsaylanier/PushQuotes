@@ -3,7 +3,8 @@ PageSection = React.createClass(Radium.wrap({
 		var styles = {
 			base: {
 				padding: "2rem 0rem",
-				minHeight: "50vh"
+				transformOrigin: "top center",
+				backgroundColor: Colors.dark
 			}
 		}
 
@@ -16,9 +17,11 @@ PageSection = React.createClass(Radium.wrap({
 					styles.base.opacity = this.props.alpha
 				]}
 			>
-				{this.props.children}
+				<Wrapper>
+					{this.props.children}
+				</Wrapper>
+				{this.props.separator && <PageSeparator/>}
 			</section>
 		)
 	}
-
 }))

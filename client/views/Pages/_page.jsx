@@ -63,7 +63,7 @@ PageTitle = React.createClass(Radium.wrap({
 		var item = this.getDOMNode();
 		$(item).velocity({
 			opacity: 1,
-			scale: [1, .9]
+			scale: [1, 1.1]
 		}, 1000, [.5, .1, .1, 1])
 	},
 	render: function(){
@@ -74,7 +74,7 @@ PageTitle = React.createClass(Radium.wrap({
 				opacity: 0,
 				fontFamily: Fonts.serif,
 				fontWeight: 900,
-				backgroundColor: Color('black').clearer(.5).hslString(),
+				backgroundColor: Color(Colors.dark).clearer(.2).hslString(),
 				textAlign: 'center',
 				display: 'inline-block',
 				position: 'relative',
@@ -94,6 +94,30 @@ PageTitle = React.createClass(Radium.wrap({
 			>
 				{this.props.children}
 			</h1>
+		)
+	}
+}));
+
+PageSeparator = React.createClass(Radium.wrap({
+	render: function(){
+		var styles={
+			base:{
+				position: "relative",
+				width: "100%",
+				maxWidth: 200,
+				height: 2,
+				backgroundColor: Colors.primary,
+				borderRadois: 3,
+				margin: "2rem auto 0rem auto"
+			}
+		}
+		return(
+			<div 	className="page-separator"
+					style={[
+						styles.base
+					]}
+			>
+			</div>
 		)
 	}
 }));

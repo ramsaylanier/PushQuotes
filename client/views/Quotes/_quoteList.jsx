@@ -29,16 +29,16 @@ QuoteList = ReactMeteor.createClass({
 
 		return (
 			<div>
-				{isLive && isAuthor ? 
+				{isLive && isAuthor &&
 					<div className="live-controls">
 						<div className="wrapper">
 							<PrevQuoteButton deck={deck} />
 							<NextQuoteButton deck={deck} />
 						</div>
-					</div> :
-					null
+					</div>
 				}
 				<ul className="quote-list">
+					<Headings.h4>{deck.title}</Headings.h4>
 					{quotes.map(function(quote){
 						return (
 							<QuoteItem key={quote._id} {...quote} withSlides={withSlides} isLive={isLive} hashtags={deck.hashtags} />

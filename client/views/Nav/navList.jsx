@@ -8,6 +8,9 @@ NavList = React.createClass(Radium.wrap({
 			},
 			primary: {
 				float: 'right'
+			},
+			mobile: {
+				height: HeaderHeight
 			}
 		}
 

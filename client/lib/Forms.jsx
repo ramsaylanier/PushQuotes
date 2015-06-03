@@ -132,7 +132,7 @@ editDeckForm = {
 newQuoteForm = {
 	className: 'add-quote-form',
 	fields: [
-		{id: 1, type: 'textArea', name: 'quote-text-field', className:'full-width', placeholder: 'Enter Quote Here', rows: 8},
+		{id: 1, type: 'textarea', name: 'quote-text-field', className:'full-width', placeholder: 'Enter Quote Here', rows: 8},
 		{id: 2, type: 'text', visibility: 'hidden', name: 'quote-slide-field', className:'full-width input-field', label: 'Slides.com Slide'},
 		{id: 3, type: 'text', name: 'quote-order-field', className:'full-width input-field', label: 'Order'},
 		{id: 4, type: 'submit', value: 'Add Quote'}
@@ -163,7 +163,7 @@ newQuoteForm = {
 editQuoteForm = {
 	className: 'edit-quote-form',
 	fields: [
-		{id: 1, type: 'textArea', name: 'quote-text-field', className:'full-width', placeholder: 'Enter Quote Here', rows: 8},
+		{id: 1, type: 'textarea', name: 'quote-text-field', className:'full-width', placeholder: 'Enter Quote Here', rows: 8},
 		{id: 2, type: 'text', visibility: 'hidden', name: 'quote-slide-field', className:'full-width input-field', label: 'Slides.com Slide'},
 		{id: 3, type: 'text', name: 'quote-order-field', className:'full-width input-field', label: 'Order'},
 		{id: 4, type: 'submit', value: 'Save Quote'}
