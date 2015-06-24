@@ -12,6 +12,16 @@ Template.layout.onRendered(function(){
 	  function (event) {
 	    // Do something there
 	    console.log("Tweeted")
+	    console.log(event)
+	    var quoteId = event.target.id
+	    /*Psuedocode for server
+	    
+			if(!Quotes.findOne(quoteId).tweets)
+				Quotes.update({_id:quoteId},{$set:{tweets:1}})
+			else
+				Quotes.update({_id:quoteId},{$inc:{tweets:1}})
+
+	    */
 	  }
 	);
 })

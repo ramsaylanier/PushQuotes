@@ -7,7 +7,7 @@ QuoteActions = React.createClass({
 	},
 	render: function(){
 		return (
-			<Link type="tweet" block={true} href={this.generateTwitterLink()}>Tweet</Link>
+			<Link type="tweet" block={true} href={this.generateTwitterLink()} quoteId={this.props.quoteId}>Tweet</Link>
 		)
 	}
 })
