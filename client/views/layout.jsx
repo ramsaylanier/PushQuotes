@@ -4,6 +4,16 @@ Template.layout.onRendered(function(){
 	} else {
 		Session.set('loggedIn', false);
 	}
+
+	console.log(twttr);
+
+	twttr.events.bind(
+	  'tweet',
+	  function (event) {
+	    // Do something there
+	    console.log("Tweeted")
+	  }
+	);
 })
 
 Template.layout.events({

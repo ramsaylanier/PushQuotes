@@ -107,7 +107,7 @@ PageSeparator = React.createClass(Radium.wrap({
 				maxWidth: 200,
 				height: 2,
 				backgroundColor: Colors.primary,
-				borderRadois: 3,
+				borderRadius: 3,
 				margin: "2rem auto 0rem auto"
 			}
 		}
