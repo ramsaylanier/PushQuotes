@@ -23,7 +23,6 @@ Accounts.onCreateUser(function(options, user){
 			user.username = user.services.facebook.name;
 		}
 	}
-
-
+	
 	return user;
 })
