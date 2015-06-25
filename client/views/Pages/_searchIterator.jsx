@@ -10,7 +10,7 @@ SearchIterator = ReactMeteor.createClass({
 				<ul className="search-results">
 					{this.getResults().map(function(temp){
 						return (
-							<p key={temp}>{temp}</p>
+							<Headings.p key={temp}>{temp}</Headings.p>
 						)
 					})}
 				</ul>
