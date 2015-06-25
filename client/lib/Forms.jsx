@@ -189,6 +189,37 @@ editQuoteForm = {
 	}
 };
 
+searchForm = {
+	className: 'search-form',
+	fields: [
+		{
+			id: "query",
+			name: "query",
+			type: "text",
+			className: "search-bar",
+			label: "Search"// error - label doesn't go away when typing stuff in search form
+		},
+		{
+			id: "submitSearch",
+			name: "submitSearch",
+			type: "submit",
+			className: "submit-search-bar",
+		}//todo - add checkboxes for filtering
+	],
+	onSubmit: function(e){
+		e.preventDefault()
+		console.log(e)
+		var query = $(e.target).find('[name="query"]').val()
+
+		if(!query)
+			return Errors.throw('Please enter a search query', 'error')
+
+		var encodedQuery = encodeURIComponent(query)
+
+		Router.go('/search/' + encodedQuery)
+	}
+}
+
 loginFormAttributes = {
 	fields: [
 		{type: 'text', label: 'username', name: 'username',  className:'full-width input-field'},
