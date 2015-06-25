@@ -1,5 +1,7 @@
 accounts-base@1.2.0
+accounts-oauth@1.1.5
 accounts-password@1.1.1
+accounts-twitter@1.0.4
 autoupdate@1.2.1
 base64@1.0.3
 binary-heap@1.0.3
@@ -49,6 +51,8 @@ mongo@1.1.0
 mongo-livedata@1.0.8
 npm-bcrypt@0.7.8_2
 npm-container@1.0.0
+oauth@1.1.4
+oauth1@1.1.4
 observe-sequence@1.0.6
 ordered-dict@1.0.3
 percolate:velocityjs@1.0.0
@@ -70,6 +74,7 @@ spacebars-compiler@1.0.6
 srp@1.0.3
 templating@1.1.1
 tracker@1.0.7
+twitter@1.1.4
 ui@1.0.6
 underscore@1.0.3
 url@1.0.4

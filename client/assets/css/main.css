@@ -1,7 +1,7 @@
 @charset "UTF-8";
-/** * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/) * http://cssreset.com */
 @import url(http://fonts.googleapis.com/css?family=Lora:400,700,400italic);
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700);
+/** * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/) * http://cssreset.com */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -41,13 +41,13 @@ License ....... Creative Commmons Attribution 3.0
 License URL ... https://github.com/typeplate/starter-kit/blob/master/license.txt
 */
 @font-face {
-  font-family: "Ampersand";
-  src: local("Georgia"), local("Garamond"), local("Palatino"), local("Book Antiqua");
+  font-family: 'Ampersand';
+  src: local('Georgia'), local('Garamond'), local('Palatino'), local('Book Antiqua');
   unicode-range: U26; }
 
 @font-face {
-  font-family: "Ampersand";
-  src: local("Georgia");
+  font-family: 'Ampersand';
+  src: local('Georgia');
   unicode-range: U270C; }
 
 .typl8-tera, .typl8-giga, .typl8-mega, h1, .typl8-alpha, h2, .typl8-beta, h3, .typl8-gamma, h4, .typl8-delta, h5, .typl8-epsilon, .typl8-zeta, h6 {
@@ -74,7 +74,7 @@ body {
   color: #444; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Lora", Helvetica, serif; }
+  font-family: 'Lora', Helvetica, serif; }
 
 .typl8-tera {
   font-size: 117px;
@@ -136,15 +136,7 @@ p {
 small {
   font-size: 65%; }
 
-input,
-abbr,
-acronym,
-blockquote,
-code,
-kbd,
-q,
-samp,
-var {
+input, abbr, acronym, blockquote, code, kbd, q, samp, var {
   -webkit-hyphens: none;
   -moz-hyphens: none;
   -ms-hyphens: none;
@@ -153,7 +145,7 @@ var {
 pre {
   white-space: pre; }
   pre code {
-    white-space: -moz-pre-wrap;
+    white-space: -moz- pre-wrap;
     white-space: pre-wrap; }
 
 code {
@@ -197,19 +189,14 @@ p + .typl8-drop-cap {
  * Extend this object into your markup.
  *
  */
-.typl8-lining dt,
-.typl8-lining dd {
+.typl8-lining dt, .typl8-lining dd {
   display: inline;
   margin: 0; }
-
-.typl8-lining dt + dt:before,
-.typl8-lining dd + dt:before {
+.typl8-lining dt + dt:before, .typl8-lining dd + dt:before {
   content: "\A";
   white-space: pre; }
-
 .typl8-lining dd + dd:before {
   content: ", "; }
-
 .typl8-lining dd:before {
   content: ": ";
   margin-left: -0.2rem; }
@@ -231,7 +218,6 @@ p + .typl8-drop-cap {
   .typl8-dictionary-style dt + dt:before {
     content: ", ";
     margin-left: -0.2rem; }
-
 .typl8-dictionary-style dd {
   display: block;
   counter-increment: definitions; }
@@ -270,8 +256,7 @@ p + .typl8-drop-cap {
 .typl8-pull-quote {
   position: relative;
   padding: 1em; }
-  .typl8-pull-quote:before,
-  .typl8-pull-quote:after {
+  .typl8-pull-quote:before, .typl8-pull-quote:after {
     height: 1em;
     opacity: 0.5;
     position: absolute;
@@ -320,14 +305,14 @@ a {
   text-decoration: none; }
 
 body {
-  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-family: 'Source Sans Pro', Helvetica, sans-serif;
   background-color: #240425; }
 
 .main {
   position: relative; }
 
 .deck-list {
-  padding: 0rem 0.5rem; }
+  padding: 0rem .5rem; }
 
 .deck-item {
   position: relative;
@@ -378,7 +363,7 @@ body {
   text-align: center;
   margin-left: .5rem;
   white-space: nowrap;
-  font-family: "Source Sans Pro", Helvetica, sans-serif; }
+  font-family: 'Source Sans Pro', Helvetica, sans-serif; }
 
 .deck-status {
   -webkit-box-flex: 1;
@@ -388,7 +373,7 @@ body {
   text-align: right; }
 
 .deck-details {
-  padding: 1rem 0.5rem;
+  padding: 1rem .5rem;
   margin-bottom: 0; }
 
 .hashtag {
@@ -470,7 +455,7 @@ body {
   margin-left: .5rem; }
 
 .quote-list {
-  padding: 0rem 0.5rem; }
+  padding: 0rem .5rem; }
 
 .quote-item {
   padding: 1rem;
@@ -488,7 +473,7 @@ body {
   box-shadow: 0px 5px 5px -5px #240425; }
 
 .quote-header {
-  padding: 0.5rem 0rem; }
+  padding: .5rem 0rem; }
 
 .quote-footer {
   -webkit-flex-basis: 100%;
@@ -524,7 +509,7 @@ body {
   width: 100%;
   background-color: #240425;
   box-shadow: 0px 3px 5px -2px #240425;
-  padding: 0.5rem 0rem; }
+  padding: .5rem 0rem; }
   .live-controls .wrapper {
     max-width: 600px;
     display: -webkit-box;
@@ -549,17 +534,14 @@ body {
   margin-right: auto;
   padding-top: 12vh;
   padding-bottom: 40vh; }
-
 .live-page .quote-item {
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap; }
-
 .live-page .quote-text {
   font-size: 1.2rem;
   line-height: 1.5rem;
   margin-bottom: 1rem; }
-
 .live-page .action-list {
   float: none;
   text-align: left;
@@ -600,10 +582,8 @@ body {
 
 .submit-control .input-overlay, .checkbox-control .input-overlay, .textArea-control .input-overlay {
   display: none; }
-
 .submit-control .inner, .checkbox-control .inner, .textArea-control .inner {
   display: block; }
-
 .submit-control label, .checkbox-control label, .textArea-control label {
   position: relative;
   left: 0;
@@ -675,15 +655,13 @@ textarea:focus {
     display: none; }
 
 .live-controls .btn {
-  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-family: 'Source Sans Pro', Helvetica, sans-serif;
   font-size: 1rem;
-  padding: 0.5rem 1rem;
+  padding: .5rem 1rem;
   border-radius: 2px; }
-
 .live-controls .next-quote-btn {
   background-color: #6fae2a;
   color: white; }
-
 .live-controls .prev-quote-btn {
   background-color: #F2C71F;
   color: white; }
@@ -705,8 +683,7 @@ textarea:focus {
     fill: #F2C71F; }
 
 .quote-list .action-list {
-  padding: 0.5rem 0rem; }
-
+  padding: .5rem 0rem; }
 .quote-list .icon {
   width: 15px;
   height: 15px; }

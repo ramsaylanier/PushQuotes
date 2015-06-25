@@ -69,9 +69,7 @@ QuoteItem = React.createClass({
 		var isAuthor = (Meteor.userId() == Decks.findOne().author ? true : false);
 		var isLive = this.props.isLive;
 		var isPrivate = this.props.isPrivate;
-		console.log("props")
-		console.log(this.props)
-		var quoteId = this.props._id
+		var quoteId = this.props._id;
 		return (
 			<li ref="quoteListItem" className="quote-item item">
 				<div className="quote-header">

@@ -38,7 +38,8 @@ Button = React.createClass(Radium.wrap({
 					styles.base,
 					styles[this.props.color],
 					styles[this.props.size],
-				]}>
+				]}
+				onClick={this.props.onClick}>
 				{this.props.children}
 			</button>
 		)
