@@ -55,6 +55,7 @@ Link = React.createClass(Radium.wrap({
 					styles[this.props.align],
 					this.props.block && styles.block
 				]} 
+				id={this.props.quoteId}
 				{...this.props}>
 				{this.props.children}
 			</a>

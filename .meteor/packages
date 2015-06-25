@@ -18,6 +18,8 @@ meteorhacks:npm
 cosmos:browserify
 
 
-npm-container
 simple:rest
 miktam:api-password
+
+
+npm-container
