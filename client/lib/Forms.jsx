@@ -247,7 +247,8 @@ searchForm = {
 
 		var encodedQuery = encodeURIComponent(query)
 
-		Router.go('/search/' + encodedQuery + '/' + settings)
+		Router.go('/search/' + encodedQuery)
+		Session.set('searchSettings', settings)
 	}
 }
 

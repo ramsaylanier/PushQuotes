@@ -30,6 +30,11 @@ Meteor.publish('searchResults', function(query, binarySettings){
 
 		//settings is a string in the form, (authorName)(hashtags)(title)
 		var keys = ["authorName", "hashtags", "title"]
+		if(!binarySettings){
+			binarySettings = ""
+			for(var i = 0; i < keys.length; i++)
+				binarySettings+="1"
+		}
 		var settings = binarySettings.split("").map(function(e){return e == "1"})
 
 
