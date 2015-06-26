@@ -17,6 +17,8 @@
 
 Template.searchResults.onRendered(function(){
 	var instance = this;
+	console.log(this)
+	console.log(this.data)
 	
 	instance.component = React.render(
 		<div className="wrapper">
@@ -26,7 +28,7 @@ Template.searchResults.onRendered(function(){
 	)
 	
 	instance.autorun(function(){
-		instance.deckSub = Meteor.subscribe('searchResults', this.data.searchQuery);
+		instance.deckSub = Meteor.subscribe('searchResults', instance.data.searchQuery, Session.get('searchSettings'));
 
 		if (instance.deckSub.ready()){
 			instance.component.setState({deck: Decks.find()});

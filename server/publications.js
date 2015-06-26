@@ -20,12 +20,21 @@ Meteor.publish('quoteList', function(query, liveQuery){
 	}
 })
 
-Meteor.publish('searchResults', function(query){
+Meteor.publish('searchResults', function(query, binarySettings){
+
+		//settings is a string in the form, (authorName)(hashtags)(title)
+		var keys = ["authorName", "hashtags", "title"]
+		if(!binarySettings){
+			binarySettings = ""
+			for(var i = 0; i < keys.length; i++)
+				binarySettings+="1"
+		}
+		var settings = binarySettings.split("").map(function(e){return e == "1"})
+
 
 		var regex = "";
 		var splitQuery = query.split(/[^A-Za-z0-9]/);//split on all non-alphanumeric
-		console.log(query)
-		console.log(splitQuery)
+		
 		for(var i = 0; i < splitQuery.length; i++){
 			var phrase = splitQuery[i]
 			if(phrase.length == 0)
@@ -41,17 +50,18 @@ Meteor.publish('searchResults', function(query){
 			$options: 'gi'
 		}//add better checking for queries with spaces, maybe split on space and render a bunch of ors
 
+		var orArray = keys.map(function(e, i){
+			if(!settings[i])
+				return
+			var retJSON = {}
+			retJSON[e] = regexQuery
+			return retJSON
+		})
+
 
 		return Decks.find({
 			
-			$or: [
-				{
-					title: regexQuery
-				},
-				{
-					hashtags: regexQuery
-				}
-			],
+			$or: orArray,
 			isPrivate: false
 
 		})
