@@ -15,14 +15,18 @@ Accounts.validateNewUser(function(user){
 })
 
 Accounts.onCreateUser(function(options, user){
-
+	console.log(options);
 	if (options.profile){
 		if (user.services.twitter){
 			user.username = user.services.twitter.screenName;
+			user.profile = options.profile;
+			user.profile.avatar = user.services.twitter.profile_image_url;
 		} else if (user.services.facebook){
 			user.username = user.services.facebook.name;
 		}
 	}
+
+	console.log(user);
 	
 	return user;
 })

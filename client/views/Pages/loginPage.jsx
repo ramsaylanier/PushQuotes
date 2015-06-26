@@ -26,7 +26,7 @@ var twitterLogin = function(){
 	var loginStyle = 'popup';
 	var device = Session.get('device');
 
-	Meteor.loginWithTwitter({loginStyle: loginStyle}, function(error){
+	Meteor.loginWithTwitter({loginStyle: loginStyle}, function(error, result){
 		if (error){
 			Errors.throw(error, 'error');
 			console.log(error);
