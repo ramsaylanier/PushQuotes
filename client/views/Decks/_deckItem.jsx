@@ -185,6 +185,11 @@ DeckItem = React.createClass(Radium.wrap({
 					<div className="action-list">
 						{isAuthor ? <DeckActions actions={this.actions()}/>: null}
 					</div>
+
+					<div className='favorite'>
+						{Meteor.userId() && <Favorite id={this.props._id}/>}
+					</div>
+
 				</Section>
 			</li>
 		)
@@ -233,6 +238,28 @@ Hashtags = React.createClass(Radium.wrap({
 					)
 				})}
 			</div>
+		)
+	}
+}));
+
+Favorite = React.createClass(Radium.wrap({
+	getInitialState: function(){
+		console.log("a",this.isFavorite())
+		return {isFavorite: this.isFavorite()}
+	},
+	isFavorite: function(){
+		return Meteor.user().favorites.indexOf(this.props.id) > -1
+	},
+	toggleFavorite: function(e){
+		console.log("click")
+		Meteor.call('modifyFavorite', this.props.id, !this.isFavorite())
+		this.setState({isFavorite: !this.state.isFavorite})
+	},
+	render: function(){
+		return (
+			<p className="small meta-item favorite-p" onClick={this.toggleFavorite}>
+				<span className="favorite">{this.state.isFavorite ? "Unfavorite" : "Favorite"}</span>
+			</p>
 		)
 	}
 }));
