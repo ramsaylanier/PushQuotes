@@ -105,7 +105,8 @@ DeckItem = React.createClass(Radium.wrap({
 			},
 			live: {
 
-				backgroundColor: Color(Colors.green).lighten(.9).hexString()
+				backgroundColor: Color(Colors.green).lighten(.99).hexString(),
+				border: "solid " + Color(Colors.green).darken(0.2).hexString() + " 0.25rem"
 			},
 
 			title: {
@@ -117,7 +118,8 @@ DeckItem = React.createClass(Radium.wrap({
 				}
 			}
 		}
-
+		console.log("PROPS")
+		console.log(this.props)
 		return (
 			<li 
 				style={[
@@ -144,6 +146,20 @@ DeckItem = React.createClass(Radium.wrap({
 						{isPrivate ? <span className="is-private">private</span> : null}
 
 					</h1>
+					{this.props.showAuthor && <Headings.p className="deck-author">
+						<a 
+							style={[
+								styles.title.base,
+								Grid.two,
+								this.props.live && styles.title.live
+							]}
+							href={"/" + this.props.authorName} 
+							className="transition-link">
+
+							By {this.props.authorName}
+
+						</a>
+					</Headings.p>}
 					<p className="deck-description">{this.props.description}</p>
 				</Section>
 
