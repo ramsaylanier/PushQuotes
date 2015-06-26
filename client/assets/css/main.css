@@ -301,6 +301,9 @@ p + .typl8-drop-cap {
 * {
   box-sizing: border-box; }
 
+* + * {
+  margin-bottom: 1rem; }
+
 a {
   text-decoration: none; }
 
@@ -577,8 +580,15 @@ body {
 .nav-toggle-nav-item {
   float: right; }
 
-.form-control.hidden {
-  display: none; }
+form {
+  padding-bottom: 1.5rem; }
+
+.form-control {
+  position: relative; }
+  .form-control:not(:last-of-type) {
+    margin-bottom: 1.75rem; }
+  .form-control.hidden {
+    display: none; }
 
 .submit-control .input-overlay, .checkbox-control .input-overlay, .textArea-control .input-overlay {
   display: none; }
@@ -590,13 +600,47 @@ body {
   display: block;
   bottom: initial; }
 
-input.full-width, textarea.full-width {
-  width: 100%; }
+.input-overlay {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: black;
+  bottom: 0;
+  left: 0;
+  border-radius: 2px;
+  -webkit-transition: height 300ms ease-out;
+          transition: height 300ms ease-out; }
 
-textarea:focus {
-  outline: none;
-  background-color: black;
-  color: white; }
+.input-field {
+  position: relative;
+  border: 0;
+  font-size: 1rem;
+  padding: .5rem;
+  border-radius: 2px;
+  background-color: rgba(204, 204, 204, 0.5);
+  color: black;
+  -webkit-transition: all 300ms ease-out;
+          transition: all 300ms ease-out; }
+  .input-field:focus {
+    outline: none;
+    background-color: #240425;
+    color: white; }
+  .input-field.focused {
+    background-color: transparent;
+    color: white; }
+
+textarea {
+  -webkit-transition: background-color 300ms ease-out;
+          transition: background-color 300ms ease-out; }
+  textarea:focus {
+    outline: none;
+    background-color: black;
+    color: white; }
+
+input[type="submit"] {
+  background-color: #F2C71F;
+  padding: .5rem 1rem;
+  font-size: 1rem; }
 
 .hidden-field {
   display: none; }
@@ -625,10 +669,11 @@ textarea:focus {
   color: #F2C71F;
   font-weight: 900; }
 
-.btn {
+.btn, input[type="submit"] {
   border: 0;
-  cursor: pointer; }
-  .btn .bar {
+  cursor: pointer;
+  border-radius: 2px; }
+  .btn .bar, input[type="submit"] .bar {
     background-color: black;
     height: 2px;
     width: 15px;
@@ -654,7 +699,7 @@ textarea:focus {
   .close-modal-btn .bar-3 {
     display: none; }
 
-.live-controls .btn {
+.live-controls .btn, .live-controls input[type="submit"] {
   font-family: 'Source Sans Pro', Helvetica, sans-serif;
   font-size: 1rem;
   padding: .5rem 1rem;
@@ -728,6 +773,12 @@ textarea:focus {
 
 .bold {
   font-weight: 900; }
+
+.full-width {
+  width: 100%; }
+
+.no-margin, .input-field {
+  margin: 0; }
 
 #alerts {
   z-index: 950; }

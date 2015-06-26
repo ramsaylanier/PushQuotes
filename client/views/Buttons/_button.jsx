@@ -2,6 +2,7 @@ var styles={
 	base: {
 		border: 0,
 		borderRadius: 3,
+		fontSize: "1rem",
 		padding: '.5rem 1rem',
 		transition: 'background 300ms ease-out',
 		cursor: 'pointer',
@@ -10,8 +11,11 @@ var styles={
 		}
 	},
 	blue: {
-		backgroundColor: Colors.twitter,
-		color: 'white'
+		backgroundColor: Colors.blue,
+		color: 'white',
+		':hover':{
+			backgroundColor: Color(Colors.blue).darken(.2).hexString()
+		}
 	},
 	yellow: {
 		backgroundColor: Colors.primary,
@@ -39,7 +43,7 @@ Button = React.createClass(Radium.wrap({
 					styles[this.props.color],
 					styles[this.props.size],
 				]}
-				onClick={this.props.onClick}>
+				{...this.props}>
 				{this.props.children}
 			</button>
 		)
