@@ -48,73 +48,11 @@ InputType = React.createClass(Radium.wrap({
 		var hasLabel = this.props.label;
 		var isTextArea = this.props.type == 'textarea';
 		var value = this.state.value;
-		var styles = {
-			formControl: {
-				position: "relative",
-				marginBottom: "1.75rem"
-			},
-			input: {
-				base: {
-					position: "relative",
-					border: 0,
-					fontSize: "1rem",
-					padding: ".5rem",
-					borderRadius: 2,
-					backgroundColor: Color("#fff").darken(.1).clearer(.5).hexString(),
-					color: "black",
-					transition: "all 300ms ease-out",
-					":focus":{
-						outline: "none",
-						backgroundColor: "transparent",
-						color: "white"
-					}
-				},
-				textarea: {
-					transition: "background-color 300ms ease-out",
-					":focus":{
-						backgroundColor: "black"
-					}
-				},
-				submit: {
-					backgroundColor: Colors.primary,
-					color: "black",
-					transition: "all 150ms ease-out",
-					cursor: "pointer",
-					borderRadius: 3,
-					WebkitAppearance: "none",
-					":hover": {
-						backgroundColor: Colors.green
-					}
-				}
-			},
-			overlay: {
-				position: "absolute",
-				width: "100%",
-				height: 2,
-				backgroundColor: "black",
-				bottom: 0,
-				left: 0,
-				borderRadius: 2,
-				transition: "height 300ms ease-out"
-			},
-			focused:{
-				overlay: {
-					height: "100%",
-					zIndex: -1
-				},
-				input:{
-					backgroundColor: "transparent",
-					color: "white"
-				}
-			}
-		}
 
 		return (
 			<div 
 				className={"form-control " + this.props.visibility + " " + this.props.type + "-control"}
-				style={[
-					styles.formControl
-				]}
+				ref="formControl"
 			>
 					{ hasLabel && <Label {...this.props} /> }
 					{ isTextArea ?
@@ -122,10 +60,6 @@ InputType = React.createClass(Radium.wrap({
 							{...this.props} 
 							value={value}
 							onChange={this.handleChange}
-							style= {[
-								styles.input.base,
-								styles.input.textarea
-							]}
 						>
 							{value}
 						</textarea> :
@@ -135,19 +69,10 @@ InputType = React.createClass(Radium.wrap({
 							checked={this.state.checked}
 							onFocus={this.activateField}
 							onBlur={this.deactivateField}
-							onChange={this.handleChange}
-							style= {[
-								styles.input.base,
-								this.props.type == 'submit' && styles.input.submit,
-								this.state.isFocused && styles.focused.input
-							]}/>
+							onChange={this.handleChange} />
 					}
 				<span 
 					className="input-overlay"
-					style={[
-						styles.overlay,
-						this.state.isFocused && styles.focused.overlay
-					]}
 				>
 				</span>
 			</div>

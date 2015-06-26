@@ -9,8 +9,8 @@ Template.loginPage.onRendered(function(){
 		<Page animateIn={DefaultPageAnimateIn} backgroundImage={'/img/login-bg.jpg'}>
 			<Wrapper type="form-wrapper" centered={true} backgroundColor="white">
 				<Form attributes={loginFormAttributes} />
-				<Button onClick={twitterLogin} color="blue">Twitter</Button>  
-				<p>No account? <Link href='/register' className="transition-link">Register</Link></p>
+				<Button onClick={twitterLogin} color="blue" className="full-width">Login With Twitter</Button>  
+				<span>No account? <Link href='/register' className="transition-link">Register</Link></span>
 			</Wrapper>
 		</Page>,
 		document.getElementById('main')
@@ -32,6 +32,7 @@ var twitterLogin = function(){
 			console.log(error);
 		}
 		else{
+			Router.go('/');
 		}	
 	});
 }
