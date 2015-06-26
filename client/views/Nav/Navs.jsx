@@ -52,6 +52,16 @@ MobileNavItems = function(){
 						},
 						{
 							id: 2,
+							url: '/profile',
+							name: 'Profile',
+							className: 'transition-link',
+							clickFunction: function(){
+								$('.nav-list').removeClass('active');
+								$('.nav-toggle').removeClass('active');
+							}
+						},
+						{
+							id: 3,
 							url: '',
 							name: 'New Deck',
 							clickFunction: function(){
@@ -71,7 +81,7 @@ MobileNavItems = function(){
 							}
 						},
 						{
-							id: 3,
+							id: 4,
 							url: '', 
 							name: 'logout',
 							clickFunction: function(){ 
@@ -127,6 +137,12 @@ PrimaryNavItems = function(){
 						},
 						{
 							id: 2,
+							url: '/profile',
+							name: 'Profile',
+							className: 'transition-link'
+						},
+						{
+							id: 3,
 							url: '',
 							name: 'New Deck',
 							clickFunction: function(){
@@ -143,7 +159,7 @@ PrimaryNavItems = function(){
 							}
 						},
 						{
-							id: 3,
+							id: 4,
 							url: '', 
 							name: 'logout',
 							clickFunction: function(){ 

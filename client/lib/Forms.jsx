@@ -311,3 +311,52 @@ registerFormAttributes = {
 		)
 	}
 };
+
+profileFormAttributes = {
+	className: 'profile-form',
+	fields: [
+		{
+			id: 1, 
+			type: 'text', 
+			name: 'name-field', 
+			className:'full-width input-field', 
+			label: 'Name'
+		},
+		{
+			id: 2, 
+			type: 'text', 
+			name: 'username-field', 
+			className:'full-width input-field', 
+			label: 'Username'
+		},
+		{
+			id: 3, 
+			type: 'email', 
+			name: 'email-field', 
+			className:'full-width input-field',
+			label: 'email'
+		},
+		{id: 4, type: 'submit', value: 'Save Profile'}
+	],
+	onSubmit: function(e){
+		e.preventDefault();
+		
+		var userProfile = {
+			name: $(e.currentTarget).find('[name=name-field]').val(),
+			avatar: $('.user-avatar').attr('src')
+		};
+
+		var userBase = {
+			username: $(e.currentTarget).find('[name=username-field]').val(),
+			email: $(e.currentTarget).find('[name=email-field]').val(),
+		}
+
+		Meteor.call('updateUserProfile', userProfile, userBase, function(error){
+			if (error){
+				alert(error);
+			} else {
+				alert('saved!');
+			}	
+		})
+	}
+};

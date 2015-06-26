@@ -765,6 +765,13 @@ input[type="submit"] {
   .nav-toggle.active .bar-3 {
     opacity: 0; }
 
+.user-avatar {
+  display: block;
+  border-radius: 50%;
+  margin: 1rem auto 2rem;
+  width: 80px;
+  border: 10px solid #240425; }
+
 .block {
   display: block; }
 
