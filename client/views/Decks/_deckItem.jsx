@@ -105,7 +105,8 @@ DeckItem = React.createClass(Radium.wrap({
 			},
 			live: {
 
-				backgroundColor: Color(Colors.green).lighten(.9).hexString()
+				backgroundColor: Color(Colors.green).lighten(.99).hexString(),
+				border: "solid " + Color(Colors.green).darken(0.2).hexString() + " 0.25rem"
 			},
 
 			title: {

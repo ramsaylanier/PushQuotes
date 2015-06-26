@@ -5,7 +5,7 @@ SearchIterator = ReactMeteor.createClass({
 		var regexQuery = {
 			$regex: '.*' + query + '.*',
 			$options: 'gi'
-		}
+		}//add better checking for queries with spaces, maybe split on space and render a bunch of ors
 
 
 		return Decks.find({
@@ -25,7 +25,7 @@ SearchIterator = ReactMeteor.createClass({
 	render: function(){
 		return (
 			<div id="searchIterator">
-				<Headings.h4>Search Results for {this.props.results}</Headings.h4>
+				<Headings.h4>Search Results for "{this.props.results}"</Headings.h4>
 
 				<ul className="search-results">
 					{this.getResults(this.props.results).map(function(deck){
