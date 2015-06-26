@@ -200,22 +200,22 @@ searchForm = {
 			label: "Search"// error - label doesn't go away when typing stuff in search form
 		},
 		{
-			id: "authorCheck",
-			name: "authorCheck",
+			id: "authorName",
+			name: "authorName",
 			type: "checkbox",
 			className: "checkbox-control full-width input-field",
 			label: "Author"
 		},
 		{
-			id: "hashtagCheck",
-			name: "hashtagCheck",
+			id: "hashtags",
+			name: "hashtags",
 			type: "checkbox",
 			className: "checkbox-control full-width input-field",
 			label: "Hashtag"
 		},
 		{
-			id: "deckNameCheck",
-			name: "deckNameCheck",
+			id: "title",
+			name: "title",
 			type: "checkbox",
 			className: "checkbox-control full-width input-field",
 			label: "Deck Name",
@@ -233,22 +233,24 @@ searchForm = {
 		console.log(e)
 		var query = $(e.target).find('[name="query"]').val()
 
-		var settings = ""
+		var settings = "?"
 
 		$('[type="checkbox"]').each(function(i, e){
-			settings += (e.checked ? 1 : 0)
+			console.log(e)
+			settings += (e.checked ? e.id + "&": "")
 		})
 
+		settings = settings.substring(0, settings.length - 1)
+		
 
 		if(!query)
 			return Errors.throw('Please enter a search query', 'error')
-		if(settings.indexOf("1") == -1)
+		if(settings.length == 0)
 			return Errors.throw('Please select something to search by', 'error')
 
 		var encodedQuery = encodeURIComponent(query)
-
-		Router.go('/search/' + encodedQuery)
-		Session.set('searchSettings', settings)
+		console.log('/search/' + encodedQuery + settings)
+		Router.go('/search/' + encodedQuery + settings)
 	}
 }
 

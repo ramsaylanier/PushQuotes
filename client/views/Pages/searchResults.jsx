@@ -28,11 +28,7 @@ Template.searchResults.onRendered(function(){
 	)
 	
 	instance.autorun(function(){
-		instance.deckSub = Meteor.subscribe('searchResults', instance.data.searchQuery, Session.get('searchSettings'));
-
-		if (instance.deckSub.ready()){
-			instance.component.setState({deck: Decks.find()});
-		}
+		instance.deckSub = Meteor.subscribe('searchResults', instance.data.searchQuery, Router.current().params.query);
 	});
 });
 
