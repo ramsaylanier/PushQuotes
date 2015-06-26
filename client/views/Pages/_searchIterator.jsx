@@ -31,7 +31,12 @@ SearchIterator = ReactMeteor.createClass({
 					{this.getResults(this.props.results).map(function(deck){
 						return (
 							<div key={deck.slug}>
-								<Headings.h6>{deck.title}</Headings.h6>
+								<Link href={"/" + deck.authorName + "/" + deck.slug}>
+									<Headings.h5>{deck.slug}</Headings.h5>
+								</Link>
+								<Link href={"/" + deck.authorName}>
+									<Headings.p>By {deck.authorName}</Headings.p>
+								</Link>
 							</div>
 						)
 					})}
