@@ -26,6 +26,27 @@ Meteor.publish('quoteList', function(query, liveQuery){
 	}
 })
 
+Meteor.publish('searchResults', function(query){
+		var regexQuery = {
+			$regex: '.*' + query + '.*',
+			$options: 'gi'
+		}
+
+		return Decks.find({
+			
+			$or: [
+				{
+					title: regexQuery
+				},
+				{
+					hashtags: regexQuery
+				}
+			],
+			isPrivate: false
+
+		})
+})
+
 Meteor.publish('deckSingle', function(params){
 	return Decks.find({_id: params.deckId});
 })

@@ -1,6 +1,26 @@
 SearchIterator = ReactMeteor.createClass({
-	getResults: function(){
-		return ["a","b","c"]
+	getResults: function(query){
+		console.log(query
+			)
+		var regexQuery = {
+			$regex: '.*' + query + '.*',
+			$options: 'gi'
+		}
+
+
+		return Decks.find({
+			
+			$or: [
+				{
+					title: regexQuery
+				},
+				{
+					hashtags: regexQuery
+				}
+			],
+			isPrivate: false
+
+		}).fetch()
 	},
 	render: function(){
 		return (
@@ -8,9 +28,11 @@ SearchIterator = ReactMeteor.createClass({
 				<Headings.h4>Search Results for {this.props.results}</Headings.h4>
 
 				<ul className="search-results">
-					{this.getResults().map(function(temp){
+					{this.getResults(this.props.results).map(function(deck){
 						return (
-							<Headings.p key={temp}>{temp}</Headings.p>
+							<div key={deck.slug}>
+								<Headings.h6>{deck.title}</Headings.h6>
+							</div>
 						)
 					})}
 				</ul>
