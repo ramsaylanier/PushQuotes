@@ -69,10 +69,14 @@ Meteor.publish('deckSingle', function(params){
 })
 
 Meteor.publish('userProfile', function(){
+	if(!this.userId)
+		return this.ready()
 	return Meteor.users.find(this.userId);
 })
 
 Meteor.publish('favorites', function(){
 	var user = Meteor.users.findOne({_id: this.userId})
+	if(!user)
+		this.ready()
 	return Decks.find({_id:{$in: user.favorites}})
 })

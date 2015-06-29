@@ -3,7 +3,7 @@ Template.favorites.onRendered(function(){
 
 	instance.component = React.render(
 		<div className="wrapper">
-			<DeckList message="You don't have any favorites!" className="favorites" showAuthors={true}/>
+			<DeckList message="You don't have any favorites!" className="favorites" showAuthor={true}/>
 		</div>,
 		document.getElementById('favorites-page')
 	)
