@@ -1,20 +1,3 @@
-// Template.searchResults.onRendered(function(){
-
-
-// 	React.render(
-		
-		
-// 		<SearchIterator results={this.data.searchQuery}/>
-// 		,
-// 		document.getElementById('search-results-page')
-// 	)
-
-// })
-
-// Template.search.onDestroyed(function(){
-// 	React.unmountComponentAtNode(document.getElementById('search-results-page'));
-// });
-
 Template.searchResults.onRendered(function(){
 	var instance = this;
 	console.log(this)
@@ -22,7 +5,7 @@ Template.searchResults.onRendered(function(){
 	
 	instance.component = React.render(
 		<div className="wrapper">
-			<DeckSearchList/>
+			<DeckList message="No search results found!" className="search-results" showAuthor={true}/>
 		</div>,
 		document.getElementById('search-results-page')
 	)
@@ -33,5 +16,5 @@ Template.searchResults.onRendered(function(){
 });
 
 Template.searchResults.onDestroyed(function(){
-	React.unmountComponentAtNode(document.getElementById('page'));
+	React.unmountComponentAtNode(document.getElementById('search-results-page'));
 });

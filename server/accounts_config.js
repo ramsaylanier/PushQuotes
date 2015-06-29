@@ -7,7 +7,8 @@ var forbiddenUsernames = [
 	"search",
 	"login",
 	"register",
-	"profile"
+	"profile",
+	"favorites"
 ]
 
 
