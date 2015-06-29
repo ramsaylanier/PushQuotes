@@ -2,7 +2,6 @@ DeckItem = React.createClass(Radium.wrap({
 	componentDidMount: function(){
 		var itemCount = Session.get('itemCount');
 		var item = this.getDOMNode();
-
 		Meteor.setTimeout(function(){
 			$(item).velocity({
 				opacity: 1,
@@ -69,7 +68,7 @@ DeckItem = React.createClass(Radium.wrap({
 		)
 	},
 	toggleLive: function(){
-		var authorName = Router.current().params.username;
+		var authorName = this.props.authorName;
 		var deckSlug = this.props.slug;
 
 		Meteor.call('updateLive', authorName, deckSlug, function(error, isLive){
@@ -118,8 +117,7 @@ DeckItem = React.createClass(Radium.wrap({
 				}
 			}
 		}
-		console.log("PROPS")
-		console.log(this.props)
+
 		return (
 			<li 
 				style={[
@@ -187,7 +185,7 @@ DeckItem = React.createClass(Radium.wrap({
 					</div>
 
 					<div className='favorite'>
-						{Meteor.userId() && <Favorite id={this.props._id}/>}
+						{Meteor.userId() && <Favorite _id={this.props._id}/>}
 					</div>
 
 				</Section>
@@ -244,15 +242,13 @@ Hashtags = React.createClass(Radium.wrap({
 
 Favorite = React.createClass(Radium.wrap({
 	getInitialState: function(){
-		console.log("a",this.isFavorite())
 		return {isFavorite: this.isFavorite()}
 	},
 	isFavorite: function(){
-		return Meteor.user().favorites.indexOf(this.props.id) > -1
+		return Meteor.user().favorites && Meteor.user().favorites.indexOf(this.props._id) > -1
 	},
 	toggleFavorite: function(e){
-		console.log("click")
-		Meteor.call('modifyFavorite', this.props.id, !this.isFavorite())
+		Meteor.call('modifyFavorite', this.props._id, !this.isFavorite())
 		this.setState({isFavorite: !this.state.isFavorite})
 	},
 	render: function(){

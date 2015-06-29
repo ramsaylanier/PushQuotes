@@ -1,7 +1,5 @@
 Template.searchResults.onRendered(function(){
 	var instance = this;
-	console.log(this)
-	console.log(this.data)
 	
 	instance.component = React.render(
 		<div className="wrapper">

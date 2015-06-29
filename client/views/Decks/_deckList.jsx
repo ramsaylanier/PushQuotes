@@ -9,7 +9,10 @@ DeckList = ReactMeteor.createClass({
 		var instance = this;
 		return (
 			<ul className={this.props.className || "" + "deck-list"}>
-				<AuthorName key={this.state.decks}/>
+				{!this.props.showAuthor && 
+					<AuthorName key={this.state.decks}/>
+				}
+				
 				{this.state.decks.map(function(deck){
 					return (
 						<DeckItem key={deck._id} showAuthor={instance.props.showAuthor} {...deck}/>
