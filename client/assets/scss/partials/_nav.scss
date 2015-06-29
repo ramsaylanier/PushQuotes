@@ -24,6 +24,10 @@
 
 .nav-list{
 	height: 100%;
+
+	& > .nav-item{
+		float: left;
+	}
 }
 
 

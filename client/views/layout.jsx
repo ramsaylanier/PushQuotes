@@ -30,7 +30,7 @@ Template.layout.events({
 			_.each(animationSequence, function(element, index){
 				AnimateItem($(element.item), element.animation);
 			});
-			// AnimateItem(page, Session.get('animateOut') || DefaultPageAnimateOut);
+			
 
 			var items = $('.item');
 
@@ -38,12 +38,12 @@ Template.layout.events({
 				$(item).velocity({
 					opacity: 0,
 					translateY: -20
-				}, {duration: 1000, easing:[300, 20], delay: index * 50}); 
+				}, {duration: 600, easing:[300, 20], delay: index * 25}); 
 			})
 
 			Meteor.setTimeout(function(){
 				Router.go(url);
-			}, 500);
+			}, 300);
 		} else {
 			return false;
 		}

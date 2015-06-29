@@ -32,8 +32,21 @@
 	}
 }
 
+.search-icon{
+	path{
+		fill: $yellow;
+	}
+}
+
+.nav-icon{
+	height: 100%;
+}
+
 .nav-toggle{
-	margin-top: 3px;
+
+	.deck-icon{
+		padding-top: 5px;
+	}
 	.bar{
 		position: relative;
 		transform-origin: center center;

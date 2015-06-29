@@ -42,7 +42,7 @@ SubNavList = React.createClass(Radium.wrap({
 		var styles = {
 			base: {
 				position: "absolute",
-				transform: "rotateX(100deg)",
+				transform: "rotateX(90deg)",
 				transformOrigin: "top center",
 				top: HeaderHeight,
 				right: 0,
@@ -80,11 +80,8 @@ NavItem = React.createClass(Radium.wrap({
 		var styles = {
 			base: {
 				position: "relative",
-				display: "inline-block",
 				backgroundColor: "white",
 				height: "100%",
-				display: "flex",
-				alignItems: "center",
 				padding: "0rem",
 			},
 			navLink: {

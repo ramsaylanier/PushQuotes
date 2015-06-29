@@ -19,6 +19,7 @@ Wrapper = React.createClass(Radium.wrap({
 			base: {
 				position: "relative",
 				maxWidth: 1000,
+				height: "100%",
 				width: "100%",
 				marginLeft: "auto",
 				marginRight: "auto",
@@ -28,11 +29,6 @@ Wrapper = React.createClass(Radium.wrap({
 				maxWidth: 400,
 				borderRadius: 3,
 				padding: "1.5rem"
-			},
-			centered: {
-				position: "relative",
-				top: "50vh",
-				transform: "translate3d(0, -50%, 0)"
 			}
 		}
 
@@ -46,7 +42,6 @@ Wrapper = React.createClass(Radium.wrap({
 				style={[
 					styles.base,
 					this.props.type == 'form-wrapper' && styles.form,
-					this.props.centered && styles.centered,
 					styles.base.backgroundColor = this.props.backgroundColor,
 					this.props.style
 				]}>

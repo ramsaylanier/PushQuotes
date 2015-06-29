@@ -95,6 +95,12 @@ MobileNavItems = function(){
 						}
 					]
 				}
+			},
+			{
+				url: '/search',
+				name: 'search',
+				icon: SearchIcon,
+				className: 'transition-link search-toggle'
 			}
 		]
 	} else {
@@ -110,6 +116,12 @@ PrimaryNavItems = function(){
 	var navItems = [];
 	if (Meteor.user()){
 		navItems = [
+			{
+				url: '/search',
+				name: 'search',
+				icon: SearchIcon,
+				className: 'transition-link search-toggle'
+			},
 			{
 				url: '',
 				name: Meteor.user().username,

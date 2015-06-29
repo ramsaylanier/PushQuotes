@@ -1,5 +1,5 @@
 form{
-	padding-bottom: 1.5rem;
+	padding: 1.5rem 0rem;
 }
 
 .form-control{
@@ -77,6 +77,8 @@ textarea{
 
 input[type="submit"]{
 	@extend .btn;
+	appearance: none;
+	-webkit-appearance: none;
 	background-color: $yellow;
 	padding: .5rem 1rem;
 	font-size: 1rem;

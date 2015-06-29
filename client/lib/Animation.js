@@ -15,7 +15,18 @@ DefaultPageAnimateOut = {
 		scale: [1.1, 1]
 	},
 	options: {
-		duration: 1000, 
+		duration: 500, 
+		easing: [.5, .1, .1, 1]
+	}
+}
+
+PageSlideIn = {
+	properties: {
+		opacity: 1,
+		translateY: [0, 100]
+	},
+	options: {
+		duration: 500, 
 		easing: [.5, .1, .1, 1]
 	}
 }
