@@ -2,12 +2,22 @@ Accounts.config(function(){
 	
 })
 
-Accounts.validateNewUser(function(user){
-	var existingUsername = Meteor.users.findOne({username: user.username});
+var forbiddenUsernames = [
+	"decks",
+	"search",
+	"login",
+	"register",
+	"profile",
+	"favorites"
+]
 
+
+Accounts.validateNewUser(function(user){
+	var existingUsername = Meteor.users.findOne({username: user.username}) || forbiddenUsernames.indexOf(user.username) != -1;
+	console.log(user)
 	if (existingUsername){
 		throw new Meteor.Error(403, "Username already exists");
-	} else if (user.username >= 4){
+	} else if (user.username < 4){
 		throw new Meteor.Error(403, "Username must have at least 4 characters");
 	} else{
 		return true;

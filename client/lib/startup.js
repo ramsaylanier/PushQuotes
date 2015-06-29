@@ -10,6 +10,8 @@ Meteor.startup(function(){
 			Errors.throw(error.reason, 'error')
 	});
 
+	Meteor.subscribe('userProfile')
+
 
 	//TODO add SEO and FB stuff here
 	// FB.init({

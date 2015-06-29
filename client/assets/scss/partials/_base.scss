@@ -23,6 +23,10 @@ body{
 	padding: 0rem .5rem;
 }
 
+.favorite-p{
+	cursor: pointer;
+}
+
 .deck-item{
 	position: relative;
 	background-color: white;
@@ -143,6 +147,10 @@ body{
 	path{
 		fill: red;
 	}
+}
+
+.favorite{
+	clear: both;
 }
 
 .go-live-action{

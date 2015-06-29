@@ -1,41 +1,18 @@
-// Template.searchResults.onRendered(function(){
-
-
-// 	React.render(
-		
-		
-// 		<SearchIterator results={this.data.searchQuery}/>
-// 		,
-// 		document.getElementById('search-results-page')
-// 	)
-
-// })
-
-// Template.search.onDestroyed(function(){
-// 	React.unmountComponentAtNode(document.getElementById('search-results-page'));
-// });
-
 Template.searchResults.onRendered(function(){
 	var instance = this;
-	console.log(this)
-	console.log(this.data)
 	
 	instance.component = React.render(
 		<div className="wrapper">
-			<DeckSearchList/>
+			<DeckList message="No search results found!" className="search-results" showAuthor={true}/>
 		</div>,
 		document.getElementById('search-results-page')
 	)
 	
 	instance.autorun(function(){
-		instance.deckSub = Meteor.subscribe('searchResults', instance.data.searchQuery, Session.get('searchSettings'));
-
-		if (instance.deckSub.ready()){
-			instance.component.setState({deck: Decks.find()});
-		}
+		instance.deckSub = Meteor.subscribe('searchResults', instance.data.searchQuery, Router.current().params.query);
 	});
 });
 
 Template.searchResults.onDestroyed(function(){
-	React.unmountComponentAtNode(document.getElementById('page'));
+	React.unmountComponentAtNode(document.getElementById('search-results-page'));
 });
