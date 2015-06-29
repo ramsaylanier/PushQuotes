@@ -1,26 +1,31 @@
 Meteor.methods({
 	serviceConfig: function(loginStyle){
-		ServiceConfiguration.configurations.upsert(
-			{ service: "twitter" },
-			{
-				$set: {
-				  consumerKey: Meteor.settings.twitter.public,
-				  loginStyle: loginStyle,
-				  secret: Meteor.settings.twitter.private
-				}
-			}
-		);
-
-		ServiceConfiguration.configurations.upsert(
-			{ service: "facebook" },
+		try{
+			ServiceConfiguration.configurations.upsert(
+				{ service: "twitter" },
 				{
-				$set: {
-				  appId: Meteor.settings.facebook.appId,
-				  loginStyle: "popup",
-				  secret: Meteor.settings.facebook.appSecret
+					$set: {
+					  consumerKey: Meteor.settings.twitter.public,
+					  loginStyle: loginStyle,
+					  secret: Meteor.settings.twitter.private
+					}
 				}
-			}
-		);
+			);
+
+			ServiceConfiguration.configurations.upsert(
+				{ service: "facebook" },
+					{
+					$set: {
+					  appId: Meteor.settings.facebook.appId,
+					  loginStyle: "popup",
+					  secret: Meteor.settings.facebook.appSecret
+					}
+				}
+			);
+		} catch(e) {
+			console.log("Error with account configuration")
+			console.log(e)
+		}
 	}
 });
 
