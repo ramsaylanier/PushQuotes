@@ -42,11 +42,11 @@ SubNavList = React.createClass(Radium.wrap({
 		var styles = {
 			base: {
 				position: "absolute",
-				transform: "rotateX(90deg)",
+				transform: "rotateX(100deg)",
 				transformOrigin: "top center",
 				top: HeaderHeight,
 				right: 0,
-				transition: "transform 0ms ease-out 300ms",
+				transition: "transform 0ms ease-out 500ms",
 				perspective: 100
 			},
 			active:{
@@ -98,10 +98,10 @@ NavItem = React.createClass(Radium.wrap({
 				backgroundColor: Colors.primary,
 				display: 'block',
 				transform: "rotateX(-180deg)",
-				transition: "transform 300ms ease-out",
+				transition: "transform 150ms ease-out",
 				transformOrigin: "top center",
 				backfaceVisibility: "hidden",
-				transitionDelay: (3 * 100) - (100 * this.props.id) + 'ms',
+				transitionDelay: (5 * 50) - (50 * this.props.id) + 'ms',
 			},
 			subNavLink:{
 				color: "white",
@@ -114,7 +114,7 @@ NavItem = React.createClass(Radium.wrap({
 			active: {
 				transform: "rotateX(0deg)",
 				opacity: 1,
-				transitionDelay: 100 * this.props.id + 'ms'
+				transitionDelay: 50 * this.props.id + 'ms'
 			}
 		}
 

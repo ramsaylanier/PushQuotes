@@ -118,14 +118,12 @@ PrimaryNavItems = function(){
 						<Header active={true} />,
 						$('#header').get(0)
 					);
-					// $(e.target).parents('.nav-list').addClass('active');
 				},
 				mouseLeave: function(e){
 					React.render(
 						<Header active={false} />,
 						$('#header').get(0)
 					);
-					// $(e.target).parents('.nav-list').removeClass('active');
 				},
 				subnav: {
 					navItems: [

@@ -10,7 +10,9 @@ Template.loginPage.onRendered(function(){
 			<Wrapper type="form-wrapper" centered={true} backgroundColor="white">
 				<Form attributes={loginFormAttributes} />
 				<Button onClick={twitterLogin} color="blue" className="full-width">Login With Twitter</Button>  
-				<span>No account? <Link href='/register' className="transition-link">Register</Link></span>
+				<p>No account? <Link href='/register' className="transition-link">Register</Link></p>
+
+				<Link className="small render-form" onClick={renderForgotPasswordForm}>Forgot password</Link>
 			</Wrapper>
 		</Page>,
 		document.getElementById('main')
@@ -20,6 +22,19 @@ Template.loginPage.onRendered(function(){
 Template.loginPage.onDestroyed(function(){
 	React.unmountComponentAtNode(document.getElementById('main'));
 });
+
+var renderForgotPasswordForm = function(e){
+	e.preventDefault();
+
+	$('.page .wrapper').append('<div id="forgot-password-form-wrapper"></div>');
+
+	React.render(
+		<div>
+			<Form attributes={forgotPasswordFormAttributes} />
+		</div>,
+		document.getElementById('forgot-password-form-wrapper')
+	);
+}
 
 
 var twitterLogin = function(){

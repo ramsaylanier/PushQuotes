@@ -392,3 +392,29 @@ profileFormAttributes = {
 		})
 	}
 };
+
+forgotPasswordFormAttributes = {
+	className: 'forgot-password-form',
+	fields: [
+		{
+			id: 1, 
+			type: 'email', 
+			name: 'email-field', 
+			className:'full-width input-field', 
+			label: 'Email Address'
+		},
+		{id: 2, type: 'submit', value: 'Resend Password'}
+	],
+	onSubmit: function(e){
+		e.preventDefault();
+		
+		var email = $(e.currentTarget).find('[name=email-field]').val()
+
+
+		Meteor.call('resendUserPassword', email, function(error){
+			if (error){
+				alert(error);
+			}
+		})
+	}
+};
