@@ -842,6 +842,9 @@ input[type="submit"] {
 .no-margin, .input-field {
   margin: 0; }
 
+.float-right {
+  float: right; }
+
 #alerts {
   z-index: 950; }
 
