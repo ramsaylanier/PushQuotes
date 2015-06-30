@@ -14,7 +14,8 @@ FavoriteQuote = React.createClass(Radium.wrap({
 		console.log("isFavorite",this.isFavorite())
 		Meteor.call('modifyQuoteFavorite', this.props._id, this.props.deckId, !this.isFavorite(), function(e, r){
 			if(e)
-				console.log(e)
+				Errors.throw(e.reason)
+
 			else
 				instance.setState({isFavorite: r.status})
 		})

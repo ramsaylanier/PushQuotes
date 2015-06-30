@@ -13,6 +13,7 @@ FavoriteDeck = React.createClass(Radium.wrap({
 		Meteor.call('modifyDeckFavorite', this.props._id, !this.isFavorite(), function(e, r){
 			if(e){
 				console.log(e)
+				Errors.throw(e.reason)
 			}
 			else{
 				instance.setState({isFavorite: r.status})
