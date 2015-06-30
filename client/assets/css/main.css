@@ -1,7 +1,7 @@
 @charset "UTF-8";
+/** * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/) * http://cssreset.com */
 @import url(http://fonts.googleapis.com/css?family=Lora:400,700,400italic);
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700);
-/** * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/) * http://cssreset.com */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -41,13 +41,13 @@ License ....... Creative Commmons Attribution 3.0
 License URL ... https://github.com/typeplate/starter-kit/blob/master/license.txt
 */
 @font-face {
-  font-family: 'Ampersand';
-  src: local('Georgia'), local('Garamond'), local('Palatino'), local('Book Antiqua');
+  font-family: "Ampersand";
+  src: local("Georgia"), local("Garamond"), local("Palatino"), local("Book Antiqua");
   unicode-range: U26; }
 
 @font-face {
-  font-family: 'Ampersand';
-  src: local('Georgia');
+  font-family: "Ampersand";
+  src: local("Georgia");
   unicode-range: U270C; }
 
 .typl8-tera, .typl8-giga, .typl8-mega, h1, .typl8-alpha, h2, .typl8-beta, h3, .typl8-gamma, h4, .typl8-delta, h5, .typl8-epsilon, .typl8-zeta, h6 {
@@ -74,7 +74,7 @@ body {
   color: #444; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lora', Helvetica, serif; }
+  font-family: "Lora", Helvetica, serif; }
 
 .typl8-tera {
   font-size: 117px;
@@ -136,7 +136,15 @@ p {
 small {
   font-size: 65%; }
 
-input, abbr, acronym, blockquote, code, kbd, q, samp, var {
+input,
+abbr,
+acronym,
+blockquote,
+code,
+kbd,
+q,
+samp,
+var {
   -webkit-hyphens: none;
   -moz-hyphens: none;
   -ms-hyphens: none;
@@ -145,7 +153,7 @@ input, abbr, acronym, blockquote, code, kbd, q, samp, var {
 pre {
   white-space: pre; }
   pre code {
-    white-space: -moz- pre-wrap;
+    white-space: -moz-pre-wrap;
     white-space: pre-wrap; }
 
 code {
@@ -189,14 +197,19 @@ p + .typl8-drop-cap {
  * Extend this object into your markup.
  *
  */
-.typl8-lining dt, .typl8-lining dd {
+.typl8-lining dt,
+.typl8-lining dd {
   display: inline;
   margin: 0; }
-.typl8-lining dt + dt:before, .typl8-lining dd + dt:before {
+
+.typl8-lining dt + dt:before,
+.typl8-lining dd + dt:before {
   content: "\A";
   white-space: pre; }
+
 .typl8-lining dd + dd:before {
   content: ", "; }
+
 .typl8-lining dd:before {
   content: ": ";
   margin-left: -0.2rem; }
@@ -218,6 +231,7 @@ p + .typl8-drop-cap {
   .typl8-dictionary-style dt + dt:before {
     content: ", ";
     margin-left: -0.2rem; }
+
 .typl8-dictionary-style dd {
   display: block;
   counter-increment: definitions; }
@@ -256,7 +270,8 @@ p + .typl8-drop-cap {
 .typl8-pull-quote {
   position: relative;
   padding: 1em; }
-  .typl8-pull-quote:before, .typl8-pull-quote:after {
+  .typl8-pull-quote:before,
+  .typl8-pull-quote:after {
     height: 1em;
     opacity: 0.5;
     position: absolute;
@@ -308,7 +323,7 @@ a {
   text-decoration: none; }
 
 body {
-  font-family: 'Source Sans Pro', Helvetica, sans-serif;
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
   background-color: #240425; }
 
 .main {
@@ -366,7 +381,7 @@ body {
   text-align: center;
   margin-left: .5rem;
   white-space: nowrap;
-  font-family: 'Source Sans Pro', Helvetica, sans-serif; }
+  font-family: "Source Sans Pro", Helvetica, sans-serif; }
 
 .deck-status {
   -webkit-box-flex: 1;
@@ -376,7 +391,7 @@ body {
   text-align: right; }
 
 .deck-details {
-  padding: 1rem .5rem;
+  padding: 1rem 0.5rem;
   margin-bottom: 0; }
 
 .hashtag {
@@ -419,7 +434,7 @@ body {
   .meta-item:last-of-type {
     margin-right: 0; }
 
-.action-list {
+.action-list .deck-actions-list {
   float: right;
   text-align: right;
   display: -webkit-box;
@@ -461,7 +476,7 @@ body {
   margin-left: .5rem; }
 
 .quote-list {
-  padding: 0rem .5rem; }
+  padding: 0rem 0.5rem; }
 
 .quote-item {
   padding: 1rem;
@@ -479,7 +494,7 @@ body {
   box-shadow: 0px 5px 5px -5px #240425; }
 
 .quote-header {
-  padding: .5rem 0rem; }
+  padding: 0.5rem 0rem; }
 
 .quote-footer {
   -webkit-flex-basis: 100%;
@@ -515,7 +530,7 @@ body {
   width: 100%;
   background-color: #240425;
   box-shadow: 0px 3px 5px -2px #240425;
-  padding: .5rem 0rem; }
+  padding: 0.5rem 0rem; }
   .live-controls .wrapper {
     max-width: 600px;
     display: -webkit-box;
@@ -534,20 +549,30 @@ body {
             flex: 3;
     margin-right: 3rem; }
 
+.favorite-quote-list:not(.live-quote-list) .quote-item {
+  background-color: #f3f3f3;
+  border: solid #e0e0e0; }
+
+.favorite-quote-list:not(.live-quote-list).quote-list {
+  padding: 1rem; }
+
 .live-page .quote-list {
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
   padding-top: 12vh;
   padding-bottom: 40vh; }
+
 .live-page .quote-item {
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap; }
+
 .live-page .quote-text {
   font-size: 1.2rem;
   line-height: 1.5rem;
   margin-bottom: 1rem; }
+
 .live-page .action-list {
   float: none;
   text-align: left;
@@ -604,8 +629,10 @@ form {
 
 .submit-control .input-overlay, .checkbox-control .input-overlay, .textArea-control .input-overlay {
   display: none; }
+
 .submit-control .inner, .checkbox-control .inner, .textArea-control .inner {
   display: block; }
+
 .submit-control label, .checkbox-control label, .textArea-control label {
   position: relative;
   left: 0;
@@ -650,10 +677,11 @@ textarea {
     color: white; }
 
 input[type="submit"] {
-  appearance: none;
+  -moz-appearance: none;
+       appearance: none;
   -webkit-appearance: none;
   background-color: #F2C71F;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   font-size: 1rem; }
 
 .hidden-field {
@@ -677,7 +705,7 @@ input[type="submit"] {
 
 .page {
   min-height: 100vh;
-  padding: 4rem .5rem; }
+  padding: 4rem 0.5rem; }
 
 .page-title a {
   color: #F2C71F;
@@ -714,13 +742,15 @@ input[type="submit"] {
     display: none; }
 
 .live-controls .btn, .live-controls input[type="submit"] {
-  font-family: 'Source Sans Pro', Helvetica, sans-serif;
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
   font-size: 1rem;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 2px; }
+
 .live-controls .next-quote-btn {
   background-color: #6fae2a;
   color: white; }
+
 .live-controls .prev-quote-btn {
   background-color: #F2C71F;
   color: white; }
@@ -742,7 +772,8 @@ input[type="submit"] {
     fill: #F2C71F; }
 
 .quote-list .action-list {
-  padding: .5rem 0rem; }
+  padding: 0.5rem 0rem; }
+
 .quote-list .icon {
   width: 15px;
   height: 15px; }
@@ -760,6 +791,7 @@ input[type="submit"] {
 
 .nav-toggle .deck-icon {
   padding-top: 5px; }
+
 .nav-toggle .bar {
   position: relative;
   -webkit-transform-origin: center center;
@@ -772,16 +804,19 @@ input[type="submit"] {
   -webkit-transition: all 300ms ease-out;
           transition: all 300ms ease-out;
   border-radius: 2px; }
+
 .nav-toggle.active .bar-1 {
   -webkit-transform: rotate(45deg);
       -ms-transform: rotate(45deg);
           transform: rotate(45deg);
   top: 5px; }
+
 .nav-toggle.active .bar-2 {
   -webkit-transform: rotate(-45deg);
       -ms-transform: rotate(-45deg);
           transform: rotate(-45deg);
   top: -1px; }
+
 .nav-toggle.active .bar-3 {
   opacity: 0; }
 

@@ -78,5 +78,11 @@ Meteor.publish('favorites', function(){
 	var user = Meteor.users.findOne({_id: this.userId})
 	if(!user)
 		this.ready()
-	return Decks.find({_id:{$in: user.favorites}})
+	var favoriteDeckIds = Object.keys(user.favorites)
+
+	var favoriteQuoteIds = _.reduce(user.favorites, function(quoteIds, quoteArray){
+		return quoteIds.concat(quoteArray)
+	}, [])
+
+	return [Decks.find({_id:{$in: favoriteDeckIds}}), Quotes.find({_id:{$in: favoriteQuoteIds}})]
 })

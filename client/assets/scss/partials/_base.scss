@@ -132,11 +132,14 @@ body{
 }
 
 .action-list{
-	float: right;
-	text-align: right;
-	display: flex;
-	align-self: flex-start;
-	justify-content: flex-end;
+	.deck-actions-list{
+		float: right;
+		text-align: right;
+		display: flex;
+		align-self: flex-start;
+		justify-content: flex-end;
+	}
+	
 }
 
 .end-live-action{
@@ -247,7 +250,24 @@ body{
 
 }
 
+.favorite-quote-list{
+
+	&:not(.live-quote-list){
+		.quote-item{
+			background-color: $lightGrey;
+			border: solid $borderGrey;
+		}
+
+		&.quote-list{
+			padding: 1rem;
+		}
+	}
+
+}
+
 .live-page{
+
+
 	.quote-list{
 		max-width: 600px;
 		margin-left: auto;
@@ -271,4 +291,5 @@ body{
 		text-align: left;
 		justify-content: flex-start;
 	}
+
 }

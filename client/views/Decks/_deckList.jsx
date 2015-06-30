@@ -15,7 +15,7 @@ DeckList = ReactMeteor.createClass({
 				
 				{this.state.decks.map(function(deck){
 					return (
-						<DeckItem key={deck._id} showAuthor={instance.props.showAuthor} {...deck}/>
+						<DeckItem key={deck._id} showAuthor={instance.props.showAuthor} {...deck} favorites={instance.props.favorites}/>
 					)
 				})}
 				{this.state.decks.length == 0 && 

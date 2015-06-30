@@ -68,6 +68,7 @@ QuoteItem = React.createClass({
 	render: function(){
 		var isAuthor = (Meteor.userId() == Decks.findOne().author ? true : false);
 		var isLive = this.props.isLive;
+		var hasPlayed = this.props.hasPlayed
 		var isPrivate = this.props.isPrivate;
 		var quoteId = this.props._id;
 		return (
@@ -76,14 +77,15 @@ QuoteItem = React.createClass({
 					<p className="quote-text">{'"' + this.props.text + 	'"'}</p>
 					<div className="action-list">
 						{isPrivate && !isLive && <span className="is-private">private</span>}
-						{isAuthor && !isLive && <DeckActions actions={this.actions()}/>}
-						{isLive && <QuoteActions quote={this.props.text} hashtags={this.props.hashtags} quoteId={this.props._id} />}
+						{isAuthor && !isLive && <Actions actions={this.actions()} isQuote={true}/>}
+						{hasPlayed && <QuoteActions quote={this.props.text} hashtags={this.props.hashtags} quoteId={this.props._id} />}
 					</div>
 				</div>
 				<div className="quote-footer">
-					{isAuthor && this.props._id && <p className="small">Tweeted by {this.getTweets(this.props._id)}</p>}
+					{hasPlayed && this.props._id && <p className="small">Tweeted by {this.getTweets(this.props._id)}</p>}
 					{isAuthor && this.props.slide && <p className="quote-slide small">Slide: {this.props.slide}</p>}
 					{isAuthor && this.props.order && <p className="quote-slide small">Order: {this.props.order}</p>}
+					{this.props._id && Meteor.user() && <FavoriteQuote _id={this.props._id} deckId={this.props.deckId}/>}
 				</div>
 			</li>
 		)
