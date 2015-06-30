@@ -79,7 +79,6 @@ NavItem = React.createClass(Radium.wrap({
 
 		var styles = {
 			base: {
-				position: "relative",
 				backgroundColor: "white",
 				height: "100%",
 				padding: "0rem",

@@ -19,6 +19,12 @@ MobileNavItems = function(){
 				} 
 			},
 			{
+				url: '/search',
+				name: 'search',
+				icon: SearchIcon,
+				className: 'transition-link search-toggle'
+			},
+			{
 				url: '',
 				name: Meteor.user().username,
 				className: 'nav-toggle',
@@ -95,12 +101,6 @@ MobileNavItems = function(){
 						}
 					]
 				}
-			},
-			{
-				url: '/search',
-				name: 'search',
-				icon: SearchIcon,
-				className: 'transition-link search-toggle'
 			}
 		]
 	} else {

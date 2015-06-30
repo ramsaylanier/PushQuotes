@@ -566,13 +566,19 @@ body {
   height: 35px;
   top: 0;
   left: 0;
-  display: none; }
+  display: none;
+  text-align: right; }
   @media only screen and (max-width: 568px) {
     .mobile-nav {
       display: block; } }
+  .mobile-nav .nav-list {
+    float: right; }
   .mobile-nav .sub-nav {
     top: 35px;
     width: 30%; }
+
+.nav-item {
+  position: relative; }
 
 .nav-list {
   height: 100%; }
@@ -580,7 +586,8 @@ body {
     float: left; }
 
 .back-toggle-nav-item {
-  float: left; }
+  position: absolute;
+  left: 0; }
 
 .nav-toggle-nav-item {
   float: right; }

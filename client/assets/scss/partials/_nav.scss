@@ -11,15 +11,24 @@
 	top: 0;
 	left: 0;
 	display: none;
+	text-align: right;
 
 	@media #{$mobile}{
 		display: block;
+	}
+
+	.nav-list{
+		float: right;
 	}
 
 	.sub-nav{
 		top: 35px;
 		width: 30%;
 	}
+}
+
+.nav-item{
+	position: relative;
 }
 
 .nav-list{
@@ -32,7 +41,9 @@
 
 
 .back-toggle-nav-item{
-	float: left;
+	position: absolute;
+	left: 0;
+
 }
 
 .nav-toggle-nav-item{
