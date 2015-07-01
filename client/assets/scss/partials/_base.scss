@@ -19,7 +19,7 @@ body{
 	position: relative;
 }
 
-.favorite-p{
+.fav-glyph:after{
 	cursor: pointer;
 }
 
@@ -288,8 +288,54 @@ body{
 
 	.action-list{
 		float: none;
-		text-align: left;
 		justify-content: flex-start;
+		text-align: center;
 	}
 
+}
+
+.fav-glyph{
+	font-size: 1.25rem;
+}
+
+
+.favorite-glyph:hover:after{
+	color: $yellow;
+	animation: pulse 0.75s ease-in-out;
+	animation-iteration-count: infinite;
+}
+
+.unfavorite-glyph:hover:after{
+	color: black;
+}
+
+.unfavorite-glyph:after{
+	content: "\2605";
+	color: $yellow;
+}
+
+.favorite-glyph:after{
+	content: "\2606";
+	color: black;
+}
+
+.fav-glyph:after{
+	transition: all 0.25s;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(1.1) rotate(0deg);
+	}
+	50% {
+		transform: scale(0.9);
+	}
+	100% {
+		transform: scale(1.1) rotate(72deg);
+	}
+}
+
+.favorite-deck{
+	margin-left: 1rem;
+	float: left;
 }

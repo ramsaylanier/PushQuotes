@@ -182,10 +182,8 @@ DeckItem = React.createClass(Radium.wrap({
 
 					<div className="action-list">
 						{isAuthor ? <Actions actions={this.actions()}/>: null}
-					</div>
-
-					<div className='favorite favorite-deck'>
 						{Meteor.userId() && <FavoriteDeck _id={this.props._id}/>}
+
 					</div>
 
 				</Section>

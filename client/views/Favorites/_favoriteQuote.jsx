@@ -22,10 +22,11 @@ FavoriteQuote = React.createClass(Radium.wrap({
 		
 	},
 	render: function(){
+
 		return (
-			<p className="small meta-item favorite-p" onClick={this.toggleFavorite}>
-				<span className="favorite">{this.state.isFavorite ? "Unfavorite" : "Favorite"}</span>
-			</p>
+			<div class="favorite-quote">
+				<Favorite onClick={this.toggleFavorite} isFavorite={this.state.isFavorite}/>
+			</div>
 		)
 	}
 }));
