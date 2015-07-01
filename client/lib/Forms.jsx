@@ -38,7 +38,7 @@ newDeckForm = {
 		var deckAttributes = {
 			title: $(e.currentTarget).find('[name=deck-title-field]').val(),
 			slug: $(e.currentTarget).find('[name=deck-slug-field]').val(),
-			hashtags: $(e.currentTarget).find('[name=deck-hashtags-field]').val().split(','),
+			hashtags: $(e.currentTarget).find('[name=deck-hashtags-field]').val().split(/,| /g),
 			withSlides: $(e.currentTarget).find('[name=use-slides-field]').get(0).checked,
 			author: Meteor.userId()
 		};
@@ -46,6 +46,13 @@ newDeckForm = {
 		_.each(deckAttributes.hashtags, function(hashtag, index){
 			deckAttributes.hashtags[index] = hashtag.trim();
 		})
+
+		deckAttributes.hashtags = _.filter(deckAttributes.hashtags, function(e){
+			return e.length > 0
+		})
+
+		deckAttributes.hashtags = _.uniq(deckAttributes.hashtags)
+
 		
 		Meteor.call('createDeck', deckAttributes, function(error,result){
 			if (error){
