@@ -238,7 +238,7 @@ Hashtags = React.createClass(Radium.wrap({
 			<div>
 				{this.props.hashtags.map(function(hashtag){
 					return(
-						<span className="hashtag">#{hashtag}</span>
+						<Link className="hashtag" href={"/hashtag/" + hashtag}>#{hashtag}</Link>
 					)
 				})}
 			</div>
