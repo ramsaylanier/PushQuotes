@@ -88,6 +88,16 @@ MobileNavItems = function(){
 						},
 						{
 							id: 4,
+							url: '/favorites',
+							name: 'Favorites',
+							className: 'transition-link',
+							clickFunction: function(){
+								$('.nav-list').removeClass('active');
+								$('.nav-toggle').removeClass('active');
+							}
+						},
+						{
+							id: 5,
 							url: '', 
 							name: 'logout',
 							clickFunction: function(){ 
@@ -170,6 +180,12 @@ PrimaryNavItems = function(){
 						},
 						{
 							id: 4,
+							url: '/favorites',
+							name: 'Favorites',
+							className: 'transition-link'
+						},
+						{
+							id: 5,
 							url: '', 
 							name: 'logout',
 							clickFunction: function(){ 

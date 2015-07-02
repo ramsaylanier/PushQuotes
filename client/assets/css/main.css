@@ -582,7 +582,8 @@ body {
   text-align: center; }
 
 .fav-glyph {
-  font-size: 1.25rem; }
+  font-size: 1.25rem;
+  float: left; }
 
 .favorite-glyph:hover:after {
   color: #F2C71F;
@@ -629,8 +630,7 @@ body {
             transform: scale(1.1) rotate(72deg); } }
 
 .favorite-deck {
-  margin-left: 1rem;
-  float: left; }
+  margin-left: 1rem; }
 
 @media only screen and (max-width: 568px) {
   .primary-nav {
@@ -897,7 +897,7 @@ input[type="submit"] {
   float: right; }
 
 #alerts {
-  z-index: 950; }
+  z-index: 1000; }
 
 #header {
   z-index: 900; }
