@@ -108,7 +108,7 @@ editDeckForm = {
 			description: $(e.currentTarget).find('[name=deck-description-field]').val(),
 			isPrivate: $(e.currentTarget).find('[name=is-private-field]').get(0).checked,
 			withSlides: $(e.currentTarget).find('[name=use-slides-field]').get(0).checked,
-			hashtags: $(e.currentTarget).find('[name=deck-hashtags-field]').val().split(','),
+			hashtags: $(e.currentTarget).find('[name=deck-hashtags-field]').val(),
 			author: Meteor.userId()
 		}
 
