@@ -1,5 +1,5 @@
-FavoriteQuote = React.createClass(Radium.wrap({
-	getInitialState: function(){
+FavoriteQuote = ReactMeteor.createClass(Radium.wrap({
+	getMeteorState: function(){
 		return {isFavorite: this.isFavorite()}
 	},
 	isFavorite: function(){
@@ -15,9 +15,6 @@ FavoriteQuote = React.createClass(Radium.wrap({
 		Meteor.call('modifyQuoteFavorite', this.props._id, this.props.deckId, !this.isFavorite(), function(e, r){
 			if(e)
 				Errors.throw(e.reason)
-
-			else
-				instance.setState({isFavorite: r.status})
 		})
 		
 	},

@@ -1,5 +1,5 @@
-FavoriteDeck = React.createClass(Radium.wrap({
-	getInitialState: function(){
+FavoriteDeck = ReactMeteor.createClass(Radium.wrap({
+	getMeteorState: function(){
 		return {isFavorite: this.isFavorite()}
 	},
 	isFavorite: function(){
@@ -14,9 +14,6 @@ FavoriteDeck = React.createClass(Radium.wrap({
 			if(e){
 				console.log(e)
 				Errors.throw(e.reason)
-			}
-			else{
-				instance.setState({isFavorite: r.status})
 			}
 		})
 		

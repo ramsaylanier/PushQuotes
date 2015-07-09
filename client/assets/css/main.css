@@ -632,6 +632,9 @@ body {
 .favorite-deck {
   margin-left: 1rem; }
 
+.follow-glyph {
+  margin-left: 1rem; }
+
 @media only screen and (max-width: 568px) {
   .primary-nav {
     display: none; } }
