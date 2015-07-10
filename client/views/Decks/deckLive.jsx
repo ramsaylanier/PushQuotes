@@ -4,7 +4,7 @@ Template.deckLive.onCreated(function(){
 
 Template.deckLive.onRendered(function(){
 	var instance = this;
-	
+
 	instance.component = React.render(
 		<div className="wrapper">
 			<QuoteList isLive={true} />

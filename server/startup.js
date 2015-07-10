@@ -31,8 +31,19 @@ Meteor.methods({
 
 Meteor.startup(function(){
 	ServiceConfiguration.configurations.remove();
+	Push.debug = true
 })
 
 function randomDate(start, end) {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 }
+
+Meteor.methods({
+	testPush: function(){
+		Push.send({
+	        from: 'push',
+	        title: 'Hello',
+	        text: 'world', query: {}
+    	})
+	}
+})

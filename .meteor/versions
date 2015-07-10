@@ -62,6 +62,9 @@ package-version-parser@3.0.3
 percolate:velocityjs@1.0.0
 practicalmeteor:chai@1.9.2_3
 practicalmeteor:loglevel@1.1.0_3
+raix:eventemitter@0.1.2
+raix:eventstate@0.0.2
+raix:push@2.6.11
 ramsay:errors@1.1.0
 random@1.0.3
 reactive-dict@1.1.0

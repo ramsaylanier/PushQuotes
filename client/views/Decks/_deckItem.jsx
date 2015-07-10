@@ -181,14 +181,17 @@ DeckItem = React.createClass(Radium.wrap({
 					</div>
 
 					<div className="action-list">
-						{isAuthor ? <DeckActions actions={this.actions()}/>: null}
-					</div>
+						{isAuthor ? <Actions actions={this.actions()}/>: null}
+						{Meteor.userId() && <FavoriteDeck _id={this.props._id}/>}
 
-					<div className='favorite'>
-						{Meteor.userId() && <Favorite _id={this.props._id}/>}
 					</div>
 
 				</Section>
+				{this.props.favorites && this.props.quotes && this.props.quotes.length > 0 && 
+					<div class="nested-quote-list favorite-quote-list">
+						<QuoteList favorites={true} deckId={this.props._id} isLive={this.props.live}/>
+					</div>
+				}
 			</li>
 		)
 	}
@@ -204,11 +207,12 @@ Section = React.createClass(Radium.wrap({
 	}
 }));
 
-DeckActions = React.createClass(Radium.wrap({
+Actions = React.createClass(Radium.wrap({
 	render: function(){
 		var actions = this.props.actions;
+		var quoteActions = this.props.isQuote
 		return (
-			<ul className="deck-actions-list">
+			<ul className={(quoteActions ? "quote" : "deck") + "-actions-list"}>
 				{actions.map(function(action){
 					var icon = action.icon || null;
 					return (
@@ -232,30 +236,10 @@ Hashtags = React.createClass(Radium.wrap({
 			<div>
 				{this.props.hashtags.map(function(hashtag){
 					return(
-						<span className="hashtag">#{hashtag}</span>
+						<Link className="hashtag" href={"/hashtag/" + hashtag}>#{hashtag}</Link>
 					)
 				})}
 			</div>
-		)
-	}
-}));
-
-Favorite = React.createClass(Radium.wrap({
-	getInitialState: function(){
-		return {isFavorite: this.isFavorite()}
-	},
-	isFavorite: function(){
-		return Meteor.user().favorites && Meteor.user().favorites.indexOf(this.props._id) > -1
-	},
-	toggleFavorite: function(e){
-		Meteor.call('modifyFavorite', this.props._id, !this.isFavorite())
-		this.setState({isFavorite: !this.state.isFavorite})
-	},
-	render: function(){
-		return (
-			<p className="small meta-item favorite-p" onClick={this.toggleFavorite}>
-				<span className="favorite">{this.state.isFavorite ? "Unfavorite" : "Favorite"}</span>
-			</p>
 		)
 	}
 }));
