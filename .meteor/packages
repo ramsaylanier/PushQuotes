@@ -25,3 +25,5 @@ miktam:api-password
 npm-container
 accounts-twitter
 matb33:collection-hooks
+xolvio:cucumber
+velocity:console-reporter

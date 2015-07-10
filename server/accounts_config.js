@@ -14,7 +14,6 @@ var forbiddenUsernames = [
 
 Accounts.validateNewUser(function(user){
 	var existingUsername = Meteor.users.findOne({username: user.username}) || forbiddenUsernames.indexOf(user.username) != -1;
-	console.log(user)
 	if (existingUsername){
 		throw new Meteor.Error(403, "Username already exists");
 	} else if (user.username < 4){
@@ -25,7 +24,6 @@ Accounts.validateNewUser(function(user){
 })
 
 Accounts.onCreateUser(function(options, user){
-	console.log(options);
 	if (options.profile){
 		if (user.services.twitter){
 			user.username = user.services.twitter.screenName;
@@ -35,8 +33,6 @@ Accounts.onCreateUser(function(options, user){
 			user.username = user.services.facebook.name;
 		}
 	}
-
-	console.log(user);
 	
 	return user;
 })

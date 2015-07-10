@@ -213,7 +213,7 @@ DeckActions = React.createClass(Radium.wrap({
 					var icon = action.icon || null;
 					return (
 						<li key={action.name} className={"deck-action-item " + action.name.toLowerCase().replace(/ +/g, '-') + '-action'}>
-							<a href={action.href} onClick={action.action}>
+							<a href={action.href} className={action.name.toLowerCase().replace(/ +/g, '-') + '-action'} onClick={action.action}>
 								{icon ? action.icon : action.name }
 							</a>
 						</li>
