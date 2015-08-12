@@ -31,7 +31,7 @@ Meteor.methods({
 
 Meteor.startup(function(){
 	ServiceConfiguration.configurations.remove();
-	Push.debug = true
+	// Push.debug = true
 })
 
 function randomDate(start, end) {

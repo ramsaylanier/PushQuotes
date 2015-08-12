@@ -6,16 +6,12 @@
 
 meteor-platform
 iron:router
-donut-components
-donut-theme
-reactjs:react
 accounts-password
 service-configuration
 ramsay:errors
 reactive-var
 fastclick
 meteorhacks:npm
-cosmos:browserify
 
 
 simple:rest
@@ -28,3 +24,6 @@ matb33:collection-hooks
 xolvio:cucumber
 velocity:console-reporter
 raix:push
+pushquotes:pushquotes-core
+react
+react-template-helper

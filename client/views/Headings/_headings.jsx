@@ -49,167 +49,26 @@ const headingsStyles = {
 Headings = {}
 
 _.each(headingsArray, function(heading, index){
-	Headings[heading] = React.createClass(Radium.wrap({
+	Headings[heading] = React.createClass({
 		render: function(){
 
 			var styles = {
 				base: headingsStyles.base,
-        color: {
-          color: this.props.color
-        },
-        fontWeight: {
-          fontWeight: this.props.fontWeight
-        }
+		        color: {
+		          color: this.props.color
+		        },
+		        fontWeight: {
+		          fontWeight: this.props.fontWeight
+		        }
 			}
-
-			console.log(headingsStyles[heading]);
 
       var Heading = heading;
 
 			return (
-				<Heading className={this.props.className}
-					style={[
-						headingsStyles[heading],
-						styles.base,
-						this.props.color && styles.color,
-						this.props.weight && styles.fontWeight,
-						styles.base.opacity = this.props.alpha,
-						styles.base.textAlign = this.props.align
-					]}
-				>
+				<Heading className={this.props.className}>
 					{this.props.children}
 				</Heading>
 			)
 		}
-	}));
+	});
 });
-
-// H1 = React.createClass(Radium.wrap({
-// 	render: function(){
-// 		var styles = {
-// 			base: {
-// 				fontSize: Headings.H1.size,
-// 				marginBottom: Headings.H1.marginBottom,
-// 			}
-// 		}
-
-// 		return (
-// 			<h1 className={this.props.className}
-// 				style={[
-// 					Headings.style,
-// 					styles.base,
-// 					styles.base.color = this.props.color,
-// 					styles.base.fontWeight = this.props.weight,
-// 					styles.base.opacity = this.props.alpha,
-// 					styles.base.textAlign = this.props.align
-// 				]}
-// 			>
-// 				{this.props.children}
-// 			</h1>
-// 		)
-// 	}
-// }));
-
-// H2 = React.createClass(Radium.wrap({
-// 	render: function(){
-// 		var styles = {
-// 			base: {
-// 				fontSize: Headings.H2.size,
-// 				marginBottom: Headings.H2.marginBottom,
-// 			}
-// 		}
-
-// 		return (
-// 			<h2 className={this.props.className}
-// 				style={[
-// 					Headings.style,
-// 					styles.base,
-// 					styles.base.color = this.props.color,
-// 					styles.base.fontWeight = this.props.weight,
-// 					styles.base.opacity = this.props.alpha,
-// 					styles.base.textAlign = this.props.align
-// 				]}
-// 			>
-// 				{this.props.children}
-// 			</h2>
-// 		)
-// 	}
-// }));
-
-// H3 = React.createClass(Radium.wrap({
-// 	render: function(){
-// 		var styles = {
-// 			base: {
-// 				fontSize: Headings.H3.size,
-// 				marginBottom: Headings.H3.marginBottom,
-// 			}
-// 		}
-
-// 		return (
-// 			<h3 className={this.props.className}
-// 				style={[
-// 					Headings.style,
-// 					styles.base,
-// 					styles.base.color = this.props.color,
-// 					styles.base.fontWeight = this.props.weight,
-// 					styles.base.opacity = this.props.alpha,
-// 					styles.base.textAlign = this.props.align
-// 				]}
-// 			>
-// 				{this.props.children}
-// 			</h3>
-// 		)
-// 	}
-// }));
-
-// H4 = React.createClass(Radium.wrap({
-// 	render: function(){
-// 		var styles = {
-// 			base: {
-// 				fontSize: Headings.H4.size,
-// 				marginBottom: Headings.H4.marginBottom,
-// 			}
-// 		}
-
-// 		return (
-// 			<h4 className={this.props.className}
-// 				style={[
-// 					Headings.style,
-// 					styles.base,
-// 					styles.base.color = this.props.color,
-// 					styles.base.fontWeight = this.props.weight,
-// 					styles.base.opacity = this.props.alpha,
-// 					styles.base.textAlign = this.props.align
-// 				]}
-// 			>
-// 				{this.props.children}
-// 			</h4>
-// 		)
-// 	}
-// }));
-
-// H5 = React.createClass(Radium.wrap({
-// 	render: function(){
-// 		var styles = {
-// 			base: {
-// 				fontSize: Headings.H5.size,
-// 				marginBottom: Headings.H5.marginBottom,
-// 			}
-// 		}
-
-// 		return (
-// 			<h5 className={this.props.className}
-// 				style={[
-// 					Headings.style,
-// 					styles.base,
-// 					styles.base.color = this.props.color,
-// 					styles.base.fontWeight = this.props.weight,
-// 					styles.base.opacity = this.props.alpha,
-// 					styles.base.textAlign = this.props.align
-// 				]}
-// 			>
-// 				{this.props.children}
-// 			</h5>
-// 		)
-// 	}
-// }));

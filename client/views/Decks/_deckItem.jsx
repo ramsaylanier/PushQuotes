@@ -1,4 +1,4 @@
-DeckItem = React.createClass(Radium.wrap({
+DeckItem = React.createClass({
 	componentDidMount: function(){
 		var itemCount = Session.get('itemCount');
 		var item = this.getDOMNode();
@@ -10,6 +10,33 @@ DeckItem = React.createClass(Radium.wrap({
 		}, 0)
 
 		Session.set('itemCount', itemCount + 1);
+		// this.hammerTime(item);
+
+	},
+	hammerTime: function(item){
+		var hammerTime = new Hammer(item);
+		hammerTime.on('panleft panright', function(e){
+			var dx = e.deltaX;
+			var dy = e.deltaY;
+			var offset = 0;
+			var maxOffset = window.innerWidth;
+
+			//check if x movement is greater than y movement to prevent sliding when scrolling up or down
+			if (Math.abs(dx) > Math.abs(dy)){
+				offset += (dx / 5);
+			}
+
+			console.log(offset);
+
+			//ensure offset can never be greater than number of slides * window width
+			if (offset > maxOffset){
+				offset = maxOffset;
+			}
+
+			$(item).css({
+				transform: "translateX(" + offset + "px)"
+			});
+		})
 	},
 	renderEditModal: function(){
 		var modal = document.createElement('div');
@@ -20,8 +47,8 @@ DeckItem = React.createClass(Radium.wrap({
 		editDeckForm.fields[1].value = this.props.slug;
 		editDeckForm.fields[2].value = this.props.description;
 		editDeckForm.fields[3].value = this.props.hashtags;
-		editDeckForm.fields[4].checked = this.props.withSlides;
-		editDeckForm.fields[5].checked = this.props.isPrivate;
+		editDeckForm.fields[4].value = this.props.image;
+		editDeckForm.fields[5].checked = this.props.withSlides;
 		editDeckForm.data = this.props;
 
 		React.render(
@@ -79,114 +106,64 @@ DeckItem = React.createClass(Radium.wrap({
 	},
 	actions: function(){
 		var actions = [
-			{name: 'edit', icon: EditIcon, action: this.renderEditModal},
-			{name: 'delete', icon: DeleteIcon, action: this.deleteForm},
-			{name: 'create-quote', icon: PlusIcon, action: this.renderQuoteForm},
+			{name: 'Edit', icon: EditIcon, action: this.renderEditModal},
+			{name: 'Delete', icon: DeleteIcon, action: this.deleteForm},
+			{name: 'Duplicate', icon: DeleteIcon, action: this.duplicateDeck},
 		]
 
-		if (this.props.live){
-			actions.push({name: 'End Live', icon: StopIcon, action: this.toggleLive})
-		} else {
-			actions.push({name: 'Go Live', icon: PlayIcon, action: this.toggleLive})
-		}
+		// if (this.props.live){
+		// 	actions.push({name: 'End Live', icon: StopIcon, action: this.toggleLive})
+		// } else {
+		// 	actions.push({name: 'Go Live', icon: PlayIcon, action: this.toggleLive})
+		// }
 
 		return actions;
 	},
 	render: function(){
-		var isAuthor = (Meteor.userId() == this.props.author ? true : false);
-		var isPrivate = this.props.isPrivate || false;
+		var isAuthor = Meteor.userId() == this.props.author;
 		var hashtags = this.props.hashtags;
+
+		var backgroundImage = {
+			backgroundImage: "url('" + this.props.image + "')"
+		};
 		
-		var styles = {
-			base: {
-				opacity: "0",
-				backgroundColor: "white"
-			},
-			live: {
-
-				backgroundColor: Color(Colors.green).lighten(.99).hexString(),
-				border: "solid " + Color(Colors.green).darken(0.2).hexString() + " 0.25rem"
-			},
-
-			title: {
-				base: {
-					transition: "all 300ms ease-out"
-				},
-				live:{
-					color: Color(Colors.green).darken(.2).hexString()
-				}
-			}
-		}
-
 		return (
-			<li 
-				style={[
-					styles.base,
-					this.props.live && styles.live
-				]}
+			<li ref="deckItem" className={(this.props.live ? 'is-live ' : '') + " card flex-container"} >
+				{this.props.image && 
+					<div className="card-image flex-1" style={backgroundImage}>
+						
+					</div>
+				}
 
-				className={(this.props.live ? 'is-live ' : '') + "deck-item item"} >
+				<div className="card-details flex-1">
 
-				<Section className="deck-header deck-section">
-					<h1 className="deck-title">
+					<h1 className="card-title">
 						<a 
-							style={[
-								styles.title.base,
-								Grid.two,
-								this.props.live && styles.title.live
-							]}
 							href={"/" + this.props.authorName + '/' + this.props.slug} 
 							className="transition-link">
 
 							{this.props.title}	
 
 						</a>
-						{isPrivate ? <span className="is-private">private</span> : null}
-
 					</h1>
-					{this.props.showAuthor && <Headings.p className="deck-author">
+
+					<div className="deck-hashtags section-item">
+						<Hashtags hashtags={this.props.hashtags}/>
+					</div>
+
+					{this.props.showAuthor && <p className="deck-author">
 						<a 
-							style={[
-								styles.title.base,
-								Grid.two,
-								this.props.live && styles.title.live
-							]}
 							href={"/" + this.props.authorName} 
 							className="transition-link">
 
 							By {this.props.authorName}
 
 						</a>
-					</Headings.p>}
-					<p className="deck-description">{this.props.description}</p>
-				</Section>
+					</p>}
+				</div>
 
-				{this.props.live ?
-					<Section className="deck-section">
-						<Link color="white" bg="greenBg" size="large" type="button" block={true} href={'/' + this.props.authorName + '/' + this.props.slug + '/live'} className="live-link transition-link">View Presentation</Link>
-					</Section> :
-					null 
-				}
+				{isAuthor && <CardActions actions={this.actions()}/>}
 
-				<Section className="deck-details deck-section">
-					<div className="deck-hashtags section-item">
-						<Hashtags hashtags={this.props.hashtags}/>
-					</div>
-				</Section>
-
-
-				<Section className="deck-footer deck-section">
-					<div className="deck-meta">
-						<Count count={this.props.quotes.length} name="Quotes" icon={QuoteIcon} />
-					</div>
-
-					<div className="action-list">
-						{isAuthor ? <Actions actions={this.actions()}/>: null}
-						{Meteor.userId() && <FavoriteDeck _id={this.props._id}/>}
-
-					</div>
-
-				</Section>
 				{this.props.favorites && this.props.quotes && this.props.quotes.length > 0 && 
 					<div class="nested-quote-list favorite-quote-list">
 						<QuoteList favorites={true} deckId={this.props._id} isLive={this.props.live}/>
@@ -195,9 +172,32 @@ DeckItem = React.createClass(Radium.wrap({
 			</li>
 		)
 	}
-}));
+});
 
-Section = React.createClass(Radium.wrap({
+// CODE FOR VIEWING LIVE PRESENTATION FROM DECK VIEW
+// *******
+//
+// {this.props.live ?
+// 	<Section className="deck-section">
+// 		<Link color="white" bg="greenBg" size="large" type="button" block={true} href={'/' + this.props.authorName + '/' + this.props.slug + '/live'} className="live-link transition-link">View Presentation</Link>
+// 	</Section> :
+// 	null 
+// }
+
+
+// <Section className="deck-footer deck-section">
+// 	<div className="deck-meta">
+// 		<Count count={this.props.quotes.length} name="Quotes" icon={QuoteIcon} />
+// 	</div>
+
+// 	<div className="action-list">
+// 		{isAuthor && <Actions actions={this.actions()}/>}
+// 		{Meteor.userId() && <FavoriteDeck _id={this.props._id}/>}
+// 	</div>
+
+// </Section>
+
+Section = React.createClass({
 	render: function(){
 		return (
 			<section className={this.props.className}>
@@ -205,9 +205,9 @@ Section = React.createClass(Radium.wrap({
 			</section>
 		)
 	}
-}));
+});
 
-Actions = React.createClass(Radium.wrap({
+Actions = React.createClass({
 	render: function(){
 		var actions = this.props.actions;
 		var quoteActions = this.props.isQuote
@@ -226,11 +226,11 @@ Actions = React.createClass(Radium.wrap({
 			</ul>
 		)
 	}
-}));
+});
 
 
 
-Hashtags = React.createClass(Radium.wrap({
+Hashtags = React.createClass({
 	render: function(){
 		return (
 			<div>
@@ -242,4 +242,4 @@ Hashtags = React.createClass(Radium.wrap({
 			</div>
 		)
 	}
-}));
+});

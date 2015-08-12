@@ -1,6 +1,8 @@
 // Radium = Npm.require('radium');
 
 Meteor.startup(function(){
+	window.viewportUnitsBuggyfill.init();
+	
 	React.initializeTouchEvents(true);
 
 	var loginStyle = "popup";
@@ -10,7 +12,7 @@ Meteor.startup(function(){
 			Errors.throw(error.reason, 'error')
 	});
 
-	Meteor.subscribe('userProfile')
+	Meteor.subscribe('userProfile');
 
 
 	//TODO add SEO and FB stuff here

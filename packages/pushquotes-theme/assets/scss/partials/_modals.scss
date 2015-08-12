@@ -1,0 +1,31 @@
+.modal{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	min-height: 100%;
+	background-color: fade-out($dark, .05);
+	display: flex;
+	align-content: center;
+	justify-content: space-around;
+	padding: 2rem 1rem;
+
+	@media #{$mobile}{
+		display: block;
+	}
+}
+
+.modal-content{
+	position: relative;
+	padding: 2rem 1rem;
+	border-radius: 2px;
+	max-width: 500px;
+	background-color: white;
+	margin-top: $headerHeight;
+	max-height: 100%;
+	@media #{$desktop}, #{$desktop-xl}{
+		flex: 1;
+		flex-basis: 90vw;
+		align-self: center;
+	}
+}

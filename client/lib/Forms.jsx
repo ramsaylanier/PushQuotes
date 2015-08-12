@@ -93,8 +93,14 @@ editDeckForm = {
 			className:'deck-hashtags-field full-width input-field',
 			label: 'Hashtags'
 		},
-		{id: 5, type: 'checkbox', label: 'Sync With Slides.com', name: 'use-slides-field'},
-		{id: 6, type: 'checkbox', label: 'Make Private', name: 'is-private-field'},
+		{
+			id: 5, 
+			type: 'url', 
+			name: 'deck-image-field', 
+			className:'deck-image-field full-width input-field',
+			label: 'URL of Image'
+		},
+		{id: 6, type: 'checkbox', label: 'Sync With Slides.com', name: 'use-slides-field'},
 		{id: 7, type: 'submit', value: 'Save Deck'}
 	],
 	onSubmit: function(e){
@@ -106,9 +112,9 @@ editDeckForm = {
 			title: $(e.currentTarget).find('[name=deck-title-field]').val(),
 			slug: $(e.currentTarget).find('[name=deck-slug-field]').val(),
 			description: $(e.currentTarget).find('[name=deck-description-field]').val(),
-			isPrivate: $(e.currentTarget).find('[name=is-private-field]').get(0).checked,
 			withSlides: $(e.currentTarget).find('[name=use-slides-field]').get(0).checked,
 			hashtags: $(e.currentTarget).find('[name=deck-hashtags-field]').val(),
+			image: $(e.currentTarget).find('[name=deck-image-field]').val(),
 			author: Meteor.userId()
 		}
 

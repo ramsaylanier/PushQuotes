@@ -1,4 +1,4 @@
-Label = React.createClass(Radium.wrap({
+Label = React.createClass({
 	render: function(){
 
 		var styles = {
@@ -14,14 +14,9 @@ Label = React.createClass(Radium.wrap({
 		}
 
 		return (
-			<label 
-				style={[
-					styles.base
-				]}
-				name={this.props.name + '-label'}
-			>
+			<label name={this.props.name + '-label'} className='floating-label'>
 				{this.props.label}
 			</label>
 		)
 	}
-}));
+});

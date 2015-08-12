@@ -1,27 +1,36 @@
-DeckList = ReactMeteor.createClass({
-	getMeteorState: function(){
+DeckList = React.createClass({
+	mixins: [ReactMeteorData],
+	getMeteorData(){
+		var username = Router.current().params.username;
+		var subscription = Meteor.subscribe('deckList', {authorName: username}, username);
+		var deckQuery = {authorName: username};
 		return {decks: Decks.find().fetch()};
 	},
-	componentWillMount: function(){
+	componentWillMount(){
 		Session.set('itemCount', 1);
 	},
-	render: function(){
+	render(){
 		var instance = this;
 		return (
-			<ul className={this.props.className || "" + "deck-list"}>
-				{!this.props.showAuthor && 
-					<AuthorName key={this.state.decks}/>
-				}
-				
-				{this.state.decks.map(function(deck){
-					return (
-						<DeckItem key={deck._id} showAuthor={instance.props.showAuthor} {...deck} favorites={instance.props.favorites}/>
-					)
-				})}
-				{this.state.decks.length == 0 && 
-					<Headings.p>{this.props.message || "Nothing here!"}</Headings.p>
-				}
-			</ul>
+			<div className="deck-content">
+				<div className="wrapper">
+					<ul className={this.props.className || "" + 'card-list'}>
+						{this.props.showAuthor && 
+							<AuthorName key={this.data.decks}/>
+						}
+						
+						{this.data.decks.map(function(deck){
+							return (
+								<DeckItem key={deck._id} showAuthor={instance.props.showAuthor} {...deck} favorites={instance.props.favorites}/>
+							)
+						})}
+						
+						{this.data.decks.length == 0 && 
+							<p>{this.props.message || "Nothing here!"}</p>
+						}
+					</ul>
+				</div>
+			</div>
 		)
 	}
 });

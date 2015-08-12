@@ -14,7 +14,7 @@ var styles={
 		backgroundColor: Colors.blue,
 		color: 'white',
 		':hover':{
-			backgroundColor: Color(Colors.blue).darken(.2).hexString()
+			// backgroundColor: Color(Colors.blue).darken(.2).hexString()
 		}
 	},
 	yellow: {
@@ -31,21 +31,16 @@ var styles={
 	}
 };
 
-Button = React.createClass(Radium.wrap({
+Button = React.createClass({
 	propTypes: {
 		color: React.PropTypes.oneOf(['blue', 'green', 'yellow'])
 	},
 	render: function(){
 		return (
 			<button
-				style={[
-					styles.base,
-					styles[this.props.color],
-					styles[this.props.size],
-				]}
 				{...this.props}>
 				{this.props.children}
 			</button>
 		)
 	}
-}));
+});

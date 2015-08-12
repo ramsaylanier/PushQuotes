@@ -1,0 +1,67 @@
+.page{
+	min-height: 100vh;
+	background-size: cover;
+	background-position: center center;
+	padding-top: $headerHeight * 2;
+}
+
+
+.page-hero{
+	background-color: white;
+	padding-bottom: 2rem;
+	border-bottom: 1px solid $dark;
+}
+
+.page-content{
+	background-color: darken(white, 10%);
+}
+
+.page-title{
+	padding: 1rem;
+	color: white;
+	opacity: 0;
+	font-family: $serif;
+	font-weight: 900;
+	background-color: fade-out($dark, .2);
+	text-align: center;
+	display: inline-block;
+	position: relative;
+	top: 20vh;
+
+	a{
+		color: $primary;
+		font-weight: 900;
+	}
+
+	@media #{$mobile}{
+		font-size: 1rem;
+	}
+}
+
+.page-header{
+	position: relative;
+	background-size: cover;
+	background-position: center center;
+	min-height: 50vh;
+	text-align: center;
+}
+
+.page-section{
+	padding: 2rem 0rem;
+	background-color: $dark;
+	transform-origin: top center;	
+
+	.section-title{
+		font-weight: 900;
+	}
+}
+
+.page-separator{
+	position: relative;
+	width: 100%;
+	max-width: 200px;
+	height: 2px;
+	background-color: $primary;
+	border-radius: 3px;
+	margin: 2rem auto 0rem auto;
+}

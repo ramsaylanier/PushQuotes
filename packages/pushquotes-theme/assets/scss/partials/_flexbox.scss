@@ -1,0 +1,38 @@
+.flex-container{
+	display: flex;
+	align-cotent: center;
+}
+
+.items-centered{
+	align-items: center;
+}
+
+.centered{
+	justify-content: center;
+}
+
+.column{
+	flex-direction: column; 
+}
+
+
+
+.flex-1{
+	flex: 1;
+
+	&:first-of-type{
+		margin-right: 1rem;
+	}
+}
+
+.flex-2{
+	flex: 2;
+}
+
+.align-centered{
+	align-content: center;
+}
+
+.self-centered{
+	align-self: center;
+}

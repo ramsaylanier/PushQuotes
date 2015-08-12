@@ -1,0 +1,159 @@
+.primary-nav{
+	height: 100%;
+	float: right;
+
+	@media #{$mobile}{
+		display: none;
+	}
+
+	.nav-item{
+		&:hover{
+			opacity: 1;
+			
+			.sub-nav-list{
+				transform: rotateX(0deg);
+				transition-delay: 0ms;
+			}
+
+			.nav-item{
+				transform: rotateX(0deg);
+
+				@for $i from 1 through 5{
+					&:nth-child(#{$i}) {
+						transition-delay: 50ms * $i;
+					}
+				}
+			}
+		}
+	}
+
+	.sub-nav-list{
+		transform: rotateX(90deg);
+		transform-origin: top center;
+		transition: transform 0ms ease-out 250ms;
+		perspective: 100;
+
+		&:hover{
+			transform: rotateX(0deg);
+			transition-delay: 0ms;
+		}
+
+		.nav-item{
+			transform: rotateX(-180deg);
+			transform-origin: top center;
+			backface-visibility: hidden;
+
+			@for $i from 1 through 5{
+				&:nth-child(#{$i}) {
+					transition: transform 150ms ease-out (5 * 50ms) - (50ms * $i), background-color 150ms ease-out 0ms;
+				}
+			};
+
+			&:hover{
+				background-color: darken($primary, 10%);
+			}	
+		}
+	}
+}
+
+.mobile-nav{
+	position: fixed;
+	width: 100%;
+	height: 35px;
+	top: 0;
+	left: 0;
+	display: none;
+	text-align: right;
+	height: $headerHeight;
+
+	@media #{$mobile}{
+		display: block;
+	}
+
+	.nav-list{
+		float: right;
+	}
+
+	.sub-nav{
+		top: 35px;
+		width: 30%;
+	}
+
+	.sub-nav-list{
+		background-color: $primary;
+		position: fixed;
+		height: 100%;
+		width: 70vw;
+		transform: translateX(70vw);
+		transition: transform 150ms cubic-bezier(.7, .3, .9, 1);
+
+		.nav-item{
+			text-align: center;
+		}
+	}
+
+	&.active{
+		.sub-nav-list{
+			transform: translateX(0vw);
+		}
+	}
+}
+
+.nav-item{
+	position: relative;
+	background-color: white;
+	padding: 0rem;
+}
+
+.nav-link{
+	color: $primary;
+	display: block;
+	height: 100%;
+	width: 100%;
+	padding: .5rem;
+}
+
+.nav-list{
+	height: 100%;
+
+	& > .nav-item{
+		float: left;
+	}
+}
+
+.sub-nav-list{
+	position: absolute;
+	top: $headerHeight;
+	right: 0;
+
+	&:hover{
+		transform: rotateX(0deg);
+		transition: transform 0ms ease-out 0ms;
+	}
+
+	.nav-item{
+		background-color: $primary;
+		display: block;
+
+		@for $i from 1 through 5{
+			&:nth-child(#{$i}) {
+				background-color: darken($primary, (5 - $i) * 3);
+			}
+		};
+	}
+
+	.nav-link{
+		color: white;
+	}
+}
+
+
+.back-toggle-nav-item{
+	position: absolute;
+	left: 0;
+
+}
+
+.nav-toggle-nav-item{
+	float: right;
+}

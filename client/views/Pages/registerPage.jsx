@@ -7,9 +7,9 @@ Template.registerPage.onRendered(function(){
 
 	React.render(
 		<Page animateIn={DefaultPageAnimateIn} backgroundImage={'/img/login-bg.jpg'}>
-			<Wrapper type="form-wrapper" centered={true} backgroundColor="white">
+			<div className="wrapper form-wrapper white-bg">
 				<Form attributes={registerFormAttributes} />
-			</Wrapper>
+			</div>
 		</Page>,
 		document.getElementById('main')
 	)

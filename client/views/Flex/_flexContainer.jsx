@@ -1,4 +1,4 @@
-FlexContainer = React.createClass(Radium.wrap({
+FlexContainer = React.createClass({
 	render: function(){
 		var styles = {
 			base: {
@@ -7,17 +7,10 @@ FlexContainer = React.createClass(Radium.wrap({
 		}
 
 		return(
-			<div 
-				className={this.props.classNAme}
-				style={[
-					styles.base,
-					styles.base.flexDirection = this.props.flexDirection,
-					styles.base.alignItems = this.props.alignItems
-				]}
-			>
+			<div className={this.props.classNAme}>
 				{this.props.children}
 			</div>
 		)
 
 	}
-}))
+});

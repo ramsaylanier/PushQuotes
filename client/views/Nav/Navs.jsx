@@ -31,17 +31,19 @@ MobileNavItems = function(){
 				icon: MenuIcon,
 				clickFunction: function(){
 					var toggle = $('.nav-toggle');
-					var isActive = false;
+					var nav = $('.mobile-nav');
+					// var isActive = false;
 					toggle.toggleClass('active');
+					nav.toggleClass('active');
 
-					if (toggle.hasClass('active')){
-						isActive = true;
-					}
+					// if (toggle.hasClass('active')){
+					// 	isActive = true;
+					// }
 
-					React.render(
-						<Header active={isActive} />,
-						$('#header').get(0)
-					);
+					// React.render(
+					// 	<Header active={isActive} />,
+					// 	$('#header').get(0)
+					// );
 					
 				},
 				subnav: {
@@ -209,10 +211,6 @@ PrimaryNavItems = function(){
 
 	return navItems;
 } 
-
-AccountSubNavItems = {
-
-}
 
 getNavs = function(){
 	var Navs = [

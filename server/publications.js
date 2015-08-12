@@ -74,8 +74,6 @@ Meteor.publish('hashtag', function(hashtag){
 })
 
 
-
-
 Meteor.publish('deckSingle', function(params){
 	return Decks.find({_id: params.deckId});
 })

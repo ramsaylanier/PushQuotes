@@ -1,4 +1,4 @@
-InputType = React.createClass(Radium.wrap({
+InputType = React.createClass({
 	getInitialState: function(){
 		return {value: this.props.value, checked: this.props.checked}
 	},
@@ -78,4 +78,4 @@ InputType = React.createClass(Radium.wrap({
 			</div>
 		)
 	}
-}));
+});

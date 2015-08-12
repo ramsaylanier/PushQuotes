@@ -1,0 +1,20 @@
+#app-header{
+	background-color: white;
+	height: $headerHeight;
+	position: fixed;
+	width: 100%;
+	left: 0;
+	top: 0;
+}
+
+.logo{
+	height: 100%;
+	width: $headerHeight;
+	display: inline-block;
+
+	@media #{$mobile}{
+		display: table;
+		margin: 0 auto;
+		position: relative;
+	}
+}

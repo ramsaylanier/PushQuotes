@@ -1,5 +1,6 @@
-QuoteList = ReactMeteor.createClass({
-	getMeteorState: function(){
+QuoteList = React.createClass({
+	mixins: [ReactMeteorData],
+	getMeteorData: function(){
 
 		if(this.props.deckId)
 			return {
@@ -24,12 +25,12 @@ QuoteList = ReactMeteor.createClass({
 		}
 	},
 	render: function(){
-		var quotes = this.state.quotes;
-		var deck = this.state.deck;
-		var hasPlayed = this.state.deck.hasPlayed
+		var quotes = this.data.quotes;
+		var deck = this.data.deck;
+		var hasPlayed = this.data.deck.hasPlayed;
 		var isAuthor;
 		var isLive = this.props.isLive;
-		var withSlides = this.state.deck.withSlides || false;
+		var withSlides = this.data.deck.withSlides || false;
 		var isFavoritesResults = this.props.deckId != undefined
 
 		if (Meteor.user())

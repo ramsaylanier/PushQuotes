@@ -1,4 +1,4 @@
-FavoriteQuote = ReactMeteor.createClass(Radium.wrap({
+FavoriteQuote = React.createClass({
 	getMeteorState: function(){
 		return {isFavorite: this.isFavorite()}
 	},
@@ -26,4 +26,4 @@ FavoriteQuote = ReactMeteor.createClass(Radium.wrap({
 			</div>
 		)
 	}
-}));
+});

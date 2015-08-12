@@ -1,4 +1,4 @@
-Wrapper = React.createClass(Radium.wrap({
+Wrapper = React.createClass({
 	componentDidMount: function(){
 		if (this.props.animateIn){
 			var item = this.getDOMNode();
@@ -14,39 +14,10 @@ Wrapper = React.createClass(Radium.wrap({
 		}
 	},
 	render: function(){
-
-		var styles = {
-			base: {
-				position: "relative",
-				maxWidth: 1000,
-				height: "100%",
-				width: "100%",
-				marginLeft: "auto",
-				marginRight: "auto",
-				padding: "0rem .5rem"
-			},
-			form:{
-				maxWidth: 400,
-				borderRadius: 3,
-				padding: "1.5rem"
-			}
-		}
-
-		styles.base[Breakpoints.mobile] = {
-			padding: ".5rem"
-		}
-
 		return(
-			<div
-				className="wrapper"
-				style={[
-					styles.base,
-					this.props.type == 'form-wrapper' && styles.form,
-					styles.base.backgroundColor = this.props.backgroundColor,
-					this.props.style
-				]}>
+			<div className="wrapper">
 				{this.props.children}
 			</div>
 		)
 	}
-}));
+});

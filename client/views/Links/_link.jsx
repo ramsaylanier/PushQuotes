@@ -42,23 +42,12 @@ var styles = {
 	}
 }
 
-Link = React.createClass(Radium.wrap({
+Link = React.createClass({
 	render: function(){
 		return(
-			<a 
-				style={[
-					styles.base,
-					styles[this.props.type],
-					styles[this.props.color],
-					styles[this.props.size],
-					styles[this.props.bg],
-					styles[this.props.align],
-					this.props.block && styles.block
-				]} 
-				id={this.props.quoteId}
-				{...this.props}>
+			<a id={this.props.quoteId} {...this.props}>
 				{this.props.children}
 			</a>
 		)
 	}
-}));
+});

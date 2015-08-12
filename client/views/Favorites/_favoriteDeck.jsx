@@ -1,5 +1,6 @@
-FavoriteDeck = ReactMeteor.createClass(Radium.wrap({
-	getMeteorState: function(){
+FavoriteDeck = React.createClass({
+	mixins: [ReactMeteorData],
+	getMeteorData(){
 		return {isFavorite: this.isFavorite()}
 	},
 	isFavorite: function(){
@@ -16,14 +17,12 @@ FavoriteDeck = ReactMeteor.createClass(Radium.wrap({
 				Errors.throw(e.reason)
 			}
 		})
-		
 	},
-	render: function(){
-
+	render(){
 		return (
 			<div className="favorite-deck">
-				<Favorite onClick={this.toggleFavorite} isFavorite={this.state.isFavorite}/>
+				<Favorite onClick={this.toggleFavorite} isFavorite={this.isFavorite()}/>
 			</div>
 		)
 	}
-}));
+});

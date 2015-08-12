@@ -1,27 +1,36 @@
+Template.landingPage.helpers({
+	LandingPage(){
+		return LandingPage;
+	}
+})
+
+LandingPage = React.createClass({
+	render(){
+		return (
+			<Page animateIn={DefaultPageAnimateIn}>
+				<PageHeader backgroundImage={'/img/home-bg.jpg'} bgAttachment="fixed">
+					<PageTitle>Push<span style={{color:Colors.primary}}>Quotes</span></PageTitle>
+				</PageHeader>
+				
+				<PageSection className="first-section" alpha={0} separator={true}>
+					<h3 className="section-title white t-a-center">Your quotes delivered directly to your audience in real time.</h3>
+					<Link type="primary" align="center">Try It Out!</Link>
+				</PageSection>
+
+				<PageSection className="second-section" alpha={1} separator={true}>
+					<h4 className="section-title white t-a-center">Create a 'deck' of pre-loaded quotes</h4>
+					<p>Your audience will get your pre-loaded quotes pushed directly to their devices at your control. By providing them with pre-loaded content, you can ensure you are being quoted accurately.</p>
+				</PageSection>
+			</Page>
+		)
+	}
+})
+
 Template.landingPage.onRendered(function(){
 	// var animateOut = _.extend(DefaultPageAnimateOut,{options: {duration: 1000, easing:[300, 15],delay: 0}});
 
 	// Session.set('animateOut', animateOut);
 	Session.set('currentPageTitle', 'landingPage');
-
-	React.render(
-		<Page animateIn={DefaultPageAnimateIn}>
-			<PageHeader backgroundImage={'/img/home-bg.jpg'} bgAttachment="fixed">
-				<PageTitle>Push<span style={{color:Colors.primary}}>Quotes</span></PageTitle>
-			</PageHeader>
-			
-			<PageSection className="first-section" alpha={0} separator={true}>
-				<Headings.h3 className="section-title" alpha={1} align="center">Your quotes delivered directly to your audience in real time.</Headings.h3>
-				<Link type="primary" align="center">Try It Out!</Link>
-			</PageSection>
-
-			<PageSection className="second-section" alpha={1} separator={true}>
-				<Headings.h4 className="section-title" color="white" alpha={1} align="center">Create a 'deck' of pre-loaded quotes</Headings.h4>
-				<Headings.p>Your audience will get your pre-loaded quotes pushed directly to their devices at your control. By providing them with pre-loaded content, you can ensure you are being quoted accurately.</Headings.p>
-			</PageSection>
-		</Page>,
-		document.getElementById('main')
-	)
 
 	Meteor.defer(function(){
 		var pos = 0,
@@ -52,8 +61,4 @@ Template.landingPage.onRendered(function(){
 
 		AnimateItem($('.first-section'), sectionAnimation);
 	})
-});
-
-Template.landingPage.onDestroyed(function(){
-	React.unmountComponentAtNode(document.getElementById('main'));
 });

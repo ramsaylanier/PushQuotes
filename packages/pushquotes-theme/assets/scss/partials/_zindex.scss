@@ -1,0 +1,33 @@
+#alerts{
+	z-index: 1000;
+}
+
+#app-header{
+	z-index: 900;
+}
+
+.modal{
+	z-index: 850;
+}
+
+.live-controls{
+	z-index: 800;
+}
+
+.nav-item{
+	z-index: 100;
+}
+
+.sub-nav-list{
+	z-index: 90;
+}
+
+.main{
+	z-index: 1;
+}
+
+@media #{$mobile}{
+	.logo{
+		z-index: 100;
+	}
+}

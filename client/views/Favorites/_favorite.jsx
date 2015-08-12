@@ -1,9 +1,8 @@
-Favorite = React.createClass(Radium.wrap({
-	render: function(){
+Favorite = React.createClass({
+	render(){
 		return(
-			<div className={(this.props.isFavorite ? "unfavorite" : "favorite") + "-glyph fav-glyph"}
-				{...this.props}>
+			<div>
 			</div>
 		)
 	}
-}));
+});

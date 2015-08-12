@@ -1,5 +1,6 @@
-AuthorName = ReactMeteor.createClass({
-	getMeteorState: function(){
+AuthorName = React.createClass({
+	mixins: [ReactMeteorData],
+	getMeteorData(){
 		return {authorName: Router.current().params.username};
 	},
 	componentDidMount: function(){
@@ -10,18 +11,20 @@ AuthorName = ReactMeteor.createClass({
 		}, 300, 'easeOut');
 	},
 	render: function(){
-		var authorName = this.state.authorName;
+		var authorName = this.data.authorName;
+		console.log('authorName: ' + authorName);
 		return (
-			<h4 key={this.state.username} className="page-title item">
-				<a href={"/" + this.state.authorName} className="transition-link">{this.state.authorName}</a>
-				<FollowLink author={this.state.authorName}/>
+			<h4 key={this.data.authorName} className="page-title item">
+				<a href={"/" + this.data.authorName} className="transition-link">{this.data.authorName}</a>
+				<FollowLink author={this.data.authorName}/>
 			</h4>
 		)
 	}
 })
 
-FollowLink = ReactMeteor.createClass({
-	getMeteorState: function(){
+FollowLink = React.createClass({
+	mixins: [ReactMeteorData],
+	getMeteorData(){
 		return {
 			author: this.props.author,
 			loggedIn: Meteor.user(),
@@ -29,17 +32,17 @@ FollowLink = ReactMeteor.createClass({
 		}
 	},
 	toggleFollow: function(){
-		var author = this.state.author;
+		var author = this.data.author;
 		Meteor.call('toggleFollow', author)
 	},
 	render: function(){
 		var instance = this;
 		return (
 			<a href="#" className="follow-link" onClick={instance.toggleFollow}>
-				{instance.state.loggedIn && Meteor.user().username != this.state.author && 
-					<small className={"follow-glyph is" + (instance.state.isFollowed ? "" : "Not") + "Following-glyph"}>
+				{instance.data.loggedIn && Meteor.user().username != instance.data.author && 
+					<small className={"follow-glyph is" + (instance.data.isFollowed ? "" : "Not") + "Following-glyph"}>
 						<small>
-							{(instance.state.isFollowed ? "Unfollow" : "Follow")}
+							{(instance.data.isFollowed ? "Unfollow" : "Follow")}
 						</small>
 					</small>
 				}
