@@ -27,9 +27,10 @@ InputType = React.createClass({
 
 		this.setState({isFocused:true});
 
-		label.velocity({
-			translateY: -input.outerHeight() + label.outerHeight()
-		}, 300, [0, .9, .6, 1.1]);
+		TweenMax.to(label, .3, {
+			y: -input.outerHeight() + label.outerHeight(),
+			ease: Power2.easeOut
+		})
 	},
 	deactivateField: function(e){
 		var control = $(this.getDOMNode());
@@ -39,9 +40,10 @@ InputType = React.createClass({
 		if (input.val().length == 0){
 			this.setState({isFocused:false});
 
-			label.velocity({
-				translateY: 0
-			}, 300, 'easeOutQuant');
+			TweenMax.to(label, .3, {
+				y: 0,
+				ease: Power4.easeOut
+			});
 		}
 	},
 	render: function(){

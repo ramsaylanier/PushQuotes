@@ -3,10 +3,16 @@ DeckItem = React.createClass({
 		var itemCount = Session.get('itemCount');
 		var item = this.getDOMNode();
 		Meteor.setTimeout(function(){
-			$(item).velocity({
+
+			TweenMax.fromTo(item, 1, {
+				opacity: 0,
+				y: 20
+			}, {
 				opacity: 1,
-				translateY: [0, 20]
-			}, {duration: 1000, easing: [300, 25], delay: (itemCount * 50)});
+				y: 0,
+				ease: Power2.easeOut,
+				delay: (itemCount * .05)
+			});
 		}, 0)
 
 		Session.set('itemCount', itemCount + 1);

@@ -308,6 +308,7 @@ a {
   text-decoration: none; }
 
 body {
+  position: relative;
   font-family: 'Source Sans Pro', Helvetica, sans-serif; }
 
 .main {
@@ -870,7 +871,6 @@ input[type="submit"] {
   position: relative;
   background-color: white;
   margin-bottom: 1rem;
-  border-radius: 3px;
   box-shadow: 0px 5px 5px -5px #240425;
   opacity: 0;
   -webkit-transition: background-color 300ms ease-out;
@@ -1004,12 +1004,11 @@ input[type="submit"] {
   color: white; }
 
 .modal {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  bottom: 0;
   left: 0;
   width: 100%;
-  min-height: 100%;
-  background-color: rgba(36, 4, 37, 0.95);
+  height: 100vh;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1020,31 +1019,47 @@ input[type="submit"] {
   -webkit-justify-content: space-around;
       -ms-flex-pack: distribute;
           justify-content: space-around;
-  padding: 2rem 1rem; }
+  -webkit-transform: translateY(100vh);
+      -ms-transform: translateY(100vh);
+          transform: translateY(100vh); }
+  @media only screen and (min-width: 981px) and (max-width: 1200px), only screen and (min-width: 1201px) {
+    .modal {
+      background-color: rgba(36, 4, 37, 0.9); } }
   @media only screen and (max-width: 568px) {
     .modal {
       display: block; } }
 
 .modal-content {
-  position: relative;
+  bottom: 0;
+  left: 0;
   padding: 2rem 1rem;
-  border-radius: 2px;
-  max-width: 500px;
   background-color: white;
   margin-top: 40px;
   max-height: 100%; }
+  @media only screen and (max-width: 568px) {
+    .modal-content {
+      position: absolute;
+      box-shadow: 0px 0px 25px 0px rgba(36, 4, 37, 0.5);
+      width: 100%; } }
   @media only screen and (min-width: 981px) and (max-width: 1200px), only screen and (min-width: 1201px) {
     .modal-content {
+      position: relative;
+      border-radius: 2px;
+      width: 80%;
+      max-width: 500px;
       -webkit-box-flex: 1;
       -webkit-flex: 1;
           -ms-flex: 1;
               flex: 1;
-      -webkit-flex-basis: 90vw;
-          -ms-flex-preferred-size: 90vw;
-              flex-basis: 90vw;
       -webkit-align-self: center;
           -ms-flex-item-align: center;
               align-self: center; } }
+
+body.modal-active {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  position: fixed; }
 
 .flex-container {
   display: -webkit-box;

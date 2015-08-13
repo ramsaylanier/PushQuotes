@@ -19,6 +19,7 @@ Template.layout.onRendered(function(){
 
 Template.layout.events({
 	'click .transition-link': function(e){
+		console.log(e);
 		e.preventDefault();
 		var url = $(e.currentTarget).attr('href');
 
@@ -35,10 +36,12 @@ Template.layout.events({
 			var items = $('.item');
 
 			_.each(items, function(item, index){
-				$(item).velocity({
+				TweenMax.to(item, .6, {
 					opacity: 0,
-					translateY: -20
-				}, {duration: 600, easing:[300, 20], delay: index * 25}); 
+					y: -20,
+					ease: Power3.easeOut,
+					delay: index * .025
+				})
 			})
 
 			Meteor.setTimeout(function(){

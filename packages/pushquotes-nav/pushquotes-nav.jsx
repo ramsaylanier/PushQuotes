@@ -37,7 +37,7 @@ NavItem = React.createClass({
 		var isSubNavItem = this.props.subNavItem;
 
 		return (
-			<li className={"nav-item " + this.props.className + '-nav-item'} >
+			<li className={"nav-item " + this.props.className} >
 				<a 
 					className={"nav-link " + this.props.className} 
 					href={this.props.url} onClick={this.props.clickFunction}>{this.props.icon? this.props.icon : this.props.name}

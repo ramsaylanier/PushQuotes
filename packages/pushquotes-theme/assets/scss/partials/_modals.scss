@@ -1,14 +1,17 @@
 .modal{
-	position: absolute;
-	top: 0;
+	position: fixed;
+	bottom: 0;
 	left: 0;
 	width: 100%;
-	min-height: 100%;
-	background-color: fade-out($dark, .05);
+	height: 100vh;
 	display: flex;
 	align-content: center;
 	justify-content: space-around;
-	padding: 2rem 1rem;
+	transform: translateY(100vh);
+
+	@media #{$desktop}, #{$desktop-xl}{
+		background-color: fade-out($dark, .1);
+	}
 
 	@media #{$mobile}{
 		display: block;
@@ -16,16 +19,31 @@
 }
 
 .modal-content{
-	position: relative;
+	bottom: 0;
+	left: 0;
 	padding: 2rem 1rem;
-	border-radius: 2px;
-	max-width: 500px;
 	background-color: white;
 	margin-top: $headerHeight;
 	max-height: 100%;
+
+	@media #{$mobile}{
+		position: absolute;
+		box-shadow: 0px 0px 25px 0px fade-out($dark, .5);
+		width: 100%;
+	}
 	@media #{$desktop}, #{$desktop-xl}{
+		position: relative;
+		border-radius: 2px;
+		width: 80%;
+		max-width: 500px;
 		flex: 1;
-		flex-basis: 90vw;
 		align-self: center;
 	}
+}
+
+body.modal-active{
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+	position: fixed;
 }
