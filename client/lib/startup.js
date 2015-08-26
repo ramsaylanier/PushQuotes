@@ -4,6 +4,7 @@ Meteor.startup(function(){
 	window.viewportUnitsBuggyfill.init();
 	
 	React.initializeTouchEvents(true);
+	// TweenPlugin.activate([ScrollToPlugin]);
 
 	var loginStyle = "popup";
 

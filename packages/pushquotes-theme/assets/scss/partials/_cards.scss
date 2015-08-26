@@ -55,6 +55,8 @@ $ellipsesSize: 5px;
 	position: absolute;
 	bottom: $ellipsesSize * 2.5;
 	right: $ellipsesSize * 4;
+	width: $ellipsesSize * 5;
+	padding: 5px;
 
 	&:hover{
 
@@ -90,6 +92,7 @@ $ellipsesSize: 5px;
 	height: $ellipsesSize;
 	border-radius: 50%;
 	background-color: $dark;
+	transform: translateX($ellipsesSize * 2);
 	transition: background 200ms ease-out;
 
 	&:before, &:after{

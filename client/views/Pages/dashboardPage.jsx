@@ -1,23 +1,48 @@
 Template.dashboardPage.helpers({
-	ProfilePage: function(){
-		return ProfilePage;
+	DashboardPage: function(){
+		return DashboardPage;
 	}
 })
 
-Template.dashboardPage.onDestroyed(function(){
-	React.unmountComponentAtNode(document.getElementById('page'));
-});
+Template.dashboardPage.onRendered(function(){
+	Session.set('currentPageTitle', 'dashboardPage');
+})
 
-ProfilePage = React.createClass({
+DashboardPage = React.createClass({
+	componentDidMount: function(){
+		var page = $('.page');
+		var animation = this.props.animation || DefaultPageAnimateIn;
+		AnimateItem(page, animation);
+	},
 	render(){
 		return (
-			<div className="page-content">
-				<UserProfile/>
-				<DeckList showAuthor={false}/>
-			</div>
+			<Page>
+				<PageHero classes="flex-container centered t-a-center">
+					<UserProfile/>
+				</PageHero>
+				<PageContent>
+					<DeckList showAuthor={false}/>
+				</PageContent>
+			</Page>
 		)
 	}
 });
+
+EditUserProfile = React.createClass({
+	componentDidMount(){
+		var container = $('.edit-profile-container');
+		var form = this.getDOMNode();
+		formHeight = $(form).outerHeight();
+
+		SlideShowContent(container, formHeight);
+	},
+	render(){
+		return (
+			<Form attributes={profileFormAttributes} />
+		)
+	}
+});
+
 
 UserProfile = React.createClass({
 	mixins: [ReactMeteorData],
@@ -30,6 +55,15 @@ UserProfile = React.createClass({
 			avatar: avatar
 		}
 	},
+	renderEditProfile(){
+		profileFormAttributes.fields[0].value = Meteor.user().username;
+		profileFormAttributes.fields[1].value = Meteor.user().emails[0].address;
+
+		React.render(
+			<EditUserProfile/>,
+			$('.edit-profile-container').get(0)
+		)
+	},
 	render(){
 		var username = Router.current().params.username;
 
@@ -41,12 +75,14 @@ UserProfile = React.createClass({
 			)
 		} else {
 			return(
-				<div className="user-profile page-hero flex-container centered t-a-center">
+				<div className="user-dashboard p-2">
 					<UserAvatar image={this.data.avatar}/>
 					<div className="flex-container column centered items-centered">
 						<h5 className="user-name uppercase m-b-1">{username}</h5>
-						<Link href="/profile" className="btn primary-btn">Edit Profile</Link>
+						<button className="btn primary-btn twitter-btn" onClick={this.renderEditProfile}>Edit Profile</button>
 					</div>
+
+					<div className="edit-profile-container slide-down-container"></div>
 				</div>
 			)
 		}

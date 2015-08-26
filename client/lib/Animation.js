@@ -1,106 +1,86 @@
+var DefaultDuration = .5;
+var DefaultEasing = Power2.easeOut;
+var DefaultInProperties = {
+	opacity: 1,
+	scale: 1,
+	ease: DefaultEasing
+}
+var DefaultOutProperties = {
+	opacity: 0,
+	scale: 1.1,
+	ease: DefaultEasing
+}
+
 DefaultPageAnimateIn = {
-	properties: {
-		opacity: 1,
-		scale: [1, 1.1]
-	},
-	options: {
-		duration: 500, 
-		easing: [.5, .1, .1, 1]
-	}
+	duration: DefaultDuration,
+	properties: DefaultInProperties
 }
 
 DefaultPageAnimateOut = {
-	properties: {
-		opacity: 0,
-		scale: [1.1, 1]
-	},
-	options: {
-		duration: 500, 
-		easing: [.5, .1, .1, 1]
-	}
-}
-
-PageSlideIn = {
-	properties: {
-		opacity: 1,
-		translateY: [0, 100]
-	},
-	options: {
-		duration: 500, 
-		easing: [.5, .1, .1, 1]
-	}
+	duration: DefaultDuration,
+	properties: DefaultOutProperties
 }
 
 PageAnimationSequences = {
-	landingPage: {
-		pageTitle: {
-			item: '.page-title',
-			animation: {
-				properties: {
-					opacity: 0,
-					scale: 1.2
-				},
-				options: {
-					duration: 300, 
-					easing: [.5, .1, .1, 1]
-				},
-			},
-		},
-		page: {
-			item: '.page',
-			animation: {
-				properties: {
-					opacity: 0,
-					scale: [1.1, 1]
-				},
-				options: {
-					duration: 500, 
-					easing: [.5, .1, .1, 1],
-					delay: 200
-				}
-			}
-		},
-		sectionTitle:  {
-			item: '.first-section',
-			animation: {
-				properties: {
-					opacity: 0,
-					scale: [1.1,1]
-				},
-				options: {
-					duration: 500, 
-					easing: [.5, .1, .1, 1],
-					delay: 100
-				}
-			}
-		}
-	},
 	loginPage: {
 		page: {
 			item: '.page',
-			animation: {
-				properties: {
-					opacity: 0,
-					scale: [1.1, 1]
-				},
-				options: {
-					duration: 500, 
-					easing: [.5, .1, .1, 1],
-					delay: 0
-				}
-			}
+			animationOut: DefaultPageAnimateOut,
+			animationin: DefaultPageAnimateIn
+		}
+	},
+	dashboardPage: {
+		page: {
+			item: '.page',
+			animationOut: DefaultPageAnimateOut,
+			animationin: DefaultPageAnimateIn
 		}
 	}
 }
 
-AnimatePageOut = function(page){
-	var sequence = PageAnimationSequences[page];
+SlideShowContent = function(content, height){
+	TweenMax.to(content, .3, {
+		height: height,
+		ease: Power2.easeOut
+	});
 
-	_.each(sequence, function(element){
-		AnimateItem($(element.item), element.animation);
+	TweenMax.to(window, .6, {
+		scrollTo: content.offset().top - 60,
+		ease: Power2.easeOut
 	});
 }
 
+SlideHideContent = function(content){
+	TweenMax.to(content, .3, {
+		height: 0,
+		ease: Power2.easeOut
+	});
+
+	TweenMax.to(window, .6, {
+		scrollTo: content.parent().offset().top - 60,
+		ease: Power2.easeOut
+	});
+
+	Meteor.setTimeout(function(){
+		React.unmountComponentAtNode(content);
+	}, .6);
+}
+
+AnimatePageOut = function(page){
+	var pageTitle = Session.get('currentPageTitle');
+	var sequence = PageAnimationSequences[pageTitle];
+
+	if (sequence){
+		_.each(sequence, function(element){
+			AnimateItem($(element.item), element.animationOut);
+		});
+	} else {
+		AnimateItem($('.page'), DefaultPageAnimateOut);
+	}
+
+}
+
 AnimateItem = function(item, animation){
-	item.velocity(animation.properties, animation.options);
+	TweenMax.to(item, animation.duration, animation.properties)
+	// item.velocity(animation.properties, animation.options);
 }

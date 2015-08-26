@@ -1,5 +1,5 @@
 #app-header{
-	background-color: white;
+	background-color: $dark;
 	height: $headerHeight;
 	position: fixed;
 	width: 100%;
@@ -8,13 +8,13 @@
 }
 
 .logo{
+	display: inline-block;
 	height: 100%;
 	width: $headerHeight;
-	display: inline-block;
 
 	@media #{$mobile}{
+		position: relative;
 		display: table;
 		margin: 0 auto;
-		position: relative;
 	}
 }

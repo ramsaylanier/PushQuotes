@@ -8,11 +8,13 @@ LoginPage = React.createClass({
 	render(){
 		return (
 			<Page animateIn={DefaultPageAnimateIn} backgroundImage={'/img/login-bg.jpg'} wrapper={'form-wrapper white-bg'}>
-				<Form attributes={loginFormAttributes}/>
-				<Button onClick={twitterLogin} color="blue" className="full-width">Login With Twitter</Button>  
-				<p>No account? <Link href='/register' className="transition-link">Register</Link></p>
+				<div className="wrapper form-wrapper white-bg">
+					<Form attributes={loginFormAttributes}/>
+					<button onClick={twitterLogin} className="btn twitter-btn full-width">Login With Twitter</button>  
+					<p>No account? <Link href='/register' className="transition-link">Register</Link></p>
 
-				<Link className="small render-form" onClick={renderForgotPasswordForm}>Forgot password</Link>
+					<Link className="small render-form" onClick={renderForgotPasswordForm}>Forgot password</Link>
+				</div>
 			</Page>
 		)
 	}

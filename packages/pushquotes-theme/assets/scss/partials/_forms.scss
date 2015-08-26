@@ -97,12 +97,7 @@ textarea{
 }
 
 input[type="submit"]{
-	@extend .btn;
-	appearance: none;
-	-webkit-appearance: none;
-	background-color: $primary;
-	padding: .5rem 1rem;
-	font-size: 1rem;
+	@extend .primary-btn;
 }
 
 .hidden-field{

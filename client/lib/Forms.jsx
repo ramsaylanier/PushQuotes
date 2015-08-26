@@ -265,7 +265,7 @@ loginFormAttributes = {
 	],
 	type: 'login',
 	animateIn: false,
-	className: 'login-form center-form tight-form',
+	className: 'login-form center-form tight-form white-bg',
 	onSubmit: function(e){
 		e.preventDefault();
 
@@ -353,13 +353,6 @@ profileFormAttributes = {
 	className: 'profile-form',
 	fields: [
 		{
-			id: 1, 
-			type: 'text', 
-			name: 'name-field', 
-			className:'full-width input-field', 
-			label: 'Name'
-		},
-		{
 			id: 2, 
 			type: 'text', 
 			name: 'username-field', 
@@ -371,28 +364,35 @@ profileFormAttributes = {
 			type: 'email', 
 			name: 'email-field', 
 			className:'full-width input-field',
-			label: 'email'
+			label: 'Email'
 		},
 		{id: 4, type: 'submit', value: 'Save Profile'}
 	],
 	onSubmit: function(e){
 		e.preventDefault();
+
+		var username = $(e.currentTarget).find('[name=username-field]').val()
 		
 		var userProfile = {
-			name: $(e.currentTarget).find('[name=name-field]').val(),
+			name: username,
 			avatar: $('.user-avatar').attr('src')
 		};
 
 		var userBase = {
-			username: $(e.currentTarget).find('[name=username-field]').val(),
+			username: username,
 			email: $(e.currentTarget).find('[name=email-field]').val(),
 		}
 
-		Meteor.call('updateUserProfile', userProfile, userBase, function(error){
+		Meteor.call('updateUserProfile', userProfile, userBase, function(error, result){
 			if (error){
 				alert(error);
 			} else {
+
+				var container = $('.edit-profile-container');
+
+				SlideHideContent(container);
 				alert('saved!');
+				Router.go('/' + username);
 			}	
 		})
 	}

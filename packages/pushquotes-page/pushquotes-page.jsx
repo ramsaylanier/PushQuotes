@@ -2,7 +2,8 @@
 Page = React.createClass({
 	componentDidMount: function(){
 		var item = $(this.getDOMNode());
-		AnimateItem(item, this.props.animateIn);
+		var animation = this.props.animation || DefaultPageAnimateIn;
+		AnimateItem(item, animation);
 	},
 	componentWillUnmount: function(){
 		console.log('hi');
@@ -16,7 +17,7 @@ Page = React.createClass({
 		var children = this.props.children;
 		return(
 			<div className={"page " + this.props.className} style={styles}>
-				{ this.props.wrapper ? <div className={"wrapper " + this.props.wrapper}>{children}</div> : children } 
+				{children}
 			</div>
 		)
 	}
@@ -25,7 +26,7 @@ Page = React.createClass({
 PageHeader = React.createClass({
 	render: function(){
 
-		var styles = {
+		var styles = this.props.backgroundImage && {
 			backgroundImage: "url('" + this.props.backgroundImage + "')",
 		};
 
@@ -53,6 +54,18 @@ PageTitle = React.createClass({
 		)
 	}
 });
+
+PageContent = React.createClass({
+	render(){
+		return(
+			<div className={"page-content " + this.props.classes}>
+				<div className="wrapper">
+					{this.props.children}
+				</div>
+			</div>
+		)
+	}
+})
 
 PageSection = React.createClass({
 	render:function(){

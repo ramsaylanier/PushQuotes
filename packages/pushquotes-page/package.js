@@ -19,5 +19,5 @@ Package.onUse(function(api) {
 
   api.addFiles('pushquotes-page.jsx');
 
-  api.export(['Page', 'PageHeader', 'PageTitle', 'PageSection', 'PageSeparator'], 'client');
+  api.export(['Page', 'PageHeader', 'PageTitle', 'PageContent', 'PageSection', 'PageSeparator'], 'client');
 });

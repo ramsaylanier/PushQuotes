@@ -5,18 +5,11 @@
 	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
-	padding: 0rem .5rem;
 
 	&.form-wrapper{
-		min-width: 350px;
-		max-width: 600px;
-		width: 80%;
+		max-width: 500px;
 		border-radius: 3px;
-		padding: 1.5rem;
-	}
-
-	@media #{$mobile}{
-		padding: .5rem;
+		padding: 1rem;
 	}
 }
 

@@ -5,7 +5,7 @@ DeckList = React.createClass({
 		var subscription = Meteor.subscribe('deckList', {authorName: username}, username);
 		var deckQuery = {authorName: username};
 		return {
-			ready: !subscription.ready(),
+			loading: !subscription.ready(),
 			decks: Decks.find().fetch()
 		};
 	},
@@ -16,37 +16,24 @@ DeckList = React.createClass({
 		var instance = this;
 		return (
 			<div className="deck-content">
-				<div className="wrapper">
-					{!this.data.ready && 
-						<ul className={this.props.className || "" + 'card-list'}>
-							{this.props.showAuthor && 
-								<AuthorName key={this.data.decks}/>
-							}
-							
-							{this.data.decks.map(function(deck){
-								return (
-									<DeckItem key={deck._id} showAuthor={instance.props.showAuthor} {...deck} favorites={instance.props.favorites}/>
-								)
-							})}
-							
-							{this.data.decks.length == 0 && 
-								<p>{this.props.message || "Nothing here!"}</p>
-							}
-						</ul>
-					}
-				</div>
+				{!this.data.loading && 
+					<ul className={this.props.className || "" + 'card-list'}>
+						{this.props.showAuthor && 
+							<AuthorName key={this.data.decks}/>
+						}
+						
+						{this.data.decks.map(function(deck){
+							return (
+								<Card key={deck._id} showAuthor={instance.props.showAuthor} {...deck} favorites={instance.props.favorites}/>
+							)
+						})}
+						
+						{this.data.decks.length == 0 && 
+							<p>{this.props.message || "Nothing here!"}</p>
+						}
+					</ul>
+				}
 			</div>
-		)
-	}
-});
-
-Count = React.createClass({
-	render: function(){		
-		return (
-			<p className="small meta-item">
-				{this.props.icon ? this.props.icon : this.props.name}
-				<span className="count">{this.props.count}</span>
-			</p>
 		)
 	}
 });
