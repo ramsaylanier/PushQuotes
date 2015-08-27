@@ -22,8 +22,11 @@ Header = React.createClass({
 
 Logo = React.createClass({
 	render: function(){
+
+		var href = Meteor.user() ? "/" + Meteor.user().username : '/;'
+
 		return (
-			<a className="logo home-link transition-link" href="/">{LogoIcon}</a>
+			<a className="logo home-link transition-link" href={href}>{LogoIcon}</a>
 		)
 	}
 });

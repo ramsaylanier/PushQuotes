@@ -4,10 +4,6 @@
 	background-position: center center;
 	padding-top: $headerHeight;
 	transform: scale(.95);
-
-	@media #{$mobile}{
-		padding: $headerHeight + 16 1rem 0rem 1rem;
-	}
 }
 
 
@@ -31,7 +27,7 @@
 
 .page-title{
 	position: relative;
-	top: -2rem;
+	// top: -2rem;
 	background-color: white;
 	color: $dark;
 	font-weight: 700;

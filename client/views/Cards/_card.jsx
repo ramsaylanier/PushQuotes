@@ -100,8 +100,9 @@ Card = React.createClass({
 		return actions;
 	},
 	handleClick: function(e){
+		console.log(e);
 		var link = "/" + this.props.authorName + '/' + this.props.slug;
-		
+		Router.go(link);
 	},
 	render: function(){
 		var isAuthor = Meteor.userId() == this.props.author;
@@ -112,7 +113,7 @@ Card = React.createClass({
 		};
 		
 		return (
-			<li className="card flex-container" onClick={this.handleClick}>
+			<li className="card flex-container">
 				{this.props.image && 
 					<div className="card-image flex-1" style={backgroundImage}>
 						
@@ -121,7 +122,7 @@ Card = React.createClass({
 
 				<div className="card-details flex-1">
 
-					<CardTitle>
+					<CardTitle link={"/" + this.props.authorName + '/' + this.props.slug} classes="transition-link">
 						{this.props.title}	
 					</CardTitle>
 

@@ -1,6 +1,6 @@
 CardActions = React.createClass({
 	onClick(e){
-		
+		e.preventDefault();
 		var modal = $('body').append('<div class="modal"></div>');
 
 		console.log(modal);

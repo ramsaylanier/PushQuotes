@@ -459,7 +459,7 @@ body {
   float: left; }
 
 .favorite-glyph:hover:after {
-  color: #F2C71F;
+  color: #7e52a1;
   -webkit-animation: pulse 0.75s ease-in-out;
           animation: pulse 0.75s ease-in-out;
   -webkit-animation-iteration-count: infinite;
@@ -470,7 +470,7 @@ body {
 
 .unfavorite-glyph:after {
   content: "\2605";
-  color: #F2C71F; }
+  color: #7e52a1; }
 
 .favorite-glyph:after {
   content: "\2606";
@@ -612,7 +612,7 @@ body {
         -webkit-transition: -webkit-transform 150ms ease-out 0ms, background-color 150ms ease-out 0ms;
                 transition: transform 150ms ease-out 0ms, background-color 150ms ease-out 0ms; }
       .primary-nav .sub-nav-list .nav-item:hover {
-        background-color: #d2aa0c; }
+        background-color: #64417f; }
 
 .mobile-nav {
   position: fixed;
@@ -632,7 +632,7 @@ body {
     top: 35px;
     width: 30%; }
   .mobile-nav .sub-nav-list {
-    background-color: #F2C71F;
+    background-color: #7e52a1;
     position: fixed;
     height: 100%;
     width: 70vw;
@@ -674,18 +674,18 @@ body {
     -webkit-transition: -webkit-transform 0ms ease-out 0ms;
             transition: transform 0ms ease-out 0ms; }
   .sub-nav-list .nav-item {
-    background-color: #F2C71F;
+    background-color: #7e52a1;
     display: block; }
     .sub-nav-list .nav-item:nth-child(1) {
-      background-color: #c8a20c; }
+      background-color: #5e3d78; }
     .sub-nav-list .nav-item:nth-child(2) {
-      background-color: #d7ad0c; }
+      background-color: #664383; }
     .sub-nav-list .nav-item:nth-child(3) {
-      background-color: #e5b90d; }
+      background-color: #6e488d; }
     .sub-nav-list .nav-item:nth-child(4) {
-      background-color: #f1c311; }
+      background-color: #764d97; }
     .sub-nav-list .nav-item:nth-child(5) {
-      background-color: #f2c71f; }
+      background-color: #7e52a1; }
   .sub-nav-list .nav-link {
     color: white; }
 
@@ -805,9 +805,6 @@ textarea {
   -webkit-transform: scale(.95);
       -ms-transform: scale(.95);
           transform: scale(.95); }
-  @media only screen and (max-width: 568px) {
-    .page {
-      padding: 56px 1rem 0rem 1rem; } }
 
 .page-hero {
   background-color: white;
@@ -825,7 +822,6 @@ textarea {
 
 .page-title {
   position: relative;
-  top: -2rem;
   background-color: white;
   color: #240425;
   font-weight: 700;
@@ -848,7 +844,7 @@ textarea {
   width: 100%;
   max-width: 200px;
   height: 2px;
-  background-color: #F2C71F;
+  background-color: #7e52a1;
   border-radius: 3px;
   margin: 2rem auto 0rem auto; }
 
@@ -879,7 +875,7 @@ textarea {
     -webkit-transition: color 300ms ease-out;
             transition: color 300ms ease-out; }
     .card-title a:hover {
-      color: #F2C71F; }
+      color: #7e52a1; }
 
 .card-list {
   padding: 2rem .5rem; }
@@ -889,7 +885,7 @@ textarea {
   background-position: center center; }
 
 .hashtag {
-  color: #F2C71F;
+  color: #7e52a1;
   margin-right: .5rem;
   font-size: .8rem;
   border-radius: 3px;
@@ -904,9 +900,9 @@ textarea {
   width: 25px;
   padding: 5px; }
   .card-actions:hover .ellipses {
-    background-color: #F2C71F; }
+    background-color: #7e52a1; }
     .card-actions:hover .ellipses:before, .card-actions:hover .ellipses:after {
-      background-color: #F2C71F; }
+      background-color: #7e52a1; }
     .card-actions:hover .ellipses:before {
       -webkit-transform: translateX(-2px);
           -ms-transform: translateX(-2px);
@@ -958,11 +954,11 @@ textarea {
     margin-bottom: 3px; }
 
 .primary-btn, input[type="submit"] {
+  z-index: 2;
   position: relative;
   appearance: none;
   -webkit-appearance: none;
-  border: 0px;
-  background-color: #F2C71F;
+  border: 0px solid transparent;
   padding: .75rem 1.25rem;
   font-size: 1rem;
   color: white;
@@ -970,26 +966,15 @@ textarea {
           transition: background 300ms ease-out;
   border-radius: 3px;
   cursor: pointer;
-  z-index: 2; }
-  .primary-btn:after, input[type="submit"]:after {
-    content: '';
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 100%;
-    height: 100%;
-    border-radius: 3px;
-    box-shadow: inset -3px -3px 0px 2px #d2aa0c;
-    z-index: 1; }
+  background-color: #7e52a1; }
   .primary-btn:hover, input[type="submit"]:hover {
-    background-color: #f5d34f; }
+    background-color: #9770b6; }
 
 .twitter-btn {
   position: relative;
   appearance: none;
   -webkit-appearance: none;
-  border: 0px;
-  background-color: #55acee;
+  border: 0px solid transparent;
   padding: .75rem 1.25rem;
   font-size: 1rem;
   color: white;
@@ -997,17 +982,7 @@ textarea {
           transition: background 300ms ease-out;
   border-radius: 3px;
   cursor: pointer;
-  z-index: 2; }
-  .twitter-btn:after {
-    content: '';
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 100%;
-    height: 100%;
-    border-radius: 3px;
-    box-shadow: inset -3px -3px 0px 2px #2795e9;
-    z-index: 1; }
+  background-color: #55acee; }
   .twitter-btn:hover {
     background-color: #83c3f3; }
 
@@ -1040,7 +1015,7 @@ textarea {
   background-color: #6fae2a;
   color: white; }
 .live-controls .prev-quote-btn {
-  background-color: #F2C71F;
+  background-color: #7e52a1;
   color: white; }
 
 .modal {
@@ -1161,7 +1136,7 @@ body.modal-active {
     -webkit-transition: all 300ms ease-out;
             transition: all 300ms ease-out; }
   .deck-icon:hover path {
-    fill: #F2C71F; }
+    fill: #7e52a1; }
 
 .quote-list .action-list {
   padding: .5rem 0rem; }
@@ -1172,10 +1147,10 @@ body.modal-active {
 .back-icon {
   float: left; }
   .back-icon path {
-    fill: #F2C71F; }
+    fill: #7e52a1; }
 
 .search-icon path {
-  fill: #F2C71F; }
+  fill: #7e52a1; }
 
 .nav-icon {
   height: 100%; }
@@ -1190,7 +1165,7 @@ body.modal-active {
   width: 25px;
   height: 2px;
   margin-bottom: 4px;
-  background-color: #F2C71F;
+  background-color: #7e52a1;
   -webkit-transition: all 300ms ease-out;
           transition: all 300ms ease-out;
   border-radius: 2px; }
@@ -1206,6 +1181,12 @@ body.modal-active {
   top: -1px; }
 .nav-toggle.active .bar-3 {
   opacity: 0; }
+
+.dark-p {
+  fill: #3e2a59; }
+
+.light-p {
+  fill: #7e52a1; }
 
 .user-avatar {
   border-radius: 50%;

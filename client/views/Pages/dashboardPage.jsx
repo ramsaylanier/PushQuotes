@@ -79,7 +79,7 @@ UserProfile = React.createClass({
 					<UserAvatar image={this.data.avatar}/>
 					<div className="flex-container column centered items-centered">
 						<h5 className="user-name uppercase m-b-1">{username}</h5>
-						<button className="btn primary-btn twitter-btn" onClick={this.renderEditProfile}>Edit Profile</button>
+						<button className="btn primary-btn" onClick={this.renderEditProfile}>Edit Profile</button>
 					</div>
 
 					<div className="edit-profile-container slide-down-container"></div>

@@ -76,3 +76,11 @@
 		}
 	}
 }
+
+.dark-p{
+	fill: darken($primaryDark, 20%);
+}
+
+.light-p{
+	fill: $primary;
+}
