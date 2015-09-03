@@ -69,9 +69,11 @@ SlideHideContent = function(content){
 AnimateModalIn = function(){
 	var modal = $('.modal');
 	var page = $('.page');
+	var dX = modal.outerWidth() - ( (window.innerWidth - $('.wrapper').outerWidth()) / 2)
 
 	TweenMax.to(page, .4, {
-		x: "-20%"
+		x: -dX,
+		ease: Power2.easeOut
 	});
 
 	TweenMax.to(modal, .4, {
@@ -87,8 +89,11 @@ AnimateModalOut = function(){
 	var modal = $('.modal');
 	var page = $('.page');
 
+	var dX = modal.outerWidth();
+
 	TweenMax.to(page, .4, {
-		x: "0%"
+		x: "0%",
+		ease: Power2.easeOut
 	});
 
 	TweenMax.to(modal, .4, {

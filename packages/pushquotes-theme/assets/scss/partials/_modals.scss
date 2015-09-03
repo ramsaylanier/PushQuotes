@@ -7,7 +7,7 @@
 	justify-content: space-around;
 	transform: translateX(100%);
 
-	@media #{$desktop}, #{$desktop-xl}{
+	@media #{$tablet}, #{$desktop}, #{$desktop-xl}{
 		right: 0;
 		width: 80%;
 		max-width: 600px;
@@ -34,7 +34,7 @@
 		box-shadow: 0px 0px 25px 0px fade-out($dark, .5);
 		width: 100%;
 	}
-	@media #{$desktop}, #{$desktop-xl}{
+	@media #{$tablet}, #{$desktop}, #{$desktop-xl}{
 		position: relative;
 		border-radius: 2px;
 		width: 80%;
