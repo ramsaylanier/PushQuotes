@@ -49,7 +49,7 @@ newDeckForm = {
 				Errors.throw(error);
 			} else {
 				$('.close-modal-btn').click();
-				Router.go('/' + Meteor.user().username + '/' + deckAttributes.slug);
+				FlowRouter.go('/' + Meteor.user().username + '/' + deckAttributes.slug);
 			}
 		});
 	}
@@ -101,7 +101,7 @@ editDeckForm = {
 			label: 'URL of Image'
 		},
 		{id: 6, type: 'checkbox', label: 'Sync With Slides.com', name: 'use-slides-field'},
-		{id: 7, type: 'submit', value: 'Save Deck'}
+		{id: 7, type: 'submit', value: 'Save Deck', className: 'full-width'}
 	],
 	onSubmit: function(e){
 		e.preventDefault();
@@ -151,7 +151,7 @@ newQuoteForm = {
 			order: $(e.currentTarget).find('[name=quote-order-field]').val()
 		}
 
-		var eventId = Router.current().params._id;
+		var eventId = FlowRouter.getParam('eventId');
 
 		Meteor.call('addQuote', deckId, quoteAttributes, function(error){
 			if (error){
@@ -253,7 +253,7 @@ searchForm = {
 
 		var encodedQuery = encodeURIComponent(query)
 		console.log('/search/' + encodedQuery + settings)
-		Router.go('/search/' + encodedQuery + settings)
+		FlowRouter.go('/search/' + encodedQuery + settings)
 	}
 }
 
@@ -290,7 +290,7 @@ loginFormAttributes = {
 				AnimatePageOut('loginPage');
 
 				Meteor.setTimeout(function(){
-					Router.go('/' + userName);
+					FlowRouter.go('/' + userName);
 				}, 500);
 			}
 		})
@@ -341,7 +341,7 @@ registerFormAttributes = {
 				else {
 					Meteor.setTimeout(function(){
 						Session.set('loggedIn', true);
-						Router.go('/');
+						FlowRouter.go('/');
 					}, 500);
 				}
 			})
@@ -392,7 +392,7 @@ profileFormAttributes = {
 
 				SlideHideContent(container);
 				alert('saved!');
-				Router.go('/' + username);
+				FlowRouter.go('/' + username);
 			}	
 		})
 	}

@@ -1,40 +1,36 @@
-Template.deckSingle.onRendered(function(){
-	Session.set('currentPageTitle', 'deckPage');
-})
-
-Template.deckSingle.helpers({
-	DeckPage(){
-		return DeckPage;
-	}
-})
-
 DeckPage = React.createClass({
 	mixins: [ReactMeteorData],
 	getMeteorData(){
-		var slug = Router.current().params.slug;
-		var subscription = Meteor.subscribe('deckList', {slug: slug})
+		var slug = FlowRouter.getParam('slug');
+		var authorName = FlowRouter.getParam('username');
+		var subscription = Meteor.subscribe('deckList', {slug: slug}, authorName)
 		return {
-			ready: !subscription.ready(),
+			ready: subscription.ready(),
 			deck: Decks.findOne({slug: slug})
 		}
 	},
-	render: function(){
+	render(){
 
 		var deck = this.data.deck;
-		var style = {
-			backgroundImage: "url('" + deck.image + "')"
-		}
+		console.log(deck);
 
-		return (
-			<Page>
-				<PageHero classes="deck-hero" heroImage={deck.image}>
-					<h2 className="page-title">{deck.title}</h2>
-					<Hashtags hashtags={deck.hashtags}/>
-				</PageHero>
-				<PageContent>
-					<QuoteList />
-				</PageContent>
-			</Page>
-		)
+
+		if (this.data.ready){
+			return (
+				<Page>
+					<PageHero classes="deck-hero" heroImage={deck.image}>
+						<h2 className="page-title">{deck.title}</h2>
+						<Hashtags hashtags={deck.hashtags}/>
+					</PageHero>
+					<PageContent>
+						<QuoteList />
+					</PageContent>
+				</Page>
+			)
+		} else {
+			return (
+				<Page></Page>
+			)
+		}
 	}
 });

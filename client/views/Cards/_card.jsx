@@ -34,6 +34,10 @@ Card = React.createClass({
 		React.render(
 			<Modal>
 				 <Form attributes={editDeckForm} />
+				 <div className="flex-container items-centered space-between no-margin">
+					 <button className="btn secondary-btn flex-1" onClick={this.duplicateCard}>Duplicate Deck</button>
+					 <button className="btn negative-btn flex-1" onClick={this.deleteForm}>Delete Deck</button>
+				 </div>
 			</Modal>,
 			modal
 		)
@@ -48,10 +52,20 @@ Card = React.createClass({
 				if (error){
 					alert(error)
 				} else {
-					Router.go('/');
+					AnimateModalOut();
 				}
 			})
 		}
+	},
+	duplicateCard: function(){
+		var cardId = this.props._id;
+		Meteor.call('duplicateDeck', cardId, function(error){
+			if (error){
+				alert(error)
+			} else {
+				AnimateModalOut();
+			}
+		})
 	},
 	renderQuoteForm: function(e){
 		e.stopPropagation();
@@ -90,12 +104,6 @@ Card = React.createClass({
 			{name: 'Delete', icon: DeleteIcon, action: this.deleteForm},
 			{name: 'Duplicate', icon: DeleteIcon, action: this.duplicateDeck},
 		]
-
-		// if (this.props.live){
-		// 	actions.push({name: 'End Live', icon: StopIcon, action: this.toggleLive})
-		// } else {
-		// 	actions.push({name: 'Go Live', icon: PlayIcon, action: this.toggleLive})
-		// }
 
 		return actions;
 	},
@@ -141,7 +149,7 @@ Card = React.createClass({
 					</p>}
 				</div>
 
-				{isAuthor && <CardActions actions={this.actions()}/>}
+				{isAuthor && <ActionToggle action={this.renderEditModal}/>}
 
 				{this.props.favorites && this.props.quotes && this.props.quotes.length > 0 && 
 					<div class="nested-quote-list favorite-quote-list">

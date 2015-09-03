@@ -34,7 +34,7 @@ QuoteList = React.createClass({
 		var isFavoritesResults = this.props.deckId != undefined
 
 		if (Meteor.user())
-			isAuthor = Router.current().params.username === Meteor.user().username;
+			isAuthor = FlowRouter.getParam('username') === Meteor.user().username;
 		else 
 			isAuthor = false;
 

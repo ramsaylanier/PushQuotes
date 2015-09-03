@@ -1,19 +1,22 @@
 .modal{
 	position: fixed;
 	bottom: 0;
-	left: 0;
-	width: 100%;
 	height: 100vh;
 	display: flex;
 	align-content: center;
 	justify-content: space-around;
-	transform: translateY(100vh);
+	transform: translateX(100%);
 
 	@media #{$desktop}, #{$desktop-xl}{
+		right: 0;
+		width: 80%;
+		max-width: 600px;
 		background-color: fade-out($dark, .1);
 	}
 
 	@media #{$mobile}{
+		left: 0;
+		width: 100%;
 		display: block;
 	}
 }

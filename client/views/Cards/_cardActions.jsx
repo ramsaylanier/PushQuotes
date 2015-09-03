@@ -2,8 +2,6 @@ CardActions = React.createClass({
 	onClick(e){
 		e.preventDefault();
 		var modal = $('body').append('<div class="modal"></div>');
-
-		console.log(modal);
 		React.render(
 			<Modal>
 				<ul className="actions-list">
@@ -24,7 +22,18 @@ CardActions = React.createClass({
 	},
 	render(){
 		return(
-			<div className="card-actions" onClick={this.onClick}>
+			<ActionToggle action={this.props.action} />
+		)
+	}
+})
+
+ActionToggle = React.createClass({
+	handleClick(){
+		return this.props.action;
+	},
+	render(){
+		return(
+			<div className="card-actions" onClick={this.handleClick()}>
 				<span className="ellipses">
 
 				</span>

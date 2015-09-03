@@ -1,9 +1,16 @@
 *{
 	box-sizing: border-box;
-}
 
-*+*{
-	margin-bottom: 1rem;
+	& + *{
+		margin-bottom: 1rem;
+	}
+
+	&.no-margin{
+
+		& > *{
+			margin-bottom: initial;
+		}
+	}
 }
 
 a{

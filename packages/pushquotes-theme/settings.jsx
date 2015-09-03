@@ -1,12 +1,9 @@
-PrimaryNavItems = function(){
-
+MobileNav = new Nav();
+MobileNav.name = "mobile";
+MobileNav.location = "header";
+MobileNav.navItems = function(){
 	var navItems = [];
 
-	return navItems;
-}
-
-MobileNavItems = function(){
-	var navItems = [];
 	if (Meteor.user()){
 		navItems = [
 			{
@@ -59,16 +56,6 @@ MobileNavItems = function(){
 							}
 						},
 						{
-							id: 2,
-							url: '/profile',
-							name: 'Profile',
-							className: 'transition-link',
-							clickFunction: function(){
-								$('.nav-list').removeClass('active');
-								$('.nav-toggle').removeClass('active');
-							}
-						},
-						{
 							id: 3,
 							url: '',
 							name: 'New Deck',
@@ -105,7 +92,7 @@ MobileNavItems = function(){
 							clickFunction: function(){ 
 								Meteor.logout(function(error){
 									if (!error){ 
-										Router.go('/');
+										FlowRouter.go('/');
 										Session.set('loggedIn', false); 
 									}
 								}); 
@@ -122,10 +109,47 @@ MobileNavItems = function(){
 	}
 
 	return navItems;
-} 
+}
 
-PrimaryNavItems = function(){
+ShelfNav = new Nav();
+ShelfNav.name = 'shelf';
+ShelfNav.location = 'shelf';
+ShelfNav.navItems = function(){
 	var navItems = [];
+
+	if (Meteor.user()){
+		navItems = [
+			{
+				url: '/' + Meteor.user().username,
+				name: 'Dashboard',
+				className: 'nav-toggle'
+			},
+			{
+				url: '',
+				name: 'logout',
+				className: 'nav-toggle',
+				clickFunction: function(){
+					Meteor.logout(function(){
+						FlowRouter.go('/');
+					});	
+				}
+			}
+		]
+	} else {
+		navItems = [
+			{url: '/login', name: 'login', className: 'transition-link'}
+		]
+	}
+
+	return navItems;
+}
+
+PrimaryNav = new Nav();
+PrimaryNav.name = "primary";
+PrimaryNav.location = 'header';
+PrimaryNav.navItems = function(){
+	var navItems = [];
+
 	if (Meteor.user()){
 		navItems = [
 			{
@@ -158,12 +182,6 @@ PrimaryNavItems = function(){
 							className: 'transition-link'
 						},
 						{
-							id: 2,
-							url: '/profile',
-							name: 'Profile',
-							className: 'transition-link'
-						},
-						{
 							id: 3,
 							url: '',
 							name: 'New Deck',
@@ -193,7 +211,7 @@ PrimaryNavItems = function(){
 							clickFunction: function(){ 
 								Meteor.logout(function(error){
 									if (!error){ 
-										Router.go('/');
+										FlowRouter.go('/');
 										Session.set('loggedIn', false); 
 									}
 								}); 
@@ -210,13 +228,12 @@ PrimaryNavItems = function(){
 	}
 
 	return navItems;
-} 
+}
 
-getNavs = function(){
-	var Navs = [
-		{ name: 'mobile', location: 'header', navItems: MobileNavItems()},
-		{ name: 'primary', location: 'header', navItems: PrimaryNavItems()}
-	];
+Navs.push(PrimaryNav);
+Navs.push(ShelfNav);
+Navs.push(MobileNav);
 
-	return Navs;
+Settings = {
+	LogoIcon: LogoIcon
 }

@@ -10,33 +10,10 @@ Modal = React.createClass({
 		});
 	},
 	componentDidMount: function(){
-		var modal = $('.modal');
-
-		TweenMax.to(modal, .4, {
-			y: 0,
-			ease: Power2.easeOut
-		});
-
-		$('body').addClass('modal-active');
+		AnimateModalIn();
 	},
 	closeModal: function(){
-		var self = this;
-		var modal = $('.modal');
-
-		TweenMax.to(modal, .4, {
-			y: "100%",
-			ease: Power2.easeOut
-		});
-
-		Meteor.setTimeout(function(){
-			React.unmountComponentAtNode(modal.get(0));
-			modal.remove();
-			$('body').removeClass('modal-active');
-			$('body').css({
-				top: 0
-			});
-			$(window).scrollTop(self.scrollTop);
-		}, 500);
+		AnimateModalOut();
 	},
 	render: function(){
 		return (

@@ -66,6 +66,47 @@ SlideHideContent = function(content){
 	}, .6);
 }
 
+AnimateModalIn = function(){
+	var modal = $('.modal');
+	var page = $('.page');
+
+	TweenMax.to(page, .4, {
+		x: "-20%"
+	});
+
+	TweenMax.to(modal, .4, {
+		x: 0,
+		ease: Power2.easeOut
+	});
+
+	$('body').addClass('modal-active');
+}
+
+AnimateModalOut = function(){
+	var self = this;
+	var modal = $('.modal');
+	var page = $('.page');
+
+	TweenMax.to(page, .4, {
+		x: "0%"
+	});
+
+	TweenMax.to(modal, .4, {
+		x: "100%",
+		ease: Power2.easeOut
+	});
+
+	Meteor.setTimeout(function(){
+		React.unmountComponentAtNode(modal.get(0));
+		modal.remove();
+		$('body').removeClass('modal-active');
+		$('body').css({
+			top: 0
+		});
+		$(window).scrollTop(self.scrollTop);
+	}, 500);
+}
+
 AnimatePageOut = function(page){
 	var pageTitle = Session.get('currentPageTitle');
 	var sequence = PageAnimationSequences[pageTitle];

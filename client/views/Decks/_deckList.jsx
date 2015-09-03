@@ -1,7 +1,7 @@
 DeckList = React.createClass({
 	mixins: [ReactMeteorData],
 	getMeteorData(){
-		var username = Router.current().params.username;
+		var username = FlowRouter.getParam('username');
 		var subscription = Meteor.subscribe('deckList', {authorName: username}, username);
 		var deckQuery = {authorName: username};
 		return {

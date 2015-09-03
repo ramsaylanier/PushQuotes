@@ -1,9 +1,3 @@
-Template.loginPage.helpers({
-	LoginPage: function(){
-		return LoginPage;
-	}
-})
-
 LoginPage = React.createClass({
 	render(){
 		return (
@@ -18,19 +12,7 @@ LoginPage = React.createClass({
 			</Page>
 		)
 	}
-})
-
-Template.loginPage.onRendered(function(){
-
-	var animateOut = _.extend(DefaultPageAnimateOut,{options: {duration: 1000, easing:[300, 15],delay: 0}});
-
-	Session.set('animateOut', animateOut);
-	Session.set('currentPageTitle', 'loginPage');
 });
-
-// Template.loginPage.onDestroyed(function(){
-// 	React.unmountComponentAtNode(document.getElementById('main'));
-// });
 
 var renderForgotPasswordForm = function(e){
 	e.preventDefault();
@@ -56,7 +38,7 @@ var twitterLogin = function(){
 			console.log(error);
 		}
 		else{
-			Router.go('/');
+			FlowRouter.go('/' + Meteor.user().username);
 		}	
 	});
 }

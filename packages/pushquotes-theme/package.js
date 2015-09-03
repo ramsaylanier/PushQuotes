@@ -11,6 +11,15 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('1.1.0.2');
-  api.addFiles('pushquotes-theme.js');
+  api.versionsFrom('1.1.0.3');
+
+  api.use([
+     'ramsay:react-components-core'
+  ], 'client');
+
+  api.addFiles([
+    'settings.jsx'
+  ], 'client');
+
+  api.export(['Settings'], 'client');
 });

@@ -1,13 +1,3 @@
-Template.dashboardPage.helpers({
-	DashboardPage: function(){
-		return DashboardPage;
-	}
-})
-
-Template.dashboardPage.onRendered(function(){
-	Session.set('currentPageTitle', 'dashboardPage');
-})
-
 DashboardPage = React.createClass({
 	componentDidMount: function(){
 		var page = $('.page');
@@ -17,9 +7,6 @@ DashboardPage = React.createClass({
 	render(){
 		return (
 			<Page>
-				<PageHero classes="flex-container centered t-a-center">
-					<UserProfile/>
-				</PageHero>
 				<PageContent>
 					<DeckList showAuthor={false}/>
 				</PageContent>
@@ -65,7 +52,7 @@ UserProfile = React.createClass({
 		)
 	},
 	render(){
-		var username = Router.current().params.username;
+		var username = FlowRouter.getParam('username');
 
 		if (this.data.loading){
 			return (

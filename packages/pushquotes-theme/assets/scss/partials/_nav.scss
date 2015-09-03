@@ -6,6 +6,12 @@
 		display: none;
 	}
 
+	.nav-list{
+		& > .nav-item{
+			float: left;
+		}
+	}
+
 	.nav-item{
 		&:hover{
 			opacity: 1;
@@ -71,7 +77,13 @@
 	}
 
 	.nav-list{
-		float: right;
+		width: 100%;
+		display: flex;
+		align-content: center;
+
+		& > .nav-item{
+			flex: 1;
+		}
 	}
 
 	.sub-nav{
@@ -99,6 +111,10 @@
 	}
 }
 
+.nav-list{
+	height: 100%;
+}
+
 .nav-item{
 	position: relative;
 	padding: 0rem;
@@ -110,14 +126,6 @@
 	height: 100%;
 	width: 100%;
 	padding: .5rem;
-}
-
-.nav-list{
-	height: 100%;
-
-	& > .nav-item{
-		float: left;
-	}
 }
 
 .sub-nav-list{

@@ -15,6 +15,16 @@ Meteor.startup(function(){
 
 	Meteor.subscribe('userProfile');
 
+	twttr.events.bind(
+	  'tweet',
+	  function (event) {
+	    var quoteId = event.target.id
+	    Meteor.call('incTweets', quoteId, function(){
+	    	console.log("Incremented tweet")
+	    })
+	  }
+	);
+
 
 	//TODO add SEO and FB stuff here
 	// FB.init({

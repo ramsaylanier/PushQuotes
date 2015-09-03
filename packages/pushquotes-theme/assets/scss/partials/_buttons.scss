@@ -34,6 +34,16 @@
 	@include primary-btn($primary);
 }
 
+.secondary-btn{
+	z-index: 2;
+	@include primary-btn($secondary);
+}
+
+.negative-btn{
+	z-index: 2;
+	@include primary-btn($red);
+}
+
 .twitter-btn{
 	@include primary-btn($twitter);
 }
@@ -60,24 +70,5 @@
 
 	.bar-3{
 		display: none;
-	}
-}
-
-.live-controls{
-	.btn{
-		font-family: $sansSerif;
-		font-size: 1rem;
-		padding: .5rem 1rem;
-		border-radius: 2px;
-	}
-
-	.next-quote-btn{
-		background-color: $green;
-		color: white;
-	}
-
-	.prev-quote-btn{
-		background-color: $primary;
-		color: white;
 	}
 }
