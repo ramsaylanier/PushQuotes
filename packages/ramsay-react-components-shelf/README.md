@@ -1,1 +1,0 @@
-This is a React component for a shelf menu for mobile applications;
