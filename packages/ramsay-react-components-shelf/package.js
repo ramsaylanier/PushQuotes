@@ -14,7 +14,7 @@ Package.onUse(function(api) {
   api.versionsFrom('1.1.0.3');
 
   api.use([
-    'ramsay:react-components-dependencies@0.1.0'
+    'ramsay:react-components-dependencies'
   ], 'client');
 
   api.addFiles('component-shelf.jsx');
