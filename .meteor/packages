@@ -17,7 +17,6 @@ simple:rest
 miktam:api-password
 
 
-npm-container
 accounts-twitter
 matb33:collection-hooks
 xolvio:cucumber
@@ -28,3 +27,4 @@ react-template-helper
 kadira:flow-router
 kadira:react-layout
 pushquotes:pushquotes-theme
+ramsay:react-components-core
