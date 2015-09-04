@@ -1,46 +1,42 @@
 .modal{
 	position: fixed;
-	bottom: 0;
+	top: 0;
 	height: 100vh;
 	display: flex;
 	align-content: center;
 	justify-content: space-around;
-	transform: translateX(100%);
 	padding: $headerHeight 0;
+	right: -100vw;
 
 	@media #{$tablet}, #{$desktop}, #{$desktop-xl}{
-		right: 0;
 		width: 80%;
 		max-width: 600px;
 		background-color: fade-out($dark, .1);
 	}
 
 	@media #{$mobile}{
-		left: 0;
+		margin-top: $headerHeight;
 		width: 100%;
-		display: block;
+		padding: 0;
+		// background-color:white;
 	}
 }
 
 .modal-content{
-	bottom: 0;
+	position: relative;
+	top: 0;
 	left: 0;
-	padding: 2rem 1rem;
+	padding: 2rem 1rem 4rem 1rem;
 	background-color: white;
-	margin-top: $headerHeight;
-	max-height: 80vh;
-	overflow: auto;
+	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
 
 	@media #{$mobile}{
-		position: absolute;
-		box-shadow: 0px 0px 25px 0px fade-out($dark, .5);
 		width: 100%;
 	}
 	@media #{$tablet}, #{$desktop}, #{$desktop-xl}{
-		position: relative;
+		max-height: 100%;
 		border-radius: 2px;
-		width: 80%;
 		max-width: 500px;
 		flex: 1;
 		align-self: center;

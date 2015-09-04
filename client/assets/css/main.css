@@ -1452,7 +1452,7 @@ input[type="submit"]:hover {
 
 .modal {
 	position: fixed;
-	bottom: 0;
+	top: 0;
 	height: 100vh;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -1464,20 +1464,17 @@ input[type="submit"]:hover {
 	-webkit-justify-content: space-around;
 	-ms-flex-pack: distribute;
 	justify-content: space-around;
-	-webkit-transform: translateX(100%);
-	-ms-transform: translateX(100%);
-	transform: translateX(100%);
 	padding: 40px 0;
+	right: -100vw;
 }
 
 .modal-content {
-	bottom: 0;
+	position: relative;
+	top: 0;
 	left: 0;
-	padding: 2rem 1rem;
+	padding: 2rem 1rem 4rem 1rem;
 	background-color: white;
-	margin-top: 40px;
-	max-height: 80vh;
-	overflow: auto;
+	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
 }
 
@@ -1740,16 +1737,14 @@ body.modal-active {
 @media only screen and (min-width: 569px) and (max-width: 980px), only screen and (min-width: 981px) and (max-width: 1200px), only screen and (min-width: 1201px) {
 
 .modal {
-	right: 0;
 	width: 80%;
 	max-width: 600px;
 	background-color: rgba(36, 4, 37, 0.9);
 }
 
 .modal-content {
-	position: relative;
+	max-height: 100%;
 	border-radius: 2px;
-	width: 80%;
 	max-width: 500px;
 	-webkit-box-flex: 1;
 	-webkit-flex: 1;
@@ -1777,14 +1772,12 @@ body.modal-active {
 }
 
 .modal {
-	left: 0;
+	margin-top: 40px;
 	width: 100%;
-	display: block;
+	padding: 0;
 }
 
 .modal-content {
-	position: absolute;
-	box-shadow: 0px 0px 25px 0px rgba(36, 4, 37, 0.5);
 	width: 100%;
 }
 
