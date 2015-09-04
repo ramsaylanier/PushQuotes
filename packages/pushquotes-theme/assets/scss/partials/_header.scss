@@ -5,6 +5,7 @@
 	width: 100%;
 	left: 0;
 	top: 0;
+	backface-visibility: hidden;
 }
 
 .logo{
@@ -13,8 +14,6 @@
 	width: $headerHeight;
 
 	@media #{$mobile}{
-		position: relative;
-		display: table;
-		margin: 0 auto;
+		display: none;
 	}
 }

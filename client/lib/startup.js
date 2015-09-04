@@ -25,6 +25,15 @@ Meteor.startup(function(){
 	  }
 	);
 
+	Accounts.onLogin(function(){
+		var user = Meteor.user();
+		console.log(user.profile);
+
+		if (!user.profile.avatar){
+			Meteor.users.update(user._id, {$set: {'profile.avatar': '/img/default-avatar.png'}});
+		}
+	})
+
 
 	//TODO add SEO and FB stuff here
 	// FB.init({

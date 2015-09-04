@@ -16,10 +16,10 @@ MobileNav.navItems = function(){
 				} 
 			},
 			{
-				url: '/search',
-				name: 'search',
-				icon: SearchIcon,
-				className: 'transition-link search-toggle'
+				url: '/' + Meteor.user().username,
+				name: Meteor.user().username,
+				className: 'home-toggle',
+				icon: <UserAvatar image={Meteor.user().profile.avatar} />,
 			},
 			{
 				url: '',
@@ -27,78 +27,7 @@ MobileNav.navItems = function(){
 				className: 'nav-toggle',
 				icon: MenuIcon,
 				clickFunction: function(){
-					var toggle = $('.nav-toggle');
-					var nav = $('.mobile-nav');
-					// var isActive = false;
-					toggle.toggleClass('active');
-					nav.toggleClass('active');
-
-					// if (toggle.hasClass('active')){
-					// 	isActive = true;
-					// }
-
-					// React.render(
-					// 	<Header active={isActive} />,
-					// 	$('#header').get(0)
-					// );
-					
-				},
-				subnav: {
-					navItems: [
-						{
-							id: 1,
-							url: '/' + Meteor.user().username, 
-							name: 'Dashboard',
-							className: 'transition-link',
-							clickFunction: function(){
-								$('.nav-list').removeClass('active');
-								$('.nav-toggle').removeClass('active');
-							}
-						},
-						{
-							id: 3,
-							url: '',
-							name: 'New Deck',
-							clickFunction: function(){
-								var modal = document.createElement('div');
-								$(modal).addClass('modal new-form-modal');
-								document.body.appendChild(modal);
-
-								$('.nav-list').removeClass('active');
-								$('.nav-toggle').removeClass('active');
-
-								React.render(
-									<Modal>
-										<Form attributes={newDeckForm} />
-									</Modal>,
-									modal
-								)
-							}
-						},
-						{
-							id: 4,
-							url: '/favorites',
-							name: 'Favorites',
-							className: 'transition-link',
-							clickFunction: function(){
-								$('.nav-list').removeClass('active');
-								$('.nav-toggle').removeClass('active');
-							}
-						},
-						{
-							id: 5,
-							url: '', 
-							name: 'logout',
-							clickFunction: function(){ 
-								Meteor.logout(function(error){
-									if (!error){ 
-										FlowRouter.go('/');
-										Session.set('loggedIn', false); 
-									}
-								}); 
-							} 
-						}
-					]
+					ToggleShelf();
 				}
 			}
 		]
@@ -120,19 +49,52 @@ ShelfNav.navItems = function(){
 	if (Meteor.user()){
 		navItems = [
 			{
-				url: '/' + Meteor.user().username,
+				url: '/' + Meteor.user().username, 
 				name: 'Dashboard',
-				className: 'nav-toggle'
+				className: 'transition-link',
+				clickFunction: function(){
+					$('.nav-list').removeClass('active');
+					$('.nav-toggle').removeClass('active');
+				}
 			},
 			{
 				url: '',
-				name: 'logout',
-				className: 'nav-toggle',
+				name: 'New Deck',
 				clickFunction: function(){
-					Meteor.logout(function(){
-						FlowRouter.go('/');
-					});	
+					var modal = document.createElement('div');
+					$(modal).addClass('modal new-form-modal');
+					document.body.appendChild(modal);
+
+					$('.nav-list').removeClass('active');
+					$('.nav-toggle').removeClass('active');
+
+					React.render(
+						<Modal>
+							<Form attributes={newDeckForm} />
+						</Modal>,
+						modal
+					)
 				}
+			},
+			{
+				url: '/favorites',
+				name: 'Favorites',
+				className: 'transition-link',
+				clickFunction: function(){
+					$('.nav-list').removeClass('active');
+					$('.nav-toggle').removeClass('active');
+				}
+			},
+			{
+				url: '', 
+				name: 'logout',
+				clickFunction: function(){ 
+					Meteor.logout(function(error){
+						if (!error){ 
+							FlowRouter.go('/');
+						}
+					}); 
+				} 
 			}
 		]
 	} else {
@@ -161,6 +123,8 @@ PrimaryNav.navItems = function(){
 			{
 				url: '',
 				name: Meteor.user().username,
+				icon: <UserAvatar image={Meteor.user().profile.avatar} />
+				,
 				mouseEnter: function(e){
 					React.render(
 						<Header active={true} />,
@@ -211,8 +175,7 @@ PrimaryNav.navItems = function(){
 							clickFunction: function(){ 
 								Meteor.logout(function(error){
 									if (!error){ 
-										FlowRouter.go('/');
-										Session.set('loggedIn', false); 
+										FlowRouter.go('/'); 
 									}
 								}); 
 							} 
@@ -223,7 +186,7 @@ PrimaryNav.navItems = function(){
 		]
 	} else {
 		navItems = [
-			{url: '/login', name: 'login', className: 'transition-link'}
+			
 		]
 	}
 
@@ -234,6 +197,4 @@ Navs.push(PrimaryNav);
 Navs.push(ShelfNav);
 Navs.push(MobileNav);
 
-Settings = {
-	LogoIcon: LogoIcon
-}
+Settings.LogoIcon = LogoIcon;

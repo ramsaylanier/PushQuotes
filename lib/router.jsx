@@ -18,7 +18,7 @@ FlowRouter.route('/login', {
 		} 
 	}],
 	action: function(){
-		ReactLayout.render(NoHeaderLayout, {
+		ReactLayout.render(MainLayout, {
 			noHeader: true,
 			content: <LoginPage/>
 		})
@@ -27,7 +27,7 @@ FlowRouter.route('/login', {
 
 FlowRouter.route('/register', {
 	action: function(){
-		ReactLayout.render(NoHeaderLayout, {
+		ReactLayout.render(MainLayout, {
 			noHeader: true,
 			content: <RegisterPage/>
 		})

@@ -1,8 +1,6 @@
 DashboardPage = React.createClass({
 	componentDidMount: function(){
-		var page = $('.page');
-		var animation = this.props.animation || DefaultPageAnimateIn;
-		AnimateItem(page, animation);
+		
 	},
 	render(){
 		return (

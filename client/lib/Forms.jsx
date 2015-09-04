@@ -286,8 +286,7 @@ loginFormAttributes = {
 			if (error)
 				Errors.throw(error.reason, 'error')
 			else{
-				Session.set('loggedIn', true);
-				AnimatePageOut('loginPage');
+				AnimateItem($('.page'), PageAnimations.animateOut)
 
 				Meteor.setTimeout(function(){
 					FlowRouter.go('/' + userName);

@@ -1,7 +1,7 @@
 LoginPage = React.createClass({
 	render(){
 		return (
-			<Page animateIn={DefaultPageAnimateIn} backgroundImage={'/img/login-bg.jpg'} wrapper={'form-wrapper white-bg'}>
+			<Page backgroundImage={'/img/login-bg.jpg'}>
 				<div className="wrapper form-wrapper white-bg">
 					<Form attributes={loginFormAttributes}/>
 					<button onClick={twitterLogin} className="btn twitter-btn full-width">Login With Twitter</button>  

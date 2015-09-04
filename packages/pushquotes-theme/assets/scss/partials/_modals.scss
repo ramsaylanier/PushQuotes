@@ -6,6 +6,7 @@
 	align-content: center;
 	justify-content: space-around;
 	transform: translateX(100%);
+	padding: $headerHeight 0;
 
 	@media #{$tablet}, #{$desktop}, #{$desktop-xl}{
 		right: 0;
@@ -27,7 +28,9 @@
 	padding: 2rem 1rem;
 	background-color: white;
 	margin-top: $headerHeight;
-	max-height: 100%;
+	max-height: 80vh;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
 
 	@media #{$mobile}{
 		position: absolute;

@@ -10,10 +10,7 @@ DeckPage = React.createClass({
 		}
 	},
 	render(){
-
 		var deck = this.data.deck;
-		console.log(deck);
-
 
 		if (this.data.ready){
 			return (
@@ -29,7 +26,7 @@ DeckPage = React.createClass({
 			)
 		} else {
 			return (
-				<Page></Page>
+				<p></p>
 			)
 		}
 	}

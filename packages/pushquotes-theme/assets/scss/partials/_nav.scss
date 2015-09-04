@@ -1,3 +1,45 @@
+.nav-list{
+	height: 100%;
+}
+
+.nav-item{
+	position: relative;
+	padding: 0rem;
+}
+
+.nav-link{
+	color: white;
+	display: block;
+	height: 100%;
+
+	display: flex;
+	align-items: center;
+}
+
+.sub-nav-list{
+	position: absolute;
+	top: $headerHeight;
+	right: 0;
+	transition: transform 0ms ease-out 300ms, opacity 300ms ease-out;
+
+	&:hover{
+		transform: rotateX(0deg);
+		transition: transform 0ms ease-out 0ms, opacity 150ms ease-out;
+	}
+
+	.nav-item{
+		background-color: $primary;
+		display: block;
+		padding: .5rem;
+
+		@for $i from 1 through 5{
+			&:nth-child(#{$i}) {
+				background-color: darken($primary, (5 - $i) * 3);
+			}
+		};
+	}
+}
+
 .primary-nav{
 	height: 100%;
 	float: right;
@@ -7,58 +49,37 @@
 	}
 
 	.nav-list{
+		display: flex;
+
 		& > .nav-item{
-			float: left;
+			margin-right: .5rem;
 		}
 	}
 
+	.nav-link{
+		display: flex;
+		align-items: center;
+	}
+
 	.nav-item{
+		display: flex;
+		align-items: center; 
 		&:hover{
 			opacity: 1;
 			
 			.sub-nav-list{
+				transition: transform 0ms ease-out 0ms, opacity 300ms ease-out;
 				transform: rotateX(0deg);
-				transition-delay: 0ms;
-			}
+				opacity: 1;
 
-			.nav-item{
-				transform: rotateX(0deg);
-
-				@for $i from 1 through 5{
-					&:nth-child(#{$i}) {
-						transition-delay: 50ms * $i;
-					}
-				}
 			}
 		}
 	}
 
 	.sub-nav-list{
+		transition: transform 0ms ease-out 300ms, opacity 150ms ease-out;
 		transform: rotateX(90deg);
-		transform-origin: top center;
-		transition: transform 0ms ease-out 250ms;
-		perspective: 100;
-
-		&:hover{
-			transform: rotateX(0deg);
-			transition-delay: 0ms;
-		}
-
-		.nav-item{
-			transform: rotateX(-180deg);
-			transform-origin: top center;
-			backface-visibility: hidden;
-
-			@for $i from 1 through 5{
-				&:nth-child(#{$i}) {
-					transition: transform 150ms ease-out (5 * 50ms) - (50ms * $i), background-color 150ms ease-out 0ms;
-				}
-			};
-
-			&:hover{
-				background-color: darken($primary, 10%);
-			}	
-		}
+		opacity: 0;
 	}
 }
 
@@ -79,88 +100,28 @@
 	.nav-list{
 		width: 100%;
 		display: flex;
-		align-content: center;
-
-		& > .nav-item{
-			flex: 1;
-		}
-	}
-
-	.sub-nav{
-		top: 35px;
-		width: 30%;
-	}
-
-	.sub-nav-list{
-		background-color: $primary;
-		position: fixed;
-		height: 100%;
-		width: 70vw;
-		transform: translateX(70vw);
-		transition: transform 150ms cubic-bezier(.7, .3, .9, 1);
-
-		.nav-item{
-			text-align: center;
-		}
-	}
-
-	&.active{
-		.sub-nav-list{
-			transform: translateX(0vw);
-		}
+		align-items: center;
+		justify-content: space-between;
 	}
 }
 
-.nav-list{
-	height: 100%;
-}
-
-.nav-item{
-	position: relative;
-	padding: 0rem;
-}
-
-.nav-link{
-	color: white;
-	display: block;
-	height: 100%;
-	width: 100%;
-	padding: .5rem;
-}
-
-.sub-nav-list{
-	position: absolute;
-	top: $headerHeight;
-	right: 0;
-
-	&:hover{
-		transform: rotateX(0deg);
-		transition: transform 0ms ease-out 0ms;
+.shelf-nav{
+	.nav-list{
+		width: 100%;
 	}
 
 	.nav-item{
-		background-color: $primary;
-		display: block;
-
-		@for $i from 1 through 5{
-			&:nth-child(#{$i}) {
-				background-color: darken($primary, (5 - $i) * 3);
-			}
-		};
-	}
-
-	.nav-link{
-		color: white;
+		display: flex;
+		justify-content: flex-end;
+		padding: .5rem;
+		border-bottom: 1px solid $primary;
 	}
 }
 
-
-.back-toggle-nav-item{
-	position: absolute;
-	left: 0;
-
+.back-toggle{
+	margin-left: .5rem;
 }
 
-.nav-toggle-nav-item{
-	float: right;
+.nav-toggle{
+	margin-right: .5rem;
 }

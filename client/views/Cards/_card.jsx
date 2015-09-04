@@ -52,7 +52,7 @@ Card = React.createClass({
 				if (error){
 					alert(error)
 				} else {
-					AnimateModalOut();
+					Animations.AnimateModalOut();
 				}
 			})
 		}
@@ -63,7 +63,7 @@ Card = React.createClass({
 			if (error){
 				alert(error)
 			} else {
-				AnimateModalOut();
+				Animations.AnimateModalOut();
 			}
 		})
 	},

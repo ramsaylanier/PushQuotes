@@ -32,8 +32,10 @@ Accounts.onCreateUser(function(options, user){
 			user.profile.avatar = user.services.twitter.profile_image_url;
 		} else if (user.services.facebook){
 			user.username = user.services.facebook.name;
+			user.profile = {};
+			user.profile.avatar = "/img/default-avatar.jpg";
 		}
 	}
 	
 	return user;
-})
+});

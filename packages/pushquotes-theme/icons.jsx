@@ -80,4 +80,3 @@ LogoIcon = <svg version="1.1" className="logo icon" x="0px" y="0px" viewBox="0 0
 	</svg>
 
 
-

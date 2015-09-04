@@ -6,6 +6,10 @@
 	z-index: 900;
 }
 
+.overlay{
+	z-index: 875;
+}
+
 .modal{
 	z-index: 850;
 }
@@ -22,12 +26,10 @@
 	z-index: 90;
 }
 
-.main{
-	z-index: 1;
+.main, .application{
+	z-index: 2;
 }
 
-@media #{$mobile}{
-	.logo{
-		z-index: 100;
-	}
+#shelf-container{
+	z-index: 1;
 }
