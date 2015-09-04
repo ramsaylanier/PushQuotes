@@ -1,10 +1,11 @@
 .page{
+	position: relative;
 	min-height: 100vh;
+	background-color: darken(white, 10%);
 	background-size: cover;
 	background-position: center center;
-	padding-top: $headerHeight * 2;
+	padding-top: $headerHeight;
 	opacity: 0;
-	// transform: scale(.95);
 }
 
 
@@ -14,7 +15,7 @@
 }
 
 .page-content{
-	background-color: darken(white, 10%);
+	padding: 2rem 0rem;
 }
 
 .page-header{

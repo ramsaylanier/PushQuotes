@@ -2,6 +2,7 @@ LoginPage = React.createClass({
 	render(){
 		return (
 			<Page backgroundImage={'/img/login-bg.jpg'}>
+				<PageContent>
 				<div className="wrapper form-wrapper white-bg">
 					<Form attributes={loginFormAttributes}/>
 					<button onClick={twitterLogin} className="btn twitter-btn full-width">Login With Twitter</button>  
@@ -9,6 +10,7 @@ LoginPage = React.createClass({
 
 					<Link className="small render-form" onClick={renderForgotPasswordForm}>Forgot password</Link>
 				</div>
+				</PageContent>
 			</Page>
 		)
 	}

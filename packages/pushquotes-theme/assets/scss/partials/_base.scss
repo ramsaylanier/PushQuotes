@@ -19,8 +19,6 @@ a{
 
 body{
 	font-family: $sansSerif;
-	// background-color: darken(white, 10%);
-	background-color: $dark;
 }
 
 .main{
@@ -31,6 +29,7 @@ body{
 	position: relative;
 	overflow: hidden;
 	background-color: darken(white, 10%);
+	min-height: 100vh;
 
 	.overlay{
 		position: fixed;

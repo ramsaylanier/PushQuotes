@@ -9,7 +9,7 @@ MobileNav.navItems = function(){
 			{
 				url: '', 
 				name: 'back', 
-				icon: BackIcon, 
+				icon: Icons.BackIcon, 
 				className: 'back-toggle',
 				clickFunction: function(){
 					history.back();
@@ -25,7 +25,7 @@ MobileNav.navItems = function(){
 				url: '',
 				name: Meteor.user().username,
 				className: 'nav-toggle',
-				icon: MenuIcon,
+				icon: Icons.MenuIcon,
 				clickFunction: function(){
 					ToggleShelf();
 				}
@@ -117,7 +117,7 @@ PrimaryNav.navItems = function(){
 			{
 				url: '/search',
 				name: 'search',
-				icon: SearchIcon,
+				icon: Icons.SearchIcon,
 				className: 'transition-link search-toggle'
 			},
 			{
@@ -197,4 +197,4 @@ Navs.push(PrimaryNav);
 Navs.push(ShelfNav);
 Navs.push(MobileNav);
 
-Settings.LogoIcon = LogoIcon;
+Settings.LogoIcon = Icons.LogoIcon;

@@ -1,9 +1,11 @@
-Template.newDeckPage.onRendered(function(){
-
-	React.render(
-		<div className="wrapper">
-			<Form attributes={newDeckForm} />
-		</div>,
-		document.getElementById('new-deck-page')
-	)
+NewDeckPage = React.createClass({
+	render(){
+		return(
+			<Page>
+				<div className="wrapper">
+					<Form attributes={newDeckForm} />
+				</div>
+			</Page>
+		)
+	}
 })

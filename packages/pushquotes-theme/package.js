@@ -22,5 +22,5 @@ Package.onUse(function(api) {
     'settings.jsx'
   ], 'client');
 
-  api.export(['Settings'], 'client');
+  api.export(['Settings', 'Icons'], 'client');
 });

@@ -72,3 +72,23 @@
 		display: none;
 	}
 }
+
+.floating-toggle{
+	position: fixed;
+	bottom: 10px;
+	background-color: $red;
+	width: 40px;
+	height: 40px;
+	padding: 5px;
+	border-radius: 50%;
+	right: 10px;
+	transition: all 150ms ease-out 150ms;
+}
+
+.application.shelf-active{
+	.floating-toggle{
+		transform: translateX(-60px);
+		transition: all 150ms ease-out;
+		opacity: 0;
+	}
+}

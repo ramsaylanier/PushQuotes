@@ -28,11 +28,19 @@ FlowRouter.route('/login', {
 FlowRouter.route('/register', {
 	action: function(){
 		ReactLayout.render(MainLayout, {
-			noHeader: true,
 			content: <RegisterPage/>
 		})
 	}
 })
+
+FlowRouter.route('/new-deck', {
+	action: function(){
+		ReactLayout.render(MainLayout, {
+			content: <NewDeckPage/>
+		})
+	}
+})
+
 
 FlowRouter.route('/:username/:slug', {
 	action: function(params){
@@ -45,7 +53,7 @@ FlowRouter.route('/:username/:slug', {
 FlowRouter.route('/:username', {
 	action: function(params){
 		ReactLayout.render(MainLayout, {
-			content: <DashboardPage/>
+			content: <div><DashboardPage/><AddDeckToggle/></div>
 		})
 	}
 })

@@ -516,7 +516,6 @@ a {
 
 body {
 	font-family: 'Source Sans Pro', Helvetica, sans-serif;
-	background-color: #240425;
 }
 
 .main {
@@ -527,6 +526,7 @@ body {
 	position: relative;
 	overflow: hidden;
 	background-color: #e6e6e6;
+	min-height: 100vh;
 }
 
 .application .overlay {
@@ -1100,10 +1100,12 @@ textarea:focus {
 }
 
 .page {
+	position: relative;
 	min-height: 100vh;
+	background-color: #e6e6e6;
 	background-size: cover;
 	background-position: center center;
-	padding-top: 80px;
+	padding-top: 40px;
 	opacity: 0;
 }
 
@@ -1113,7 +1115,7 @@ textarea:focus {
 }
 
 .page-content {
-	background-color: #e6e6e6;
+	padding: 2rem 0rem;
 }
 
 .page-header {
@@ -1426,6 +1428,28 @@ input[type="submit"]:hover {
 	display: none;
 }
 
+.floating-toggle {
+	position: fixed;
+	bottom: 10px;
+	background-color: #F91739;
+	width: 40px;
+	height: 40px;
+	padding: 5px;
+	border-radius: 50%;
+	right: 10px;
+	-webkit-transition: all 150ms ease-out 150ms;
+	transition: all 150ms ease-out 150ms;
+}
+
+.application.shelf-active .floating-toggle {
+	-webkit-transform: translateX(-60px);
+	-ms-transform: translateX(-60px);
+	transform: translateX(-60px);
+	-webkit-transition: all 150ms ease-out;
+	transition: all 150ms ease-out;
+	opacity: 0;
+}
+
 .modal {
 	position: fixed;
 	bottom: 0;
@@ -1559,6 +1583,10 @@ body.modal-active {
 	fill: #7e52a1;
 }
 
+.plus-icon path {
+	fill: white;
+}
+
 .nav-icon {
 	height: 100%;
 }
@@ -1620,6 +1648,7 @@ body.modal-active {
 	flex-basis: 100%;
 	height: 200px;
 	background-size: cover;
+	background-position: center center;
 }
 
 .block {
@@ -1687,7 +1716,7 @@ body.modal-active {
 	z-index: 850;
 }
 
-.live-controls {
+.floating-toggle {
 	z-index: 800;
 }
 
@@ -1699,7 +1728,7 @@ body.modal-active {
 	z-index: 90;
 }
 
-.main,
+.page,
 .application {
 	z-index: 2;
 }
