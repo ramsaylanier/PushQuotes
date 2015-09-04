@@ -62,7 +62,7 @@ raix:eventstate@0.0.2
 raix:push@2.6.12
 ramsay:errors@1.1.0
 ramsay:react-components-core@0.1.2
-ramsay:react-components-dependencies@0.1.0
+ramsay:react-components-dependencies@0.1.1
 ramsay:react-components-form@0.1.0
 ramsay:react-components-header@0.1.0
 ramsay:react-components-modal@0.1.0
