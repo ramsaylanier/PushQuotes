@@ -48,31 +48,6 @@
 	@include primary-btn($twitter);
 }
 
-.close-modal-btn{
-	position: absolute;
-	background-color: transparent;
-	top: 10px;
-	right: 10px;
-	padding: 0;
-
-	.bar{
-		position: relative;
-	}
-
-	.bar-1{
-		transform: rotate(45deg);
-		top: 5px;
-	}
-
-	.bar-2{
-		transform: rotate(-45deg);
-	}
-
-	.bar-3{
-		display: none;
-	}
-}
-
 .floating-toggle{
 	position: fixed;
 	bottom: 10px;

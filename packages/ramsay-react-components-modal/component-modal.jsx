@@ -33,7 +33,7 @@ Animations.AnimateModalOut = function(){
 	var dX = modal.outerWidth();
 
 	TweenMax.to(page, .4, {
-		right: 0,
+		x: "0%",
 		ease: Power2.easeOut
 	});
 
@@ -55,7 +55,7 @@ AnimateModalIn = function(){
 	var dX = modal.outerWidth() - ( (window.innerWidth - $('.wrapper').outerWidth()) / 2)
 
 	TweenMax.to(page, .4, {
-		right: dX,
+		x: -dX,
 		ease: Power2.easeOut
 	});
 

@@ -19,9 +19,8 @@ Card = React.createClass({
 		Session.set('itemCount', itemCount + 1);
 	},
 	renderEditModal: function(){
-		var modal = document.createElement('div');
-		$(modal).addClass('modal edit-deck-modal');
-		document.body.appendChild(modal);
+		var modal = $('<div class="modal edit-deck-modal"></div>');
+		$('main').append(modal);
 
 		editDeckForm.fields[0].value = this.props.title;
 		editDeckForm.fields[1].value = this.props.slug;
@@ -39,7 +38,7 @@ Card = React.createClass({
 					 <button className="btn negative-btn flex-1" onClick={this.deleteForm}>Delete Deck</button>
 				 </div>
 			</Modal>,
-			modal
+			modal.get(0)
 		)
 	},
 	deleteForm: function(){

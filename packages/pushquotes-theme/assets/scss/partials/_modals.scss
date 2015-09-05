@@ -1,24 +1,24 @@
 .modal{
 	position: fixed;
 	top: 0;
+	right: -200%;
 	height: 100vh;
 	display: flex;
 	align-content: center;
 	justify-content: space-around;
-	padding: $headerHeight 0;
-	right: -100vw;
+	padding: $headerHeight + 16px 16px 16px 16px;
 
 	@media #{$tablet}, #{$desktop}, #{$desktop-xl}{
 		width: 80%;
 		max-width: 600px;
-		background-color: fade-out($dark, .1);
+		background-color: $dark;
+
 	}
 
 	@media #{$mobile}{
-		margin-top: $headerHeight;
 		width: 100%;
-		padding: 0;
-		// background-color:white;
+		background-color: white;
+
 	}
 }
 
@@ -26,15 +26,16 @@
 	position: relative;
 	top: 0;
 	left: 0;
-	padding: 2rem 1rem 4rem 1rem;
 	background-color: white;
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
 
 	@media #{$mobile}{
 		width: 100%;
+		padding: 1rem 0rem 4rem 0rem;
 	}
 	@media #{$tablet}, #{$desktop}, #{$desktop-xl}{
+		padding: 2rem 1rem 4rem 1rem;
 		max-height: 100%;
 		border-radius: 2px;
 		max-width: 500px;
@@ -48,4 +49,34 @@ body.modal-active{
 	height: 100%;
 	width: 100%;
 	position: fixed;
+}
+
+.close-modal-btn{
+	position: absolute;
+	background-color: transparent;
+	top: 10px;
+	right: 10px;
+	padding: 0;
+
+	@media #{$mobile}{
+		top: 0;
+		right: 0;
+	}
+
+	.bar{
+		position: relative;
+	}
+
+	.bar-1{
+		transform: rotate(45deg);
+		top: 5px;
+	}
+
+	.bar-2{
+		transform: rotate(-45deg);
+	}
+
+	.bar-3{
+		display: none;
+	}
 }
