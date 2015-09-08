@@ -19,27 +19,7 @@ Card = React.createClass({
 		Session.set('itemCount', itemCount + 1);
 	},
 	renderEditModal: function(){
-		var modal = $('<div class="modal edit-deck-modal"></div>');
-		$('main').append(modal);
-
-		editDeckForm.fields[0].value = this.props.title;
-		editDeckForm.fields[1].value = this.props.slug;
-		editDeckForm.fields[2].value = this.props.description;
-		editDeckForm.fields[3].value = this.props.hashtags;
-		editDeckForm.fields[4].value = this.props.image;
-		editDeckForm.fields[5].checked = this.props.withSlides;
-		editDeckForm.data = this.props;
-
-		React.render(
-			<Modal>
-				 <Form attributes={editDeckForm} />
-				 <div className="flex-container items-centered space-between no-margin">
-					 <button className="btn secondary-btn flex-1" onClick={this.duplicateCard}>Duplicate Deck</button>
-					 <button className="btn negative-btn flex-1" onClick={this.deleteForm}>Delete Deck</button>
-				 </div>
-			</Modal>,
-			modal.get(0)
-		)
+		Triggers.EditDeck(this.props);
 	},
 	deleteForm: function(){
 		var confirmDelete = confirm('Do you want to delete this deck?');
@@ -55,16 +35,6 @@ Card = React.createClass({
 				}
 			})
 		}
-	},
-	duplicateCard: function(){
-		var cardId = this.props._id;
-		Meteor.call('duplicateDeck', cardId, function(error){
-			if (error){
-				alert(error)
-			} else {
-				Animations.AnimateModalOut();
-			}
-		})
 	},
 	renderQuoteForm: function(e){
 		e.stopPropagation();
@@ -133,9 +103,11 @@ Card = React.createClass({
 						{this.props.title}	
 					</CardTitle>
 
+					{this.props.hashtags && 
 					<div className="deck-hashtags section-item">
 						<Hashtags hashtags={this.props.hashtags}/>
 					</div>
+					}
 
 					{this.props.showAuthor && <p className="deck-author">
 						<a 

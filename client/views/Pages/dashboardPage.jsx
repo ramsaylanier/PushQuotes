@@ -1,15 +1,41 @@
 DashboardPage = React.createClass({
+	mixins: [ReactMeteorData],
+	getMeteorData(){
+		var username = FlowRouter.getParam('username');
+		var subscription = Meteor.subscribe('deckList', {authorName: username}, username);
+		var deckQuery = {authorName: username};
+
+		return {
+			loading: !subscription.ready(),
+			decks: Decks.find().fetch()
+		};
+	},
 	componentDidMount: function(){
-		
+		this.setTitle();
+	},
+	setTitle(){
+		$('.app-header .title').text('');
 	},
 	render(){
-		return (
-			<Page>
-				<PageContent>
-					<DeckList showAuthor={false}/>
-				</PageContent>
-			</Page>
-		)
+		if (!this.data.loading && this.data.decks.length == 0){
+			return <NotFoundPage/>
+		} else if (!this.data.loading){
+			return (
+				<Page>
+					<PageContent>
+						<DeckList decks={this.data.decks}/>
+					</PageContent>
+				</Page>
+			)
+		} else {
+			return (
+				<Page>
+					<PageContent>
+						<p>Loading</p>
+					</PageContent>
+				</Page>
+			)
+		}
 	}
 });
 

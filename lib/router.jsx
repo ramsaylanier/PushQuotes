@@ -1,14 +1,25 @@
+FlowRouter.notFound = {
+	triggersEnter: [function(context, redirect){
+		redirect('/');
+	}],
+    // Subscriptions registered here don't have Fast Render support.
+    subscriptions: function() {
+
+    },
+    action: function() {
+
+    }
+};
+
+
 FlowRouter.route('/', {
 	triggersEnter: [function(context, redirect){
 		if (!Meteor.userId()){
 			redirect('/login');
-		}
-	}],
-	action: function(){
-		ReactLayout.render(MainLayout, {
-			content: <DashboardPage/>
-		})
-	}
+		} else (
+			redirect('/' + Meteor.user().username)
+		)
+	}]
 })
 
 FlowRouter.route('/login', {

@@ -16,29 +16,15 @@ QuoteItem = React.createClass({
 		}, {duration: 1000, easing: [300, 20]});
 	},
 	renderEditModal: function(){
-		var modal = document.createElement('div');
-		$(modal).addClass('modal edit-quote-modal');
-		document.body.appendChild(modal);
-
 		editQuoteForm.data = this.props;
 		editQuoteForm.fields[0].value = this.props.text;
 		editQuoteForm.fields[1].value = this.props.slide;
-		editQuoteForm.fields[2].value = this.props.order;
+		editQuoteForm.fields[2].value = this.props.order || Quotes.find().count();
+		editQuoteForm.fields[1].visibility = this.props.withSlides ? 'visible' : 'hidden';
 
-		if (this.props.withSlides){
-			editQuoteForm.fields[1].visibility = 'visible'
-		} else {
-			editQuoteForm.fields[1].visibility = 'hidden'
-		}
-
-		React.render(
-			<Modal>
-				 <Form attributes={editQuoteForm} />
-			</Modal>,
-			modal
-		)
+		Triggers.EditQuote(this.props);
 	},
-	deleteForm: function(){
+	deleteQuote: function(){
 		var confirmDelete = confirm('Do you want to delete this quote?');
 
 		if (confirmDelete){
@@ -49,7 +35,7 @@ QuoteItem = React.createClass({
 				if (error){
 					alert(error)
 				} else {
-
+					Animations.AnimateModalOut();
 				}
 			})
 		}
