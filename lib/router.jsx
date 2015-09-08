@@ -45,7 +45,7 @@ FlowRouter.route('/new-deck', {
 FlowRouter.route('/:username/:slug', {
 	action: function(params){
 		ReactLayout.render(MainLayout, {
-			content: <DeckPage/>
+			content: <div><DeckPage/><TriggerModalToggle trigger={Triggers.AddQuote} /></div>
 		})
 	}
 })
@@ -53,7 +53,7 @@ FlowRouter.route('/:username/:slug', {
 FlowRouter.route('/:username', {
 	action: function(params){
 		ReactLayout.render(MainLayout, {
-			content: <div><DashboardPage/><AddDeckToggle/></div>
+			content: <div><DashboardPage/><TriggerModalToggle trigger={Triggers.AddDeck} /></div>
 		})
 	}
 })

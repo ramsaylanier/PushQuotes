@@ -1,19 +1,4 @@
 QuoteList = React.createClass({
-	mixins: [ReactMeteorData],
-	getMeteorData: function(){
-
-		if(this.props.deckId)
-			return {
-				quotes: Quotes.find({deckId: this.props.deckId}, {sort: {order: 1}}).fetch(),
-				deck: Decks.findOne({_id: this.props.deckId})
-			}
-
-
-		return {
-			quotes: Quotes.find({}, {sort: {order: 1}}).fetch(),
-			deck: Decks.findOne()
-		}
-	},
 	componentWillMount: function(){
 		Session.set('quoteCount', 1);
 	},
@@ -25,12 +10,12 @@ QuoteList = React.createClass({
 		}
 	},
 	render: function(){
-		var quotes = this.data.quotes;
-		var deck = this.data.deck;
-		var hasPlayed = this.data.deck.hasPlayed;
+		var quotes = this.props.quotes;
+		var deck = this.props.deck;
+		var hasPlayed = this.props.deck.hasPlayed;
 		var isAuthor;
 		var isLive = this.props.isLive;
-		var withSlides = this.data.deck.withSlides || false;
+		var withSlides = this.props.deck.withSlides || false;
 		var isFavoritesResults = this.props.deckId != undefined
 
 		if (Meteor.user())
@@ -40,26 +25,8 @@ QuoteList = React.createClass({
 
 		return (
 			<div>
-				{isLive && isAuthor && !isFavoritesResults &&
-					<div className="live-controls">
-						<div className="wrapper">
-							<PrevQuoteButton deck={deck} />
-							<NextQuoteButton deck={deck} />
-						</div>
-					</div>
-				}
 				<ul className={"quote-list" + (this.props.favorites ? " favorite-quote-list" : "") + (isLive ? " live-quote-list": "")}>
-					{!isFavoritesResults &&
-						<Headings.h4>
-							{deck.title}
-							{isLive &&
-								<span className="float-right">
-									<Headings.h5>Quote {quotes.length} / {deck.quotes.length}</Headings.h5>
-								</span>
-							}
-						</Headings.h4>
-					}
-
+					{!quotes.length && <p>Add a quote!</p>}
 					{quotes.map(function(quote){
 						return (
 							<QuoteItem key={quote._id} {...quote} withSlides={withSlides} isLive={isLive} hashtags={deck.hashtags} hasPlayed={hasPlayed}/>

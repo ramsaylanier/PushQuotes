@@ -150,9 +150,8 @@ PrimaryNav.navItems = function(){
 							url: '',
 							name: 'New Deck',
 							clickFunction: function(){
-								var modal = document.createElement('div');
-								$(modal).addClass('modal new-form-modal');
-								document.body.appendChild(modal);
+								var modal = '<div class="modal new-form-modal"></div>';
+								$('body').append(modal);
 
 								React.render(
 									<Modal>
@@ -196,5 +195,6 @@ PrimaryNav.navItems = function(){
 Navs.push(PrimaryNav);
 Navs.push(ShelfNav);
 Navs.push(MobileNav);
+
 
 Settings.LogoIcon = Icons.LogoIcon;

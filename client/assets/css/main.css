@@ -785,6 +785,44 @@ body {
 	width: 40px;
 }
 
+.title-container {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	text-align: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	overflow: hidden;
+}
+
+.title {
+	color: white;
+	-webkit-transform: translateY(-40px);
+	-ms-transform: translateY(-40px);
+	transform: translateY(-40px);
+	-webkit-transition: -webkit-transform 300ms cubic-bezier(.2, .8, .8, 1);
+	transition: transform 300ms cubic-bezier(.2, .8, .8, 1);
+	margin: 0;
+}
+
+.title.active {
+	-webkit-transform: translateY(0px);
+	-ms-transform: translateY(0px);
+	transform: translateY(0px);
+}
+
 .nav-list {
 	height: 100%;
 }
@@ -1132,9 +1170,8 @@ textarea:focus {
 	color: #240425;
 	font-weight: 700;
 	font-size: 2rem;
-	padding: 1rem;
-	width: 85%;
-	margin: 0 auto;
+	padding: 1rem 0rem;
+	margin-bottom: 0rem;
 }
 
 .page-section {
@@ -1167,15 +1204,19 @@ textarea:focus {
 .card {
 	position: relative;
 	background-color: white;
-	margin-bottom: 1rem;
+	margin-bottom: .5rem;
 	box-shadow: 0px 5px 5px -5px #240425;
 	opacity: 0;
 	-webkit-transition: background-color 300ms ease-out;
 	transition: background-color 300ms ease-out;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
 }
 
 .card-details {
-	padding: 1rem .5rem 2rem .5rem;
+	padding: 1rem .75rem 2rem .75rem;
 }
 
 .card-title {
@@ -1448,13 +1489,6 @@ input[type="submit"]:hover {
 	-webkit-overflow-scrolling: touch;
 }
 
-body.modal-active {
-	overflow: hidden;
-	height: 100%;
-	width: 100%;
-	position: fixed;
-}
-
 .close-modal-btn {
 	position: absolute;
 	background-color: transparent;
@@ -1526,10 +1560,6 @@ body.modal-active {
 	-webkit-flex: 1;
 	-ms-flex: 1;
 	flex: 1;
-}
-
-.flex-1:first-of-type {
-	margin-right: 1rem;
 }
 
 .flex-2 {
@@ -1733,6 +1763,10 @@ body.modal-active {
 	z-index: 1;
 }
 
+.title-container {
+	z-index: -1;
+}
+
 @media only screen and (min-width: 569px) and (max-width: 980px), only screen and (min-width: 981px) and (max-width: 1200px), only screen and (min-width: 1201px) {
 
 .modal {
@@ -1769,6 +1803,11 @@ body.modal-active {
 
 .mobile-nav {
 	display: block;
+}
+
+.card-title {
+	font-size: 1rem;
+	line-height: 1.3rem;
 }
 
 .modal {

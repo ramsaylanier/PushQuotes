@@ -8,15 +8,10 @@ Meteor.publish('deckList', function(query, deckAuthorName){
 	return Decks.find(query);
 })
 
-Meteor.publish('quoteList', function(query, liveQuery){
+Meteor.publish('quoteList', function(query){
 
-	var deckId = Decks.findOne(query)._id;
-
-	if (liveQuery){
-		return Quotes.find({deckId: deckId, active: true}, {sort: {order: 1}});
-	} else{
-		return Quotes.find({deckId: deckId}, {sort: {order: 1}});
-	}
+	// var deckId = Decks.findOne(query)._id;
+	return Quotes.find(query, {sort: {order: 1}});
 })
 
 Meteor.publish('searchResults', function(query, settings){

@@ -24,7 +24,7 @@
 Hashtags = React.createClass({
 	render: function(){
 		return (
-			<div>
+			<div className="hashtags m-b-2">
 				{this.props.hashtags.map(function(hashtag){
 					return(
 						<Link className="hashtag" href={"/hashtag/" + hashtag}>#{hashtag}</Link>

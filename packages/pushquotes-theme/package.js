@@ -19,8 +19,9 @@ Package.onUse(function(api) {
 
   api.addFiles([
     'icons.jsx',
-    'settings.jsx'
+    'settings.jsx',
+    'triggers.jsx'
   ], 'client');
 
-  api.export(['Settings', 'Icons'], 'client');
+  api.export(['Settings', 'Icons', 'Triggers'], 'client');
 });

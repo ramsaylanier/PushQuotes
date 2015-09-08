@@ -1,6 +1,5 @@
 MainLayout = React.createClass({
 	render(){
-		console.log('main layout render');
 		return (
 			<head>
 				<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"></meta>
@@ -10,7 +9,11 @@ MainLayout = React.createClass({
 				
 				<div className="application">
 
-					<Header className="app-header"/>
+					<Header className="app-header">
+						<div className="title-container">
+							<p className="title"></p>
+						</div>
+					</Header>
 
 					<main>
 						{this.props.content}

@@ -1,14 +1,4 @@
 Modal = React.createClass({
-	scrollTop: 0,
-	getWindowScrollTop: function(){
-		this.scrollTop = $(window).scrollTop();	
-		return this.scrollTop
-	},
-	componentWillMount: function(){
-		$('body').css({
-			top: -this.getWindowScrollTop()
-		});
-	},
 	componentDidMount: function(){
 		AnimateModalIn();
 	},

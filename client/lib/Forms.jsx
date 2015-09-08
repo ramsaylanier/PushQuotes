@@ -143,15 +143,13 @@ newQuoteForm = {
 	onSubmit: function(e){
 		e.preventDefault();
 
-		var deckId = newQuoteForm.data._id;
+		var deckId = Decks.findOne({slug: FlowRouter.getParam('slug')})._id;
 
 		var quoteAttributes = {
 			text: $(e.currentTarget).find('[name=quote-text-field]').val(),
 			slide: $(e.currentTarget).find('[name=quote-slide-field]').val(),
 			order: $(e.currentTarget).find('[name=quote-order-field]').val()
 		}
-
-		var eventId = FlowRouter.getParam('eventId');
 
 		Meteor.call('addQuote', deckId, quoteAttributes, function(error){
 			if (error){

@@ -77,7 +77,7 @@ QuoteItem = React.createClass({
 					<p className="quote-text">{'"' + this.props.text + 	'"'}</p>
 					<div className="action-list">
 						{isPrivate && !isLive && <span className="is-private">private</span>}
-						{isAuthor && !isLive && <Actions actions={this.actions()} isQuote={true}/>}
+						{isAuthor && !isLive && <ActionToggle action={this.renderEditModal}/>}
 						{hasPlayed && <QuoteActions quote={this.props.text} hashtags={this.props.hashtags} quoteId={this.props._id} />}
 					</div>
 				</div>
@@ -85,7 +85,6 @@ QuoteItem = React.createClass({
 					{hasPlayed && this.props._id && <p className="small">Tweeted by {this.getTweets(this.props._id)}</p>}
 					{isAuthor && this.props.slide && <p className="quote-slide small">Slide: {this.props.slide}</p>}
 					{isAuthor && this.props.order && <p className="quote-slide small">Order: {this.props.order}</p>}
-					{this.props._id && Meteor.user() && <FavoriteQuote _id={this.props._id} deckId={this.props.deckId}/>}
 				</div>
 			</li>
 		)
