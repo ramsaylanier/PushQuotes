@@ -1219,6 +1219,10 @@ textarea:focus {
 	background-color: white;
 }
 
+.page.edit-mode .card:not(.edit-mode) {
+	opacity: .2 !important;
+}
+
 .card-details {
 	padding: 1rem .75rem 2rem .75rem;
 }
@@ -1607,6 +1611,7 @@ input[type="submit"]:hover {
 .icon line {
 	-webkit-transition: all 300ms ease-out;
 	transition: all 300ms ease-out;
+	stroke-width: 2.5;
 }
 
 .quote-list .action-list {
