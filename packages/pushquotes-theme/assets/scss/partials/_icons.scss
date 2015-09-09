@@ -1,3 +1,17 @@
+.icon{
+	width: 40px;
+	height: 40px;
+
+	&.back-icon, &.search-icon, &.plus-icon{
+		width: 30px;
+		height: 30px;
+	}
+
+	path, line{
+		transition: all 300ms ease-out;
+	}
+}
+
 .quote-list{
 	.action-list{
 		padding: .5rem 0rem;
@@ -9,8 +23,6 @@
 }
 
 .back-icon{
-	width: 30px;
-	height: 30px;
 	float: left;
 
 	path{
@@ -19,8 +31,6 @@
 }
 
 .search-icon{
-	height: 30px;
-	width: 30px;
 	path{
 		fill: $primary;
 	}
@@ -30,6 +40,14 @@
 	path{
 		fill: white;
 	}
+}
+
+.delete-icon{
+
+}
+
+.copy-icon{
+
 }
 
 .nav-icon{

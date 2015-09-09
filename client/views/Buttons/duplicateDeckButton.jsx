@@ -12,7 +12,7 @@ DuplicateDeckButton = React.createClass({
 	},
 	render(){
 		return(
-			 <button className="btn secondary-btn flex-1" onClick={this.handleClick}>Duplicate Deck</button>
+			 <button className="btn secondary-btn flex-4-10" onClick={this.handleClick}>{Icons.CopyIcon}</button>
 		)	
 	}
 })

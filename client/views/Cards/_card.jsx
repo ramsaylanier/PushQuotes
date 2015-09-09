@@ -19,6 +19,9 @@ Card = React.createClass({
 		Session.set('itemCount', itemCount + 1);
 	},
 	renderEditModal: function(){
+		var item = this.getDOMNode();
+		$(item).addClass('edit-mode');
+		
 		Triggers.EditDeck(this.props);
 	},
 	deleteForm: function(){

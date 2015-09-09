@@ -1,6 +1,6 @@
 Modal = React.createClass({
 	componentDidMount: function(){
-		AnimateModalIn();
+		Animations.AnimateModalIn();
 	},
 	closeModal: function(){
 		Animations.AnimateModalOut();
@@ -39,7 +39,7 @@ Animations.AnimateModalOut = function(){
 	}, 500);
 }
 
-AnimateModalIn = function(){
+Animations.AnimateModalIn = function(){
 	var modal = $('.modal');
 	var page = $('.page');
 	var dX = modal.outerWidth() - ( (window.innerWidth - $('.wrapper').outerWidth()) / 2)

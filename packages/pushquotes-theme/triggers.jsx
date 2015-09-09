@@ -11,6 +11,8 @@ Triggers = {
 		)
 	},
 	EditDeck: function(props){
+		$('.page').addClass('edit-mode');
+
 		var modal = $('<div class="modal edit-deck-modal"></div>');
 		$('main').append(modal);
 
@@ -26,7 +28,7 @@ Triggers = {
 
 		React.render(
 			<Modal>
-				 <Form attributes={editDeckForm} />
+				 <Form attributes={editDeckForm}/>
 				 <div className="flex-container items-centered space-between no-margin">
 					 <DuplicateDeckButton deck={props}/>
 					 <DeleteDeckButton deck={props}/>

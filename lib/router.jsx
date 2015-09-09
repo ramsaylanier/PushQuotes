@@ -1,17 +1,3 @@
-FlowRouter.notFound = {
-	triggersEnter: [function(context, redirect){
-		redirect('/');
-	}],
-    // Subscriptions registered here don't have Fast Render support.
-    subscriptions: function() {
-
-    },
-    action: function() {
-
-    }
-};
-
-
 FlowRouter.route('/', {
 	triggersEnter: [function(context, redirect){
 		if (!Meteor.userId()){
@@ -54,6 +40,7 @@ FlowRouter.route('/new-deck', {
 
 
 FlowRouter.route('/:username/:slug', {
+	name: 'deckSingle',
 	action: function(params){
 		ReactLayout.render(MainLayout, {
 			content: <div><DeckPage/><TriggerModalToggle trigger={Triggers.AddQuote} /></div>
@@ -62,6 +49,7 @@ FlowRouter.route('/:username/:slug', {
 })
 
 FlowRouter.route('/:username', {
+	name: 'dashboardRoute',
 	action: function(params){
 		ReactLayout.render(MainLayout, {
 			content: <div><DashboardPage/><TriggerModalToggle trigger={Triggers.AddDeck} /></div>

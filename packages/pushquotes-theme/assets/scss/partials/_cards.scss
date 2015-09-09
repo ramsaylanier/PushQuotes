@@ -4,8 +4,19 @@
 	margin-bottom: .5rem;
 	box-shadow: 0px 5px 5px -5px $dark;
 	opacity: 0;
-	transition: background-color 300ms ease-out;
+	transition: background-color 300ms ease-out, opacity 150ms ease-out;
 	justify-content: space-between;
+
+	&.edit-mode{
+		background-color: white;
+	}
+}
+
+.page.edit-mode .card{
+
+	&:not(.edit-mode){
+		// opacity: .2 !important;
+	}
 }
 
 .card-details{

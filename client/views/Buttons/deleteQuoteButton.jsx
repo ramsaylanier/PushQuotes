@@ -16,7 +16,7 @@ DeleteQuoteButton = React.createClass({
 	},
 	render(){
 		return(
-			 <button className="btn negative-btn flex-1" onClick={this.handleClick}>Delete Quote</button>
+			 <button className="btn negative-btn flex-1" onClick={this.handleClick}>Delete</button>
 		)	
 	}
 })

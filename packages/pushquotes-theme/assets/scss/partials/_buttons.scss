@@ -29,6 +29,16 @@
 	}
 }
 
+@mixin ghost-btn($color){
+	border: 1px solid $color;
+	color: $color;
+	padding: .75rem 1.25rem;
+	background-color: white;
+	transition: background 300ms ease-out;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
 .primary-btn{
 	z-index: 2;
 	@include primary-btn($primary);

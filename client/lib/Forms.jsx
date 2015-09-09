@@ -101,7 +101,7 @@ editDeckForm = {
 			label: 'URL of Image'
 		},
 		{id: 6, type: 'checkbox', label: 'Sync With Slides.com', name: 'use-slides-field'},
-		{id: 7, type: 'submit', value: 'Save Deck', className: 'full-width'}
+		{id: 7, type: 'submit', value: 'Save', className: 'full-width'}
 	],
 	onSubmit: function(e){
 		e.preventDefault();

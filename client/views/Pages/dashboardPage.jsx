@@ -7,10 +7,10 @@ DashboardPage = React.createClass({
 
 		return {
 			loading: !subscription.ready(),
-			decks: Decks.find().fetch()
+			decks: Decks.find({}, {sort: {createdOn: -1}}).fetch()
 		};
 	},
-	componentDidMount: function(){
+	componentDidMount(){
 		this.setTitle();
 	},
 	setTitle(){
