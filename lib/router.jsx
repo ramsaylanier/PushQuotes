@@ -1,6 +1,6 @@
 FlowRouter.route('/', {
 	triggersEnter: [function(context, redirect){
-		if (!Meteor.userId()){
+		if (!Meteor.user()){
 			redirect('/login');
 		} else (
 			redirect('/' + Meteor.user().username)
@@ -38,21 +38,30 @@ FlowRouter.route('/new-deck', {
 	}
 })
 
-
-FlowRouter.route('/:username/:slug', {
-	name: 'deckSingle',
-	action: function(params){
-		ReactLayout.render(MainLayout, {
-			content: <div><DeckPage/><TriggerModalToggle trigger={Triggers.AddQuote} /></div>
-		})
-	}
-})
-
 FlowRouter.route('/:username', {
 	name: 'dashboardRoute',
 	action: function(params){
 		ReactLayout.render(MainLayout, {
 			content: <div><DashboardPage/><TriggerModalToggle trigger={Triggers.AddDeck} /></div>
+		})
+	}
+})
+
+
+FlowRouter.route('/:username/:slug', {
+	name: 'deckSingle',
+	action: function(params){
+		ReactLayout.render(MainLayout, {
+			content: <DeckPage/>
+		})
+	}
+})
+
+FlowRouter.route('/:username/:slug/live', {
+	name: 'deckLive',
+	action: function(params){
+		ReactLayout.render(MainLayout, {
+			content: <DeckLive/>
 		})
 	}
 })

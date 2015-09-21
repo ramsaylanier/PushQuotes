@@ -1,3 +1,12 @@
+.application.with-user{
+	.logo{
+		@media #{$mobile}{
+			display: none;
+		}
+	}
+}
+
+
 .app-header{
 	background-color: $dark;
 	height: $headerHeight;
@@ -12,10 +21,6 @@
 	display: inline-block;
 	height: 100%;
 	width: $headerHeight;
-
-	@media #{$mobile}{
-		display: none;
-	}
 }
 
 .title-container{

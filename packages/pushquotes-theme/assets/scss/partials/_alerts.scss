@@ -1,6 +1,27 @@
-#alerts{
+.alerts-container{
 	position: fixed;
-	top: 0;
+	bottom: 0;
 	left: 0;
-	width: 100vw;
+	width: 100%;
+}
+
+.alert{
+	color: white;
+	padding: 1rem .5rem;
+}
+
+.error-alert{
+	background-color: $red;
+
+	&:not(:last-of-type){
+		border-bottom: 3px solid darken($red, 10%);
+	}
+}
+
+.success-alert{
+	background-color: $red;
+
+	&:not(:last-of-type){
+		border-bottom: 3px solid darken($red, 10%);
+	}
 }

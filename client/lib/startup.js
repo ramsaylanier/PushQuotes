@@ -1,10 +1,6 @@
-// Radium = Npm.require('radium');
-
-Meteor.startup(function(){
-	window.viewportUnitsBuggyfill.init();
-	
+Meteor.startup(function(){	
 	React.initializeTouchEvents(true);
-	// TweenPlugin.activate([ScrollToPlugin]);
+	window.viewportUnitsBuggyfill.init({force:true});
 
 	var loginStyle = "popup";
 

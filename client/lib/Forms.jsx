@@ -1,3 +1,33 @@
+viewPresentationForm = {
+	fields: [
+		{
+			id: 1, 
+			type: 'text', 
+			name: 'presentation-key-field', 
+			className:'full-width input-field', 
+			label:'Presentation Key'
+		},
+		{
+			id: 2,
+			type: 'submit',
+			value: 'View Presentation'
+		}
+	],
+	className: 'view-presentation-form',
+	onSubmit: function(e){
+		e.preventDefault();
+		var presentationKey = $(e.currentTarget).find('[name=presentation-key-field]').val();
+
+		Meteor.call('viewPresentation', presentationKey, function(err, res){
+			if(err){
+				Alerts.throw(err, 'error')
+			} else {
+				FlowRouter.go('/' + res)
+			}
+		})
+	}
+}
+
 newDeckForm = {
 	fields: [
 		{
@@ -15,7 +45,7 @@ newDeckForm = {
 			type: 'text', 
 			name: 'deck-slug-field', 
 			className:'deck-slug-field full-width input-field',
-			label: 'Slug', 
+			label: 'Unique Access Code', 
 			onKeyUp: function(e){ 
 				$(e.currentTarget).val($(e.currentTarget).val().toLowerCase().replace(/ +/g,'-').replace(/[^\w-]+/g,''));	
 			}
@@ -46,7 +76,7 @@ newDeckForm = {
 		
 		Meteor.call('createDeck', deckAttributes, function(error,result){
 			if (error){
-				Errors.throw(error);
+				Alerts.throw(error, 'error');
 			} else {
 				$('.close-modal-btn').click();
 				FlowRouter.go('/' + Meteor.user().username + '/' + deckAttributes.slug);
@@ -74,7 +104,7 @@ editDeckForm = {
 			type: 'text', 
 			name: 'deck-slug-field', 
 			className:'deck-slug-field full-width input-field',
-			label: 'Slug', 
+			label: 'Unique Access Form', 
 			onKeyUp: function(e){ 
 				$(e.currentTarget).val($(e.currentTarget).val().toLowerCase().replace(/ +/g,'-').replace(/[^\w-]+/g,''));	
 			}
@@ -124,9 +154,17 @@ editDeckForm = {
 
 		Meteor.call('editDeck', deckID, deckAttributes, function(error){
 			if (error){
-				alert(error);
+				Alerts.throw(error, 'error');
 			} else {
 				$('.close-modal-btn').click();
+
+				//Check to see if there is an existing slug. If so, that means we are on the deck view page.
+				var currentSlug = FlowRouter.getParam('slug');
+
+				//If on the deck view page, reroute to new slug if the slug has changed to prevent router/rendering errors.
+				if (currentSlug){
+					FlowRouter.go('/' + FlowRouter.getParam('username') + '/' + deckAttributes.slug);
+				}
 			}	
 		})
 	}
@@ -153,7 +191,7 @@ newQuoteForm = {
 
 		Meteor.call('addQuote', deckId, quoteAttributes, function(error){
 			if (error){
-				alert(error) 
+				Alerts.throw(error, 'error');
 			} else {
 				$('.close-modal-btn').click();
 			}
@@ -167,7 +205,7 @@ editQuoteForm = {
 		{id: 1, type: 'textarea', name: 'quote-text-field', className:'full-width', placeholder: 'Enter Quote Here', rows: 8},
 		{id: 2, type: 'text', visibility: 'hidden', name: 'quote-slide-field', className:'full-width input-field', label: 'Slides.com Slide'},
 		{id: 3, type: 'text', name: 'quote-order-field', className:'full-width input-field', label: 'Order'},
-		{id: 4, type: 'submit', value: 'Save Quote'}
+		{id: 4, type: 'submit', className:"full-width", value: 'Save Quote'}
 	],	
 	onSubmit: function(e){
 		e.preventDefault();
@@ -182,7 +220,7 @@ editQuoteForm = {
 
 		Meteor.call('editQuote', quoteID, deckID, quoteAttributes, function(error){
 			if (error){
-				alert(error);
+				Alerts.throw(error, 'error');
 			} else {
 				$('.close-modal-btn').click();
 			}	
@@ -245,9 +283,9 @@ searchForm = {
 		
 
 		if(!query)
-			return Errors.throw('Please enter a search query', 'error')
+			Alerts.throw('Please enter a search query', 'error');
 		if(settings.length == 0)
-			return Errors.throw('Please select something to search by', 'error')
+			Alerts.throw('Please select something to search by', 'error');
 
 		var encodedQuery = encodeURIComponent(query)
 		console.log('/search/' + encodedQuery + settings)
@@ -271,18 +309,18 @@ loginFormAttributes = {
 		var password = $(e.target).find('[name="password"]').val();
 
 		if (!userName){
-			Errors.throw('Please enter a username', 'error');
+			Alerts.throw('Please enter a username', 'error');
 			return false;
 		}
 
 		if (!password){
-			Errors.throw('Please enter a password', 'error');
+			Alerts.throw('Please enter a password', 'error');
 			return false;
 		}
 
 		Meteor.loginWithPassword(userName, password, function(error, result){
 			if (error)
-				Errors.throw(error.reason, 'error')
+				Alerts.throw(error, 'error')
 			else{
 				AnimateItem($('.page'), PageAnimations.animateOut)
 
@@ -315,25 +353,25 @@ registerFormAttributes = {
 		var passwordConfirm = $(e.target).find('[name="confirm-password"]').val();
 
 		if (!user.username)
-			Errors.throw("Please enter a username.", 'error');
+			Alerts.throw("Please enter a username.", 'error');
 
 		else if (!user.email)
-			Errors.throw("Please enter an email address.", 'error');
+			Alerts.throw("Please enter an email address.", 'error');
 
 		else if (!user.password)
-			Errors.throw("Please enter a password.", 'error');
+			Alerts.throw("Please enter a password.", 'error');
 
 		else if (user.password.length < 6)
-			Errors.throw("Passwords is less that 6 character.", 'error');
+			Alerts.throw("Passwords is less that 6 character.", 'error');
 
 		else if (user.password != passwordConfirm){
-			Errors.throw("Passwords do not match.", 'error');
+			Alerts.throw("Passwords do not match.", 'error');
 		}
 
 		else (
 			Accounts.createUser({email: user.email, password: user.password, username: user.username }, function(error){
 				if (error){
-					Errors.throw(error.reason, 'error');
+					Alerts.throw(error.reason, 'error');
 				}
 				else {
 					Meteor.setTimeout(function(){
@@ -382,13 +420,11 @@ profileFormAttributes = {
 
 		Meteor.call('updateUserProfile', userProfile, userBase, function(error, result){
 			if (error){
-				alert(error);
+				Alerts.throw(error, 'error');
 			} else {
-
 				var container = $('.edit-profile-container');
-
 				SlideHideContent(container);
-				alert('saved!');
+				Alerts.throw('saved!', 'success');
 				FlowRouter.go('/' + username);
 			}	
 		})
@@ -415,7 +451,7 @@ forgotPasswordFormAttributes = {
 
 		Meteor.call('resendUserPassword', email, function(error){
 			if (error){
-				alert(error);
+				Alerts.throw(error, 'error');
 			}
 		})
 	}

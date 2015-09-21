@@ -98,9 +98,16 @@
 	}
 
 	.nav-list{
-		width: 100%;
 		display: flex;
 		align-items: center;
+		justify-content: flex-end;
+		margin-right: .5rem;
+	}
+}
+
+.application.with-user{
+	.nav-list{
+		width: 100%;
 		justify-content: space-between;
 	}
 }

@@ -1,4 +1,4 @@
-DeckPage = React.createClass({
+DeckLive = React.createClass({
 	mixins: [ReactMeteorData],
 	getMeteorData(){
 		var slug = FlowRouter.getParam('slug');
@@ -9,7 +9,7 @@ DeckPage = React.createClass({
 		if (deckSub.ready()){
 			deck = Decks.findOne({slug: slug});
 			deckId = deck ? deck._id : null;
-			quoteSub = Meteor.subscribe('quoteList', {deckId: deckId});
+			quoteSub = Meteor.subscribe('quoteList', {deckId: deckId, pushed: true});
 		}
 
 		return {
@@ -35,33 +35,31 @@ DeckPage = React.createClass({
 	setTitle(){
 		$('.app-header .title').text(this.data.deck.title);
 	},
-	editDeck(){
-		Triggers.EditDeck(this.data.deck);
-	},
 	render(){
-		var deck = this.data.deck;
-		var quotes = this.data.quotes;
-
 		if (this.data.ready){
 
-			if (!this.data.deck){
+			var deck = this.data.deck;
+			var quotes = this.data.quotes;
+
+			if (!deck){
 				return <NotFoundPage/>
 			}
 
 			this.setTitle();
 			return (
-				<Page>
+				<div className="page-wrapper">
+				<Page className="live-page">
 					<PageHero classes="deck-hero" heroImage={deck.image}>
 						<h2 className="page-title">{deck.title}</h2>
 						{deck.hashtags && 
 						<Hashtags hashtags={deck.hashtags}/>
 						}
-						<ActionToggle action={this.editDeck}/>
 					</PageHero>
 					<PageContent>
 						<QuoteList deck={deck} quotes={quotes} />
 					</PageContent>
 				</Page>
+				</div>
 			)
 		} else {
 			return (

@@ -2,9 +2,9 @@
 	width: 40px;
 	height: 40px;
 
-	&.back-icon, &.search-icon, &.plus-icon{
-		width: 30px;
-		height: 30px;
+	&.deck-icon, &.back-icon, &.search-icon, &.plus-icon, &.play-icon, &.stop-icon{
+		width: 25px;
+		height: 25px;
 	}
 
 	path, line{
@@ -38,9 +38,10 @@
 	}
 }
 
-.plus-icon{
-	path{
-		fill: white;
+.plus-icon, .play-icon, .stop-icon{
+	line, polygon, rect{
+		stroke: white;
+		stroke-width: 5;
 	}
 }
 

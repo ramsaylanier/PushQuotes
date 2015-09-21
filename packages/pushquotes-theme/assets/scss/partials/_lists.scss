@@ -1,0 +1,36 @@
+$maxItemHeight: 350px;
+
+.live-quote-list{
+	position: relative;
+	height: 100%;
+
+	@media #{$tablet}, #{$desktop}, #{$desktop-xl}{
+		top: 50%;
+		max-height: $maxItemHeight;
+		transform: translateY(-50%);
+	}
+
+	.quote-item{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+
+		@media #{$tablet}, #{$desktop}, #{$desktop-xl}{
+			max-height: $maxItemHeight;
+		}
+
+	}
+
+	.quote-text{
+		font-size: 1.3rem;
+		line-height: 2rem;
+	}
+}
+
+.item{
+	min-height: 0%;
+	transition: min-height 300ms ease-out;
+}

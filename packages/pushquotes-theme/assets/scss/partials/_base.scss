@@ -13,6 +13,12 @@
 	}
 }
 
+html{
+	@media #{$mobile}{
+		font-size: 90%;
+	}
+}
+
 a{
 	text-decoration: none;
 }
@@ -21,15 +27,17 @@ body{
 	font-family: $sansSerif;
 }
 
+main, #react-root{
+	margin: 0;
+}
+
 .main{
 	position: relative;
 }
 
 .application{
 	position: relative;
-	overflow: hidden;
 	background-color: darken(white, 10%);
-	min-height: 100vh;
 
 	.overlay{
 		position: fixed;
@@ -95,29 +103,26 @@ body{
 	margin-left: .5rem;
 }
 
-.quote-list{
-	padding: 0rem .5rem;
-}
-
 .quote-item{
-	padding: 1rem;
 	background-color:white;
 	margin-bottom: 1rem;
 	opacity: 0;
-	display: flex;
-	flex-wrap: wrap;
 	border-radius: 3px;
 	box-shadow: 0px 5px 5px -5px $dark;
+	transform: translateY(20px);
 }
 
 .quote-header{
-	// flex-basis: 100%;
-	// display: flex;
-	padding: .5rem 0rem;
+	display: table;
+}
+
+.quote-body{
+	padding: 1rem;
 }
 
 .quote-footer{
-	flex-basis: 100%;
+	
+
 }
 
 .quote-text{
@@ -125,15 +130,19 @@ body{
 	font-size: 1.2rem;
 	line-height: 1.7rem;
 	margin: 0;
+
+	@media #{$mobile}{
+
+	}
 }
 
 .quote-slide{
+	float: left;
 	font-size: .7rem;
 	background-color: $dark;
 	color: white;
 	padding: .25rem;
 	border-radius: 2px;
-	float: left;
 	margin-bottom: 0;
 	margin-right: 5px;
 }
@@ -176,35 +185,6 @@ body{
 		&.quote-list{
 			padding: 1rem;
 		}
-	}
-
-}
-
-.live-page{
-
-
-	.quote-list{
-		max-width: 600px;
-		margin-left: auto;
-		margin-right: auto;
-		padding-top: 12vh;
-		padding-bottom: 40vh;
-	}
-
-	.quote-item{
-		flex-wrap: wrap;
-	}
-
-	.quote-text{
-		font-size: 1.2rem;
-		line-height: 1.5rem;
-		margin-bottom: 1rem;
-	}
-
-	.action-list{
-		float: none;
-		justify-content: flex-start;
-		text-align: center;
 	}
 
 }

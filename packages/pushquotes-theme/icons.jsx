@@ -48,12 +48,9 @@ Icons = {
 					c0.2,0.2,0.5,0.3,0.8,0.3c0.1,0,0.2,0,0.3,0l5.6-1.8c0.2,0,0.3-0.1,0.4-0.3l25-25l0.4-0.4L39,6.4C39.4,6,39.4,5.3,39,4.9z M6.9,35.5
 					l-0.3,0.1l-2-2l0.1-0.2L29,9l2.2,2.2L6.9,35.5z M32.6,9.8l-2.2-2.2l1.2-1.2l2.2,2.2L32.6,9.8z"/>
 				</svg>,
-	PlusIcon:<svg version="1.1" className="plus-icon deck-icon icon" x="0px" y="0px" viewBox="0 0 40 40" enable-background="new 0 0 40 40">
-				<path d="M21.2,39.4L21.2,39.4l-2.7-0.1c-1.1,0-2-0.9-2-2.1l0-13.9l-13.8,0c-0.6,0-1.1-0.2-1.5-0.6c-0.4-0.4-0.6-0.9-0.6-1.5l0-2.9
-					c0-1.1,0.9-2.1,2.1-2.1l13.8,0.1l0-13.8c0-0.6,0.2-1.1,0.6-1.5c0.4-0.4,0.9-0.6,1.5-0.6l2.9,0c0.6,0,1.1,0.2,1.5,0.6
-					c0.4,0.4,0.6,0.9,0.6,1.5l-0.1,13.8l14,0.1c0.6,0,1.1,0.2,1.5,0.6c0.4,0.4,0.6,0.9,0.6,1.5l-0.1,2.7c0,1.1-0.9,2-2.1,2l-13.9,0
-					l-0.1,13.9C23.3,38.5,22.3,39.4,21.2,39.4z M18.5,21.4l0,15.9l2.7,0.1l0,1v-1c0,0,0,0,0-0.1l0.1-15.9l15.9,0l0.1-2.7l-16.1-0.1
-					l0.1-15.9l-2.9-0.1l0,14.9l0,1L2.7,18.4l-0.1,2.9l14.8,0L18.5,21.4z"/>
+	PlusIcon: 	<svg version="1.1" className="plus-icon deck-icon icon" x="0px" y="0px" viewBox="0 0 50 50" enable-background="new 0 0 50 50">
+					<line fill="none" stroke="#000000" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" x1="25" y1="3.6" x2="25" y2="46.4"/>
+					<line ill="none" stroke="#000000" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" x1="6" y1="25" x2="44" y2="25"/>
 				</svg>,
 	QuoteIcon:<svg version="1.1" className="quote-icon deck-icon icon" x="0px" y="0px" viewBox="0 0 40 40" enable-background="new 0 0 40 40">
 					<path d="M19.1,6.5c4.6,0,8.7,1.3,11.6,3.6c3,2.4,4.6,5.8,4.6,10c0,1.6-0.2,3.1-0.7,4.5c-0.4,1.1-0.3,2.3,0.1,3.3l1.6,3.7l-4.3-0.6
@@ -69,13 +66,12 @@ Icons = {
 						c0.4,0.4,0.3,1-0.1,1.3c-3.1,2.4-5.2,6.3-5.2,10.7v2.2h24.2v-2.2c0-4.4-2-8.3-5.2-10.7c-0.4-0.3-0.5-0.9-0.1-1.3
 						c1.8-1.8,2.9-4.3,2.8-7.1c-0.2-4.9-4.1-8.9-9-9.2C20.4,4.7,20.2,4.7,20,4.7L20,4.7z"/>
 				</svg>,		
-	PlayIcon:<svg version="1.1" className="play-icon deck-icon icon" x="0px" y="0px" viewBox="0 0 40 40" enable-background="new 0 0 40 40">
-					<path fill="#010101" d="M5.9,5.1L31.6,20L5.9,34.9L5.9,5.1 M4.3,1.5c-0.6,0-1,0.5-1,1.3l0,34.4c0,0.8,0.4,1.3,1,1.3
-					c0.2,0,0.5-0.1,0.8-0.2L34.9,21c1-0.6,1-1.5,0-2L5.1,1.8C4.8,1.6,4.5,1.5,4.3,1.5L4.3,1.5z"/>
+	PlayIcon:<svg version="1.1" className="play-icon deck-icon icon" x="0px" y="0px" viewBox="0 0 50 50" enable-background="new 0 0 50 50">
+					<polygon id="XMLID_1_" fill="none" stroke="#000000" strokeWidth="3" strokeLinecap="round" strokeLineJoin="round" stroke-miterlimit="10" points="
+		9.7,46.4 44.3,25 9.7,3.6 	"/>
 				</svg>,	
-	StopIcon:<svg version="1.1" className="stop-icon deck-icon icon" x="0px" y="0px" viewBox="0 0 40 40" enable-background="new 0 0 40 40">
-					<path fill="#010101" d="M37.7,39H2.3C1.6,39,1,38.4,1,37.7V2.3C1,1.6,1.6,1,2.3,1h35.4C38.4,1,39,1.6,39,2.3v35.4
-			C39,38.4,38.4,39,37.7,39z M3.5,36.5h32.9V3.5H3.5V36.5z"/>
+	StopIcon:<svg version="1.1" className="stop-icon deck-icon icon" x="0px" y="0px" viewBox="0 0 50 50" enable-background="new 0 0 50 50">
+					<rect id="XMLID_3_" x="7.7" y="7.7" fill="none" stroke="#000000" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" width="34.7" height="34.7"/>
 				</svg>,
 	BackIcon:<svg version="1.1" className="back-icon deck-icon icon" x="0px" y="0px" viewBox="0 0 40 40" enable-background="new 0 0 40 40">
 					<path d="M38.3,20c0,0.7-0.6,1.3-1.3,1.3l-30,0c2.7,1.9,6.2,4.4,8.2,5.8c0.6,0.4,0.7,1.2,0.3,1.8c-0.2,0.3-0.6,0.5-1,0.5

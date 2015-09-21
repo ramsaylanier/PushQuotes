@@ -37,6 +37,28 @@ Triggers = {
 			modal.get(0)
 		)
 	},
+	StartPresentation: function(deckId){
+		TweenMax.to(window, .25, {scrollTo: {y: 0}});
+
+		Meteor.setTimeout(function(){
+			Meteor.call('goLive', deckId, function(err, res){
+				if (err){
+					alert(err)
+				} else {
+
+				}
+			})
+		}, 250);
+	},
+	EndPresentation: function(deckId){
+		Meteor.call('endLive', deckId, function(err, res){
+			if (err){
+				alert(err)
+			} else {
+
+			}
+		})
+	},
 	AddQuote: function(){
 		var modal = $('<div class="modal new-deck-modal"></div>');
 		$('main').append(modal);

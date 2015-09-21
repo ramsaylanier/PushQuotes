@@ -54,6 +54,10 @@
 	@include primary-btn($red);
 }
 
+.positive-btn{
+	@include primary-btn($green);
+}
+
 .twitter-btn{
 	@include primary-btn($twitter);
 }
@@ -61,13 +65,30 @@
 .floating-toggle{
 	position: fixed;
 	bottom: 10px;
-	background-color: $red;
 	width: 40px;
 	height: 40px;
 	padding: 5px;
 	border-radius: 50%;
-	right: 10px;
 	transition: all 150ms ease-out 150ms;
+
+	&.right{
+		right: 10px;
+	}
+
+	&.left{
+		left: 10px;
+	}
+}
+
+.toggle{
+	a{
+		height: 100%;
+		display: flex;
+		text-align: center;
+		justify-content: center;
+		align-items: center;
+
+	}
 }
 
 .application.shelf-active{

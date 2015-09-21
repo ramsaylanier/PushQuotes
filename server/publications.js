@@ -1,11 +1,5 @@
 Meteor.publish('deckList', function(query, deckAuthorName){
-	var user = Meteor.users.findOne({username: deckAuthorName})
-	var authorId = user ? user._id : null;
-
-	if (authorId !== this.userId){
-		query.isPrivate = false;
-	}
-	
+	var user = Meteor.users.findOne({username: deckAuthorName})._id;	
 	return Decks.find(query);
 })
 
