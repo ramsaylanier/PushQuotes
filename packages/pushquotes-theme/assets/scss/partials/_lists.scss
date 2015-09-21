@@ -17,6 +17,12 @@ $maxItemHeight: 350px;
 		width: 100%;
 		height: 100%;
 		overflow: auto;
+		max-height: $maxItemHeight;
+		cursor: grab;
+
+		&:active{
+			cursor: grabbing;
+		}
 
 		@media #{$tablet}, #{$desktop}, #{$desktop-xl}{
 			max-height: $maxItemHeight;

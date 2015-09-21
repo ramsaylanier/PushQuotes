@@ -37,19 +37,17 @@ QuoteItem = React.createClass({
 		var snapped = this.state.snapped;
 		var self = this;
 
-		console.log(mc);
-
 		if (this.props.deck.live && mc){
 			mc.set({enable: true});
 			mc.on("panleft", function(ev) {
-				if (-ev.deltaX > window.innerWidth / 4 && !self.state.snapped){
+				if (-ev.deltaX > window.innerWidth / 3 && !self.state.snapped){
 					self.Snap(item);
 				}
 
 				if (!self.state.snapped){
-					TweenMax.to(item, 0, {
+					TweenMax.to(item, 1, {
 						x: ev.deltaX,
-						rotation: ev.deltaX / 360,
+						rotation: ev.deltaX / 180,
 						scale: 1 - ev.deltaX/window.innerWidth/2,
 						boxShadow: "0px " + (-ev.deltaX/10 + 5) + "px " + (-ev.deltaX/10 + 5) + "px -5px rgba(0,0,0,.3)"
 					});
@@ -76,7 +74,7 @@ QuoteItem = React.createClass({
 
 		TweenMax.to(item, .3, {
 			x: -window.innerWidth,
-			rotation: 0,
+			rotation: -10,
 			scale: 1
 		});
 

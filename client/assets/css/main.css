@@ -1356,6 +1356,14 @@ textarea:focus {
 	width: 100%;
 	height: 100%;
 	overflow: auto;
+	max-height: 350px;
+	cursor: -webkit-grab;
+	cursor: grab;
+}
+
+.live-quote-list .quote-item:active {
+	cursor: -webkit-grabbing;
+	cursor: grabbing;
 }
 
 .live-quote-list .quote-text {

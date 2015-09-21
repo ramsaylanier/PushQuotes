@@ -7,18 +7,6 @@ Animations.AnimateModalOut = function(){
 }
 
 Animations.AnimateCardIn = function(card, itemCount){
-	console.log('animate card in');
-	console.log(itemCount);
-	// TweenMax.fromTo(card, 1, {
-	// 	opacity: 0,
-	// 	y: 20
-	// }, {
-	// 	opacity: 1,
-	// 	y: 0,
-	// 	ease: Power4.easeOut,
-	// 	delay: itemCount * .05
-	// });
-
 	TweenMax.to(card, 1, {
 		opacity: 1,
 		y: 0,
