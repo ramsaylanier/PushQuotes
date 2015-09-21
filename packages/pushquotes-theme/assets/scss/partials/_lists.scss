@@ -32,4 +32,5 @@ $maxItemHeight: 350px;
 .item{
 	min-height: 0%;
 	transition: min-height 300ms ease-out;
+	backface-visibility: hidden;
 }

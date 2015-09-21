@@ -1379,6 +1379,8 @@ textarea:focus {
 	min-height: 0%;
 	-webkit-transition: min-height 300ms ease-out;
 	transition: min-height 300ms ease-out;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 }
 
 #shelf-container {
