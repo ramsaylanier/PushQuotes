@@ -16,14 +16,10 @@ QuoteItem = React.createClass({
 		Session.set('quoteCount', itemCount + 1);
 		Animations.AnimateCardIn(item, itemCount);
 
-		if (this.state.isAuthor && this.props.deck.live){
-			this.setState({mc: new Hammer(item)});
-		}
+		this.setState({mc: new Hammer(item)});
 	},
 	componentDidUpdate(oldProps){
-		var isAuthor = Meteor.userId() === this.props.deck.author;
-
-		if (isAuthor){
+		if (this.state.isAuthor){
 			var item = this.getDOMNode(this.refs.quoteListItem);
 			this.setPan(item);
 		}
@@ -40,6 +36,8 @@ QuoteItem = React.createClass({
 		var mc = this.state.mc;
 		var snapped = this.state.snapped;
 		var self = this;
+
+		console.log(mc);
 
 		if (this.props.deck.live && mc){
 			mc.set({enable: true});
