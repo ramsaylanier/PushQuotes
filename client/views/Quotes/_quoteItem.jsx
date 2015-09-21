@@ -1,7 +1,7 @@
 QuoteItem = React.createClass({
 	getInitialState(){
 		return{
-			mc: '',
+			mc: null,
 			snapped: false,
 			isAuthor: false
 		}
@@ -41,7 +41,7 @@ QuoteItem = React.createClass({
 		var snapped = this.state.snapped;
 		var self = this;
 
-		if (this.props.deck.live){
+		if (this.props.deck.live && mc){
 			mc.set({enable: true});
 			mc.on("panleft", function(ev) {
 				if (-ev.deltaX > window.innerWidth / 4 && !self.state.snapped){
@@ -68,7 +68,7 @@ QuoteItem = React.createClass({
 					});
 				}
 			});
-		} else {
+		} else if (mc) {
 			mc.set({enable: false});
 		}
 	},
