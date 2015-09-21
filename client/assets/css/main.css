@@ -1377,8 +1377,8 @@ textarea:focus {
 
 .item {
 	min-height: 0%;
-	-webkit-transition: opacity 300ms ease-out;
-	transition: opacity 300ms ease-out;
+	-webkit-transition: min-height 300ms ease-out;
+	transition: min-height 300ms ease-out;
 }
 
 #shelf-container {
