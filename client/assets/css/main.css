@@ -1347,6 +1347,11 @@ textarea:focus {
 .live-quote-list {
 	position: relative;
 	height: 100%;
+	top: 50%;
+	max-height: 350px;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
 }
 
 .live-quote-list .quote-item {
@@ -1362,8 +1367,7 @@ textarea:focus {
 }
 
 .live-quote-list .quote-item:active {
-	cursor: -webkit-grabbing;
-	cursor: grabbing;
+	cursor: gra;
 }
 
 .live-quote-list .quote-text {
@@ -1373,8 +1377,8 @@ textarea:focus {
 
 .item {
 	min-height: 0%;
-	-webkit-transition: min-height 300ms ease-out;
-	transition: min-height 300ms ease-out;
+	-webkit-transition: opacity 300ms ease-out;
+	transition: opacity 300ms ease-out;
 }
 
 #shelf-container {
@@ -1892,18 +1896,6 @@ input[type="submit"]:hover {
 }
 
 @media only screen and (min-width: 569px) and (max-width: 980px), only screen and (min-width: 981px) and (max-width: 1200px), only screen and (min-width: 1201px) {
-
-.live-quote-list {
-	top: 50%;
-	max-height: 350px;
-	-webkit-transform: translateY(-50%);
-	-ms-transform: translateY(-50%);
-	transform: translateY(-50%);
-}
-
-.live-quote-list .quote-item {
-	max-height: 350px;
-}
 
 .modal {
 	width: 80%;

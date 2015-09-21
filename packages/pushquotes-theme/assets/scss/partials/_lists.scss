@@ -3,12 +3,10 @@ $maxItemHeight: 350px;
 .live-quote-list{
 	position: relative;
 	height: 100%;
+	top: 50%;
+	max-height: $maxItemHeight;
+	transform: translateY(-50%);
 
-	@media #{$tablet}, #{$desktop}, #{$desktop-xl}{
-		top: 50%;
-		max-height: $maxItemHeight;
-		transform: translateY(-50%);
-	}
 
 	.quote-item{
 		position: absolute;
@@ -21,13 +19,8 @@ $maxItemHeight: 350px;
 		cursor: grab;
 
 		&:active{
-			cursor: grabbing;
+			cursor: gra
 		}
-
-		@media #{$tablet}, #{$desktop}, #{$desktop-xl}{
-			max-height: $maxItemHeight;
-		}
-
 	}
 
 	.quote-text{
@@ -38,5 +31,5 @@ $maxItemHeight: 350px;
 
 .item{
 	min-height: 0%;
-	transition: min-height 300ms ease-out;
+	transition: opacity 300ms ease-out;
 }
