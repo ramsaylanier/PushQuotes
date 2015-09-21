@@ -1218,8 +1218,8 @@ textarea:focus {
 	margin-bottom: .5rem;
 	box-shadow: 0px 5px 5px -5px #240425;
 	opacity: 0;
-	-webkit-transition: background-color 300ms ease-out, opacity 150ms ease-out;
-	transition: background-color 300ms ease-out, opacity 150ms ease-out;
+	-webkit-transition: background-color 300ms ease-out;
+	transition: background-color 300ms ease-out;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	-ms-flex-pack: justify;
