@@ -1,31 +1,29 @@
 QuoteList = React.createClass({
-	componentWillMount: function(){
+
+	componentWillMount(){
 		Session.set('quoteCount', 1);
 	},
-	componentDidUpdate: function(prevProps, prevState){
+
+	componentDidUpdate(prevProps, prevState){
 		if ($('.live-page').length && $('.quote-item').length){
-			var offset = $('.quote-item').last().offset().top - 150;
+			let offset = $('.quote-item').last().offset().top - 150;
 			$('body').velocity('stop');
 			$('body').velocity('scroll', {offset: offset, mobileHA: false });
 		}
 	},
-	render: function(){
-		var quotes = this.props.quotes;
-		var deck = this.props.deck;
-		var withSlides = this.props.deck.withSlides || false;
-		var isAuthor;
 
-		if (Meteor.user())
-			isAuthor = FlowRouter.getParam('username') === Meteor.user().username;
-		else 
-			isAuthor = false;
+	render(){
+		let quotes = this.props.quotes;
+		let deck = this.props.deck;
+		let withSlides = this.props.deck.withSlides;
+		let isAuthor = Meteor.userId() === deck.author;
 
 		return (
 			<ul className={"quote-list" + (this.props.isLive ? " live-quote-list live-list" : '') + ' list'}>
 				{!quotes.length && <p>Add a quote!</p>}
-				{quotes.map(function(quote){
+				{quotes.map((quote) => {
 					return (
-						<QuoteItem key={quote._id} {...quote} deck={deck}/>
+						<QuoteItem key={quote._id} isAuthor={isAuthor} withSlides={withSlides} {...quote} deck={deck}/>
 					)
 				})}
 			</ul>

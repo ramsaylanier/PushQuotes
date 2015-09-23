@@ -17,7 +17,7 @@ Package.onUse(function(api) {
     'ramsay:react-components-dependencies'
   ], 'client');
 
-  api.addFiles('component-modal.jsx');
+  api.addFiles('component-modal.jsx', 'client');
 
   api.export(['Modal'], 'client');
 });

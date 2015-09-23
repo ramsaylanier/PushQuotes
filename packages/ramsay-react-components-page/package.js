@@ -17,7 +17,7 @@ Package.onUse(function(api) {
     'ramsay:react-components-dependencies'
   ], 'client');
 
-  api.addFiles('component-page.jsx');
+  api.addFiles('component-page.jsx', 'client');
 
   api.export(['Page', 'PageHeader', 'PageTitle', 'PageContent', 'PageSection', 'PageSeparator', 'PageAnimations'], 'client');
 });

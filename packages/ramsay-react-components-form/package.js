@@ -17,7 +17,7 @@ Package.onUse(function(api) {
     'ramsay:react-components-dependencies'
   ], 'client');
 
-  api.addFiles(['component-form.jsx', 'component-inputs.jsx', 'component-label.jsx']);
+  api.addFiles(['component-form.jsx', 'component-inputs.jsx', 'component-label.jsx'], 'client');
 
   api.export(['Form', 'InputType', 'Label'], 'client');
 });

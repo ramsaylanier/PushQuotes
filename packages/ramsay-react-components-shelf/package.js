@@ -17,7 +17,7 @@ Package.onUse(function(api) {
     'ramsay:react-components-dependencies'
   ], 'client');
 
-  api.addFiles('component-shelf.jsx');
+  api.addAssets('component-shelf.jsx', 'client');
 
   api.export(['Shelf', 'ToggleShelf'], 'client');
 });

@@ -23,7 +23,7 @@ MobileNav.navItems = function(){
 			},
 			{
 				url: '',
-				name: Meteor.user().username,
+				name: 'nav-toggle',
 				className: 'nav-toggle',
 				icon: Icons.MenuIcon,
 				clickFunction: function(){

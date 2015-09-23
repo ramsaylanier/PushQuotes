@@ -1,16 +1,18 @@
 DeckPage = React.createClass({
+
 	mixins: [ReactMeteorData],
+
 	getMeteorData(){
-		var slug = FlowRouter.getParam('slug');
-		var authorName = FlowRouter.getParam('username');
-		var deckSub = Meteor.subscribe('deckList', {slug: slug}, authorName);
-		var quoteSub, deck;
+		let slug = FlowRouter.getParam('slug');
+		let authorName = FlowRouter.getParam('username');
+		let deckSub = Meteor.subscribe('deckList', {slug: slug}, authorName);
+		let quoteSub, deck;
 
 		if (deckSub.ready()){
 			deck = Decks.findOne({slug: slug});
 			deckId = deck ? deck._id : null;
 
-			var query = deck.live ? {deckId: deckId, pushed: false} : {deckId: deckId};
+			let query = deck.live ? {deckId: deckId, pushed: false} : {deckId: deckId};
 
 			quoteSub = Meteor.subscribe('quoteList', query);
 		}
@@ -21,12 +23,13 @@ DeckPage = React.createClass({
 			quotes: Quotes.find({}, {sort: {order: -1}}).fetch()
 		}
 	},
+
 	componentDidMount(){
 		$(window).on('scroll', function(e){
-			var pos = $(window).scrollTop();
-			var target = $('.page-content').offset().top;
-			var title = $('.app-header .title');
-			var active = title.hasClass('active');
+			let pos = $(window).scrollTop();
+			let target = $('.page-content').offset().top;
+			let title = $('.app-header .title');
+			let active = title.hasClass('active');
 
 			if (pos > target && !active){
 				title.addClass('active');
@@ -35,19 +38,14 @@ DeckPage = React.createClass({
 			}
 		});
 	},
-	setTitle(){
-		$('.app-header .title').text(this.data.deck.title);
-	},
-	editDeck(){
-		Triggers.EditDeck(this.data.deck);
-	},
+
 	render(){
 		if (this.data.ready){
 
-			var deck = this.data.deck;
-			var quotes = this.data.quotes;
-			var isLive = deck.live;
-			var isAuthor = deck.author === Meteor.userId();
+			let deck = this.data.deck;
+			let quotes = this.data.quotes;
+			let isLive = deck.live;
+			let isAuthor = deck.author === Meteor.userId();
 
 			if (!deck){
 				return <NotFoundPage/>
@@ -64,9 +62,7 @@ DeckPage = React.createClass({
 				<Page className={"" + (isLive ? 'live-page' : '')}>
 					<PageHero classes="deck-hero" heroImage={deck.image}>
 						<h2 className="page-title">{deck.title}</h2>
-						{deck.hashtags && 
-						<Hashtags hashtags={deck.hashtags}/>
-						}
+						{this._deckHashtags()}
 
 						{!isLive && isAuthor && <ActionToggle action={this.editDeck}/> }
 					</PageHero>
@@ -84,5 +80,21 @@ DeckPage = React.createClass({
 				<p></p>
 			)
 		}
-	}
+	},
+
+	_deckHashtags(){
+		if (this.data.deck.hashtags){
+			return <Hashtags hashtags={this.data.deck.hashtags}/>
+		}
+	},
+
+	setTitle(){
+		$('.app-header .title').text(this.data.deck.title);
+	},
+
+	editDeck(){
+		Triggers.EditDeck(this.data.deck);
+	},
+
+
 });

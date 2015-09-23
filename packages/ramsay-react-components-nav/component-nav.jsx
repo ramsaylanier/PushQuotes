@@ -1,13 +1,13 @@
 NavList = React.createClass({
-	render: function(){
+	render(){
 		var navItems = this.props.navItems;
 
 		return (
 			<nav className={this.props.navType + "-nav"}>
 				<ul className="nav-list">
-					{navItems.map(function(item){
+					{navItems.map((item) => {
 						return (
-							<NavItem {...item}/>
+							<NavItem key={item.name} {...item}/>
 						)	
 					})}
 				</ul>
@@ -17,14 +17,14 @@ NavList = React.createClass({
 });
 
 SubNavList = React.createClass({
-	render: function(){
+	render(){
 		var navItems = this.props.navItems;
 
 		return (
 			<ul className="sub-nav-list">
-				{navItems.map(function(item){
+				{navItems.map((item) => {
 					return (
-						<NavItem {...item} subNavItem={true} />
+						<NavItem key={item.name} {...item} subNavItem={true} />
 					)
 				})}
 			</ul>
@@ -33,7 +33,7 @@ SubNavList = React.createClass({
 });
 
 NavItem = React.createClass({
-	render: function(){
+	render(){
 		var isSubNavItem = this.props.subNavItem;
 
 		return (
