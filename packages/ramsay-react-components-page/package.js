@@ -10,14 +10,16 @@ Package.describe({
   documentation: 'README.md'
 });
 
+
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.3');
 
   api.use([
+    'cosmos:browserify',
     'ramsay:react-components-dependencies'
   ], 'client');
 
-  api.addFiles('component-page.jsx', 'client');
+  api.addFiles(['component-page.jsx'], 'client');
 
   api.export(['Page', 'PageHeader', 'PageTitle', 'PageContent', 'PageSection', 'PageSeparator', 'PageAnimations'], 'client');
 });

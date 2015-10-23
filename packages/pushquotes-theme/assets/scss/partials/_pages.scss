@@ -8,6 +8,10 @@
 	opacity: 0;
 
 	&.live-page{
+		margin-top: 3rem;
+	}
+
+	&.presentation-page{
 
 		height: 100vh;
 		overflow: hidden;
@@ -24,6 +28,7 @@
 
 		.page-content{
 			height: 100%;
+			padding-top: 1.5rem;
 		}
 	}
 }
@@ -32,9 +37,16 @@
 .page-hero{
 	background-color: white;
 	background-size: cover;
-	padding: .5rem;
+	background-position: center center;
 	transition: all 300ms ease-out;
 	max-height: 100vh;
+	padding: .5rem;
+}
+
+.hero-content{
+	background-color: fade-out(white, .2);
+	padding: 1rem;
+	margin: 2rem 0rem;
 }
 
 .page-content{
@@ -56,7 +68,6 @@
 
 .page-title{
 	position: relative;
-	background-color: white;
 	color: $dark;
 	font-weight: 700;
 	font-size: 2rem;
@@ -67,7 +78,7 @@
 .page-section{
 	padding: 2rem 0rem;
 	background-color: $dark;
-	transform-origin: top center;	
+	transform-origin: top center;
 
 	.section-title{
 		font-weight: 900;

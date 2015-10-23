@@ -34,3 +34,12 @@ $maxItemHeight: 350px;
 	transition: min-height 300ms ease-out;
 	backface-visibility: hidden;
 }
+
+.quote-count{
+	position: fixed;
+	top: $headerHeight + 8px;
+	left: .5;
+	background-color: $dark;
+	padding: .5rem;
+	color: white;
+}

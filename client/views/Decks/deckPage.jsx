@@ -49,7 +49,7 @@ DeckPage = React.createClass({
 
 			if (!deck){
 				return <NotFoundPage/>
-			} 
+			}
 
 			if (isLive && !isAuthor){
 				FlowRouter.go(window.location.pathname + '/live')
@@ -59,9 +59,10 @@ DeckPage = React.createClass({
 
 			return (
 				<div className="page-wrapper">
-				<Page className={"" + (isLive ? 'live-page' : '')}>
+				<Page className={"" + (isLive ? 'presentation-page' : '')}>
 					<PageHero classes="deck-hero" heroImage={deck.image}>
 						<h2 className="page-title">{deck.title}</h2>
+						{this._deckDescription()}
 						{this._deckHashtags()}
 
 						{!isLive && isAuthor && <ActionToggle action={this.editDeck}/> }
@@ -78,6 +79,14 @@ DeckPage = React.createClass({
 		} else {
 			return (
 				<p></p>
+			)
+		}
+	},
+
+	_deckDescription(){
+		if (this.data.deck.description){
+			return (
+				<p className="card-description">{this.data.deck.description}</p>
 			)
 		}
 	},

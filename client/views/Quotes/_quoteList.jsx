@@ -1,5 +1,10 @@
 QuoteList = React.createClass({
 
+	propTypes: {
+		quotes: React.PropTypes.array.isRequired,
+		deck: React.PropTypes.object.isRequired
+	},
+
 	componentWillMount(){
 		Session.set('quoteCount', 1);
 	},

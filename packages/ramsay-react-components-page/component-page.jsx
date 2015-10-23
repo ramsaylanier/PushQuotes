@@ -93,7 +93,7 @@ PageAnimations = {
 		properties: {
 			opacity: 1,
 			ease: Power2.easeOut
-		} 
+		}
 	}
 }
 

@@ -17,14 +17,16 @@ DeckLive = React.createClass({
 		return {
 			ready: deckSub.ready() && quoteSub.ready(),
 			deck: deck,
-			quotes: Quotes.find({}, {sort: {order: -1}}).fetch()
+			quotes: Quotes.find({}, {sort: {order: 1}}).fetch()
 		}
 	},
 
 	componentDidMount(){
 
-		$(window).on('scroll', (e) => {
-			let pos = $(window).scrollTop();
+		let window = $(window);
+
+		window.on('scroll', (e) => {
+			let pos = window.scrollTop();
 			let target = $('.page-content').offset().top;
 			let title = $('.app-header .title');
 			let active = title.hasClass('active');
@@ -57,7 +59,7 @@ DeckLive = React.createClass({
 				<div className="page-wrapper">
 				<Page className="live-page">
 					<PageContent>
-						<QuoteCount quotes={quotes}/>
+						<QuoteCount total={deck.quotes.length} quotes={quotes.length}/>
 						<QuoteList deck={deck} quotes={quotes} />
 					</PageContent>
 				</Page>
@@ -67,12 +69,6 @@ DeckLive = React.createClass({
 			return (
 				<p></p>
 			)
-		}
-	},
-
-	_hashtags(){
-		if (this.data.deck.hashtags){
-			return <Hashtags hashtags={this.data.deck.hashtags}/>
 		}
 	}
 });

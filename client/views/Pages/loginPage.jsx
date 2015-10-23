@@ -5,7 +5,7 @@ LoginPage = React.createClass({
 				<PageContent>
 					<div className="wrapper form-wrapper white-bg">
 						<Form attributes={loginFormAttributes}/>
-						<button onClick={twitterLogin} className="btn twitter-btn full-width">Login With Twitter</button>  
+						<button onClick={twitterLogin} className="btn twitter-btn full-width">{Icons.TwitterIcon} Login With Twitter</button>
 						<p>No account? <Link href='/register' className="transition-link">Register</Link></p>
 
 						<Link className="small render-form" onClick={renderForgotPasswordForm}>Forgot password</Link>
@@ -44,6 +44,6 @@ var twitterLogin = function(){
 		}
 		else{
 			FlowRouter.go('/' + Meteor.user().username);
-		}	
+		}
 	});
 }

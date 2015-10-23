@@ -26,11 +26,11 @@
 	z-index: 90;
 }
 
-.page, .application{
+.page, .application, .quote-count{
 	z-index: 2;
 }
 
-#shelf-container{
+#shelf-container, .quote-item{
 	z-index: 1;
 }
 

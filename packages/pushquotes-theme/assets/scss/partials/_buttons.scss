@@ -59,7 +59,35 @@
 }
 
 .twitter-btn{
-	@include primary-btn($twitter);
+	padding: .5rem 1rem;
+	margin: 1rem 0rem;
+  font-size: 1rem;
+  color: white;
+	display: inline-block;
+	background-color: $twitter;
+
+  &:hover{
+    background-color: darken($twitter, 20%);
+  }
+
+  span{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  svg{
+		height: 30px;
+		width: 30px;
+    float: left;
+    margin-right: 1rem;
+  }
+}
+
+.tweet-btn{
+	margin: 1rem 0rem;
+	display: inline-block;
+	background-color: $primary;
+	padding: .65rem 1.25rem;
 }
 
 .floating-toggle{

@@ -1,5 +1,11 @@
 QuoteItem = React.createClass({
 
+	propTypes: {
+		isAuthor: React.PropTypes.bool.isRequired,
+		withSlides: React.PropTypes.bool.isRequired,
+		deck: React.PropTypes.object.isRequired
+	},
+
 	getInitialState(){
 		return{
 			mc: null,
@@ -50,6 +56,7 @@ QuoteItem = React.createClass({
 				</div>
 				<div className="quote-body">
 					<p className="quote-text">{'"' + this.props.text + 	'"'}</p>
+					{this._quoteActions()}
 				</div>
 				<div className="quote-footer">
 					{this._actionToggle()}
@@ -68,6 +75,14 @@ QuoteItem = React.createClass({
 		if (this.props.isAuthor && this.props.slide){
 			return(
 				<p className="quote-slide small">Slide: {this.props.slide}</p>
+			)
+		}
+	},
+
+	_quoteActions(){
+		if (!this.props.isAuthor && this.props.deck.live){
+			return(
+				<TweetButton tweet={this.props.text} hashtags={this.props.deck.hashtags}/>
 			)
 		}
 	},

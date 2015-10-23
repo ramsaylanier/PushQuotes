@@ -5,3 +5,4 @@ packages/.DS_Store
 config.push.json
 certificates
 private/*
+node_modules

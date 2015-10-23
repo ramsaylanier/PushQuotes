@@ -1,19 +1,18 @@
 PageHero = React.createClass({
 	render(){
 
-		var heroImage = this.props.heroImage || null; 
+		var heroImage = this.props.heroImage || null;
 
 		var style = {
 			backgroundImage: "url('" + heroImage + "')"
 		}
 
 		return (
-			<div className={"page-hero " + this.props.classes}>
+			<div className={"page-hero " + this.props.classes} style={style}>
 				<div className="wrapper">
-					{this.props.heroImage && 
-						<div className="hero-image" style={style}></div>
-					}
-					{this.props.children}
+					<div className="hero-content">
+						{this.props.children}
+					</div>
 				</div>
 			</div>
 		)

@@ -30,7 +30,6 @@ ramsay:react-components-core
 check
 
 
-npm-container
 standard-minifiers
 meteor-base
 mobile-experience
@@ -44,3 +43,5 @@ reload
 random
 ejson
 spacebars
+cosmos:browserify
+meteortoys:allthings

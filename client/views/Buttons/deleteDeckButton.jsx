@@ -1,20 +1,20 @@
 DeleteDeckButton = React.createClass({
 	handleClick(){
-		var confirmDelete = confirm('Do you want to delete this deck?');
+		let confirmDelete = confirm('Do you want to delete this deck?');
 
 		if (confirmDelete){
-			var deckId = this.props.deck._id;
-			var timeout = 300;
+			let deckId = this.props.deck._id;
+			let timeout = 300;
 
-			if (FlowRouter.current().route.name == 'deckSingle'){
+			if (FlowRouter.current().route.name === 'deckSingle'){
 				timeout = 0;
 			}
 
-			var decks = $('.card');
-			var activeDeckHeight = $('.card.edit-mode').outerHeight();
-			var trigger = false;
+			let decks = $('.card');
+			let activeDeckHeight = $('.card.edit-mode').outerHeight();
+			let trigger = false;
 
-			_.each(decks, function(deck){
+			_.each(decks, deck => {
 				if ($(deck).hasClass('edit-mode')){
 					trigger = true;
 					TweenMax.to(deck, .25, {
@@ -28,17 +28,18 @@ DeleteDeckButton = React.createClass({
 				}
 			})
 
-			Meteor.setTimeout(function(){
-				Meteor.call('deleteForm', deckId, function(error){
+			Meteor.setTimeout( () => {
+				Meteor.call('deleteForm', deckId, error => {
 					if (error){
 						alert(error)
 					} else {
+						let username = FlowRouter.getParam('username');
 						Animations.AnimateModalOut();
-						FlowRouter.go('/');
+						FlowRouter.go('/' + username);
 					}
 				})
 
-				_.each(decks, function(deck){
+				_.each(decks, deck =>{
 					TweenMax.to(deck, 0, {
 						y: 0
 					});
@@ -49,6 +50,6 @@ DeleteDeckButton = React.createClass({
 	render(){
 		return(
 			 <button className="btn negative-btn flex-4-10" onClick={this.handleClick}>{Icons.DeleteIcon}</button>
-		)	
+		)
 	}
 })
